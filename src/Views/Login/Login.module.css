@@ -1,0 +1,25 @@
+/* login background */
+.login-bg {
+  width: 100vw;
+  height: 105vh;
+  background-color: var(--secondary-color);
+}
+
+/* login panel */
+.login-form {
+  margin: 0 auto;
+  background-color: var(--prim-color);
+  width: 30vw;
+  height: 40vh;
+  border-radius: 5px;
+}
+
+.login-item {
+  display: flex;
+  padding: 5px;
+}
+
+.login-item input {
+  border-radius: 5px;
+  border: none;
+}
