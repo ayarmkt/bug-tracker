@@ -15,6 +15,10 @@ const useInputValidation = (validateValue) => {
     setValueIsTouched(true);
   };
 
+  const guestLoginHandler = (guestValue) => {
+    setEnteredValue(guestValue);
+  };
+
   const resetValue = () => {
     setEnteredValue('');
     setValueIsTouched(false);
@@ -26,6 +30,7 @@ const useInputValidation = (validateValue) => {
     hasError,
     valueChangeHandler,
     valueTouchedHandler,
+    guestLoginHandler,
     resetValue,
   };
 };

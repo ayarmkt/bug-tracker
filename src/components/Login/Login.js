@@ -5,10 +5,15 @@ import React from 'react';
 import useInputValidation from '../../hooks/useInputValidation';
 import { useState } from 'react';
 
+//Guest Info
+const guestEmail = 'guest@guest.com';
+const guestPassword = '123456789';
+
 const Login = () => {
   // const dispatch = useDispatch();
   //const authCtx = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     value: enteredEmail,
@@ -16,6 +21,7 @@ const Login = () => {
     hasError: emailHasError,
     valueChangeHandler: emailChangeHandler,
     valueTouchedHandler: emailTouchedHandler,
+    guestLoginHandler: guestEmailHandler,
     resetValue: resetEmail,
   } = useInputValidation((value) => value.trim().includes('@'));
 
@@ -25,6 +31,7 @@ const Login = () => {
     hasError: passwordHasError,
     valueChangeHandler: passwordChangeHandler,
     valueTouchedHandler: passwordTouchedHandler,
+    guestLoginHandler: guestPasswordHandler,
     resetValue: resetPassword,
   } = useInputValidation((value) => value.trim().length !== 0);
 
@@ -37,15 +44,18 @@ const Login = () => {
     setIsLogin(!isLogin);
   };
 
-  // const loginAsGuestHandler = () => {
-  //   setIsLogin(true);
-  // };
+  const loginAsGuestHandler = () => {
+    setIsLogin(true);
+    guestEmailHandler(guestEmail);
+    guestPasswordHandler(guestPassword);
+  };
 
   const submitLoginHandler = (e) => {
     e.preventDefault();
     if (!formIsValid) return;
 
     const fetchData = async () => {
+      setIsLoading(true);
       let url;
 
       if (isLogin) {
@@ -81,6 +91,7 @@ const Login = () => {
     fetchData().catch((error) => {
       console.log(error.message);
     });
+    setIsLoading(false);
 
     //authCtx.login();
     // dispatch(
@@ -88,12 +99,6 @@ const Login = () => {
     resetEmail();
     resetPassword();
   };
-
-  // const nameInputClasses = nameHasError ? 'classes.inputInvalid' : '';
-
-  // const passwordInputClasses = passwordHasError
-  //   ? 'login-item invalid'
-  //   : 'login-item';
 
   const optionText = isLogin
     ? 'Create new account'
@@ -137,17 +142,20 @@ const Login = () => {
           </div>
         </div>
 
-        <button
-          type='submit'
-          disabled={!formIsValid}
-          className={classes['login-btn']}
-          onClick={submitLoginHandler}
-        >
-          {isLogin ? 'Log In' : 'Sign Up'}
-        </button>
+        {!isLoading && (
+          <button
+            type='submit'
+            disabled={!formIsValid}
+            className={classes['login-btn']}
+            onClick={submitLoginHandler}
+          >
+            {isLogin ? 'Log In' : 'Sign Up'}
+          </button>
+        )}
+        {isLoading && <p>Loading...</p>}
         <div className={classes.options}>
           <p onClick={switchFormHandler}>{optionText}</p>
-          <p>Log in as a guest</p>
+          <p onClick={loginAsGuestHandler}>Log in as a guest</p>
         </div>
       </form>
     </div>
