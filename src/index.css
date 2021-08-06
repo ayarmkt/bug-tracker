@@ -13,14 +13,18 @@ code {
 } */
 
 :root {
-  --prim-color: #264e70;
-  --secondary-color: #278190;
+  --base-color: white;
+  --prim-color: rgb(0, 0, 49);
+  --secondary-color: rgb(136, 130, 130);
+  --third-color: rgb(90, 86, 86);
+  --additional-color: rgb(9, 9, 255);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 html {

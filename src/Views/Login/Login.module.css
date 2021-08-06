@@ -1,25 +1,106 @@
 /* login background */
 .login-bg {
   width: 100vw;
-  height: 105vh;
-  background-color: var(--secondary-color);
+  height: 100vh;
+  background-color: var(--base-color);
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* login panel */
 .login-form {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   background-color: var(--prim-color);
-  width: 30vw;
-  height: 40vh;
+  width: 35vw;
+  height: auto;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
 }
 
+/* login title */
+.login-form h1 {
+  color: var(--base-color);
+  font-size: 35px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  /* border: 1px solid red; */
+}
+
+/* input field */
 .login-item {
+  padding: 10px;
+  /* margin-bottom: 5px; */
+  /* border: 1px solid red; */
   display: flex;
-  padding: 5px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.login-item label {
+  color: var(--base-color);
+  font-size: 18px;
+  padding-bottom: 3px;
 }
 
 .login-item input {
   border-radius: 5px;
   border: none;
+  width: 25vw;
+  height: 5vh;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.login-item p {
+  font-size: 18px;
+  padding-top: 3px;
+}
+
+.errorMsg {
+  color: red;
+}
+
+.inputInvalid {
+  border: 2px solid red;
+}
+
+/* Login Button */
+.login-btn {
+  background-color: var(--secondary-color);
+  color: var(--base-color);
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  margin: 15px 0;
+  width: 9vw;
+  height: 5vh;
+}
+
+.login-btn:hover {
+  background-color: var(--third-color);
+  cursor: pointer;
+}
+
+/* other option description */
+.options {
+  margin-bottom: 20px;
+}
+
+.options p {
+  color: var(--secondary-color);
+  font-size: 18px;
+  padding: 5px 0;
+  text-align: center;
+  /* border: 1px solid red; */
+}
+
+.options p:hover {
+  color: var(--base-color);
+  cursor: pointer;
 }

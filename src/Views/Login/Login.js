@@ -1,12 +1,12 @@
 import classes from './Login.module.css';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { authActions } from '../../Controllers/store/auth-slice';
+import React, { useContext } from 'react';
+
+import AuthContext from '../../Controllers/store/auth-context';
 import useInputValidation from '../../Controllers/hooks/useInputValidation';
-//import Button from '../UI/Button';
 
 const Login = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const authCtx = useContext(AuthContext);
 
   const {
     value: enteredName,
@@ -34,41 +34,54 @@ const Login = () => {
   const submitLoginHandler = (e) => {
     e.preventDefault();
     if (!formIsValid) return;
-    dispatch(
-      authActions.login({ name: enteredName, password: enteredPassword })
-    );
+    authCtx.login();
+    // dispatch(
+    //   authActions.login({ name: enteredName, password: enteredPassword })
     resetName();
     resetPassword();
   };
 
+  // const nameInputClasses = nameHasError ? 'login-item invalid' : 'login-item';
+
+  // const passwordInputClasses = passwordHasError
+  //   ? 'login-item invalid'
+  //   : 'login-item';
+
   return (
     <div className={classes['login-bg']}>
       <form className={classes['login-form']} onSubmit={submitLoginHandler}>
-        <h1>Login</h1>
-        <div className={classes['login-item']}>
-          <label>Username</label>
-          <input
-            name='name'
-            type='text'
-            placeholder='name'
-            value={enteredName}
-            onChange={nameChangeHandler}
-            onBlur={nameTouchedHandler}
-          ></input>
-          {nameHasError && <p>Enter a valid name.</p>}
+        <h1>Log In</h1>
+        <div className={classes['login-items']}>
+          <div className={classes['login-item']}>
+            <label>Username</label>
+            <input
+              name='name'
+              type='text'
+              placeholder='name'
+              value={enteredName}
+              onChange={nameChangeHandler}
+              onBlur={nameTouchedHandler}
+            ></input>
+            {nameHasError && (
+              <p className={classes.errorMsg}>Enter a valid name.</p>
+            )}
+          </div>
+          <div className={classes['login-item']}>
+            <label>Password</label>
+            <input
+              name='password'
+              type='password'
+              placeholder='password'
+              value={enteredPassword}
+              onChange={passwordChangeHandler}
+              onBlur={passwordTouchedHandler}
+            ></input>
+            {passwordHasError && (
+              <p className={classes.errorMsg}>Enter a password (8 or more).</p>
+            )}
+          </div>
         </div>
-        <div className={classes['login-item']}>
-          <label>Password</label>
-          <input
-            name='password'
-            type='password'
-            placeholder='password'
-            value={enteredPassword}
-            onChange={passwordChangeHandler}
-            onBlur={passwordTouchedHandler}
-          ></input>
-          {passwordHasError && <p>Enter a password (8 or more).</p>}
-        </div>
+
         <button
           type='submit'
           className={classes['login-btn']}
@@ -76,6 +89,10 @@ const Login = () => {
         >
           Login
         </button>
+        <div className={classes.options}>
+          <p>Create new account</p>
+          <p>Log in as a guest</p>
+        </div>
       </form>
     </div>
   );
