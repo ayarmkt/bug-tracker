@@ -41,7 +41,7 @@ const Login = () => {
     resetPassword();
   };
 
-  // const nameInputClasses = nameHasError ? 'login-item invalid' : 'login-item';
+  // const nameInputClasses = nameHasError ? 'classes.inputInvalid' : '';
 
   // const passwordInputClasses = passwordHasError
   //   ? 'login-item invalid'
@@ -55,6 +55,7 @@ const Login = () => {
           <div className={classes['login-item']}>
             <label>Username</label>
             <input
+              className={nameHasError ? classes.inputInvalid : ''}
               name='name'
               type='text'
               placeholder='name'
@@ -69,6 +70,7 @@ const Login = () => {
           <div className={classes['login-item']}>
             <label>Password</label>
             <input
+              className={passwordHasError ? classes.inputInvalid : ''}
               name='password'
               type='password'
               placeholder='password'
@@ -84,6 +86,7 @@ const Login = () => {
 
         <button
           type='submit'
+          disabled={!formIsValid}
           className={classes['login-btn']}
           onClick={submitLoginHandler}
         >
