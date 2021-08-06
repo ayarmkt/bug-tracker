@@ -1,6 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 
+// const guestEmail = 'guest@guest.com';
+// const guestPassword = 'guest1234';
+
+// const loginAsGuest =()=>{
+//   setEnteredValue(e.target.value);
+//   setValueIsTouched(true);
+// }
+
 const AuthContext = React.createContext({
   token: '',
   loggedIn: false,

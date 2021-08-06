@@ -1,8 +1,8 @@
 import './App.css';
-import React from 'react';
-import Login from './Views/Login/Login';
-import { useContext } from 'react';
-import AuthContext from './Controllers/store/auth-context';
+import React, { useContext } from 'react';
+
+import Login from './components/Login/Login';
+import AuthContext from './store/auth-context';
 // import { useSelector } from 'react-redux';
 
 function App() {
