@@ -1,19 +1,20 @@
 import classes from './Login.module.css';
-import React from 'react';
+import React, { useState, useContext } from 'react';
+//import { useHistory } from 'react-router';
 
-//import AuthContext from '../../store/auth-context';
 import useInputValidation from '../../hooks/useInputValidation';
-import { useState } from 'react';
+import AuthContext from '../../store/auth-context';
 
 //Guest Info
 const guestEmail = 'guest@guest.com';
 const guestPassword = '123456789';
 
 const Login = () => {
-  // const dispatch = useDispatch();
-  //const authCtx = useContext(AuthContext);
+  //const history = useHistory();
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  const authCtx = useContext(AuthContext);
 
   const {
     value: enteredEmail,
@@ -41,7 +42,7 @@ const Login = () => {
   }
 
   const switchFormHandler = () => {
-    setIsLogin(!isLogin);
+    setIsLogin((prevState) => !prevState);
   };
 
   const loginAsGuestHandler = () => {
@@ -54,16 +55,16 @@ const Login = () => {
     e.preventDefault();
     if (!formIsValid) return;
 
-    const fetchData = async () => {
+    const storeLoginData = async () => {
       setIsLoading(true);
       let url;
 
       if (isLogin) {
         url =
-          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAlED-kFrbIbIaqyCFmR8LC0oHlVko_ucI';
+          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCVDj_kpR2CpxzM-KKn0r3pdfMIa-hrUkE';
       } else {
         url =
-          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAlED-kFrbIbIaqyCFmR8LC0oHlVko_ucI';
+          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCVDj_kpR2CpxzM-KKn0r3pdfMIa-hrUkE';
       }
 
       //Both sign up and log in
@@ -80,22 +81,25 @@ const Login = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Smthg went wrong');
+        let errorMessage = 'Authentication failed';
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
-      console.log(data);
-      console.log('Logged in');
+      //console.log(data);
+      //console.log('Logged in');
+      const tokenExpireTime = new Date(
+        new Date().getTime() + +data.expiresIn * 1000
+      );
+      authCtx.login(data.idToken, tokenExpireTime.toISOString());
+      //console.log(authCtx);
+      //history.replace('/dashboard');
     };
 
-    fetchData().catch((error) => {
+    storeLoginData().catch((error) => {
       console.log(error.message);
     });
     setIsLoading(false);
-
-    //authCtx.login();
-    // dispatch(
-    //   authActions.login({ name: enteredName, password: enteredPassword })
     resetEmail();
     resetPassword();
   };
@@ -132,6 +136,7 @@ const Login = () => {
               name='password'
               type='password'
               placeholder='password'
+              minLength='8'
               value={enteredPassword}
               onChange={passwordChangeHandler}
               onBlur={passwordTouchedHandler}

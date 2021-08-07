@@ -1,19 +1,19 @@
-// import { createSlice } from '@reduxjs/toolkit';
-// import RetrieveData from '../RetrieveData';
+import { createSlice } from '@reduxjs/toolkit';
+// import RetrieveData from '../components/RetrieveData';
 
-// const bugSlice = createSlice({
-//   name: 'bug',
-//   initialState: [],
-//   reducers: {
-//     getBugs() {
-//       RetrieveData();
-//     },
-//     createBugs() {},
-//     updateBugs() {},
-//     markComplete() {},
-//   },
-// });
+const bugSlice = createSlice({
+  name: 'bug',
+  initialState: [],
+  reducers: {
+    getBugs() {
+      // RetrieveData();
+    },
+    createBugs() {},
+    updateBugs() {},
+    markComplete() {},
+  },
+});
 
-// export default bugSlice.reducer;
-// export const { getBugs, createBugs, updateBugs, markComplete } =
-//   bugSlice.actions;
+export default bugSlice.reducer;
+export const { getBugs, createBugs, updateBugs, markComplete } =
+  bugSlice.actions;
