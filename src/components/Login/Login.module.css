@@ -13,7 +13,9 @@
 .login-form {
   /* margin: 0 auto; */
   background-color: var(--prim-color);
-  width: 35vw;
+  /* width: 35vw; */
+  width: 80vw;
+  max-width: 600px;
   height: auto;
   border-radius: 5px;
   display: flex;
@@ -27,11 +29,16 @@
 .login-form h1 {
   color: var(--base-color);
   font-size: 35px;
-  margin: 35px 0;
+  margin-top: 35px;
+  margin-bottom: 25px;
   /* border: 1px solid red; */
 }
 
 /* input field */
+.login-items {
+  margin-bottom: 25px;
+}
+
 .login-item {
   padding: 10px;
   /* margin-bottom: 5px; */
@@ -52,7 +59,9 @@
   border-radius: 5px;
   border: 1px solid transparent;
   /* border: none; */
-  width: 25vw;
+  /* width: 25vw; */
+  width: 70vw;
+  max-width: 525px;
   height: 5vh;
   font-size: 18px;
   padding-left: 10px;
@@ -78,9 +87,10 @@
   font-size: 18px;
   border: none;
   border-radius: 5px;
-  margin: 15px 0;
-  width: 9vw;
-  height: 5vh;
+  margin-bottom: 25px;
+  width: 12vw;
+  max-width: 90px;
+  height: 6vh;
 }
 
 .login-btn:disabled {
