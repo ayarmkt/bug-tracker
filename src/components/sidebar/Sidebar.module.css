@@ -10,8 +10,12 @@ nav {
 }
 
 .active {
-  /* background-color: violet; */
   width: 250px;
+}
+
+.closemenu {
+  margin: 0 25px;
+  /* background-color: violet; */
 }
 
 /* NAV LIST */

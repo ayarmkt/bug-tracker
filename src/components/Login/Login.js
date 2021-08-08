@@ -1,6 +1,6 @@
 import classes from './Login.module.css';
 import React, { useState, useContext } from 'react';
-//import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 
 import useInputValidation from '../../hooks/useInputValidation';
 import AuthContext from '../../store/auth-context';
@@ -10,7 +10,7 @@ const guestEmail = 'guest@guest.com';
 const guestPassword = '123456789';
 
 const Login = () => {
-  //const history = useHistory();
+  const history = useHistory();
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -93,7 +93,7 @@ const Login = () => {
       );
       authCtx.login(data.idToken, tokenExpireTime.toISOString());
       //console.log(authCtx);
-      //history.replace('/dashboard');
+      history.replace('/dashboard');
     };
 
     storeLoginData().catch((error) => {
