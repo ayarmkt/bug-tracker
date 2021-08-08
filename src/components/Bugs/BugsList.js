@@ -1,10 +1,10 @@
 // import { useEffect } from 'react';
 import React from 'react';
-import classes from './ViewBugs.module.css';
+import classes from './BugsList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getBugs } from '../store/bug-slice';
-import BugItem from '../components/Bugs/BugItem';
+import { getBugs } from '../../store/bug-slice';
+import BugItem from './BugItem';
 
 const DUMMY_DATA = [
   {
@@ -31,7 +31,7 @@ const DUMMY_DATA = [
   },
 ];
 
-const ViewBugs = () => {
+const BugsList = () => {
   const dispatch = useDispatch();
 
   const bugs = useSelector((state) => state.bugs);
@@ -47,7 +47,15 @@ const ViewBugs = () => {
   return (
     <div className={classes.container}>
       {/* <p>VIEWBUGS</p> */}
+      <h1>Bugs</h1>
       <ul>
+        <li className={classes.labels}>
+          <p>Name</p>
+          <p>Version</p>
+          <p>Priority</p>
+          <p>Assigned</p>
+          <p>Creator</p>
+        </li>
         {DUMMY_DATA.map((bug) => (
           <BugItem bug={bug} key={bug._id} />
         ))}
@@ -56,4 +64,4 @@ const ViewBugs = () => {
   );
 };
 
-export default ViewBugs;
+export default BugsList;

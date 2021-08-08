@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+
 import { useState, useCallback, useEffect } from 'react';
 
 //SETTING
@@ -37,8 +37,6 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
-  const history = useHistory();
-
   let initialToken;
   const tokenData = getStoredTokenAndExpirationTime();
   if (tokenData) {
@@ -56,7 +54,6 @@ export const AuthContextProvider = (props) => {
     localStorage.setItem('expirationTime', expirationTime);
     const remainingDuration = calcRemainingTime(expirationTime);
     logoutTimer = setTimeout(logoutHandler, remainingDuration);
-    history.replace('/dashboard');
   };
 
   const logoutHandler = useCallback(() => {
@@ -66,7 +63,6 @@ export const AuthContextProvider = (props) => {
     localStorage.removeItem('expirationTime');
 
     if (logoutTimer) clearTimeout(logoutTimer);
-    history.replace('/login');
   }, []);
 
   useEffect(() => {
@@ -78,7 +74,6 @@ export const AuthContextProvider = (props) => {
 
   const contextValue = {
     token: token,
-
     loggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,

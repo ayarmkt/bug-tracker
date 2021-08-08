@@ -28,7 +28,7 @@ const Sidebar = () => {
 
   return (
     <nav className={sidebarClass}>
-      <div className='closemenu' onClick={menuToggleHandler}>
+      <div className={classes.closemenu} onClick={menuToggleHandler}>
         {menuCollapse ? (
           <FiArrowRightCircle size='30px' />
         ) : (
