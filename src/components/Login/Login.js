@@ -93,7 +93,7 @@ const Login = () => {
       );
       authCtx.login(data.idToken, tokenExpireTime.toISOString());
       //console.log(authCtx);
-      history.replace('/dashboard');
+      history.replace('/dashboard/bugs-list');
     };
 
     storeLoginData().catch((error) => {

@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import RetrieveData from '../components/RetrieveData';
+//import RetrieveData from '../components/RetrieveData';
 
 const bugSlice = createSlice({
   name: 'bug',
   initialState: [],
   reducers: {
     getBugs() {
-      // RetrieveData();
+      //RetrieveData();
     },
     createBugs() {},
     updateBugs() {},
