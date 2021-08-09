@@ -24,6 +24,11 @@ ul {
   width: 100%;
   margin-top: 30px;
 }
+
+.navlink {
+  text-decoration: none;
+}
+
 .nav-item {
   list-style-type: none;
   width: 100%;
@@ -36,6 +41,7 @@ ul {
   justify-content: space-between;
   align-items: center;
   /* border: 1px solid red; */
+  text-decoration: none;
 }
 
 .nav-item:hover {
@@ -44,6 +50,7 @@ ul {
 
 .nav-item p {
   color: var(--base-color);
+  text-decoration: none;
 }
 
 /* #header {
