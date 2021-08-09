@@ -1,4 +1,4 @@
-.dashboard-container {
+.container {
   display: grid;
   grid-template-columns: auto 1fr;
   background-color: turquoise;
@@ -10,12 +10,7 @@
   grid-column: 1;
 }
 
-.bugslist {
-  grid-column: 2;
-  /* background-color: violet; */
-}
-
 .bug-detail {
   grid-column: 2;
-  background-color: navajowhite;
+  /* background-color: violet; */
 }
