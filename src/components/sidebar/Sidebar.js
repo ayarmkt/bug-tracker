@@ -1,5 +1,6 @@
 import classes from './Sidebar.module.css';
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 // //import icons from react icons
 //  import { FaList, FaRegHeart } from 'react-icons/fa';
@@ -36,10 +37,13 @@ const Sidebar = () => {
         )}
       </div>
       <ul>
-        <li className={classes['nav-item']}>
-          <FaListAlt size='30px' color='white' />
-          {!menuCollapse && <p>All Bugs</p>}
-        </li>
+        <NavLink className={classes.navlink} to='/bugs-list' exact>
+          <li className={classes['nav-item']}>
+            <FaListAlt size='30px' color='white' />
+            {!menuCollapse && <p>All Bugs</p>}
+          </li>
+        </NavLink>
+
         <li className={classes['nav-item']}>
           <IoCreate size='30px' color='white' />
           {!menuCollapse && <p>Create New Bug</p>}
