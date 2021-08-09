@@ -6,6 +6,10 @@ p {
 p {
 }
 
+.link {
+  text-decoration: none;
+}
+
 .item {
   width: 100%;
   /* justify-self: center; */
