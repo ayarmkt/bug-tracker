@@ -10,7 +10,7 @@
   grid-column: 1;
 }
 
-.bug-detail {
+.bugslistm .bug-detail {
   grid-column: 2;
   /* background-color: violet; */
 }
