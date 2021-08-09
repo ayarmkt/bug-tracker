@@ -1,7 +1,7 @@
 import React from 'react';
 //import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import classes from './BugsItemDetail.module.css';
+import classes from './BugItemDetail.module.css';
 
 const BugsItemDetail = () => {
   const params = useParams();

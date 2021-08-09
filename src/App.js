@@ -6,7 +6,9 @@ import Login from './components/Login/Login';
 //import Sidebar from './components/sidebar/Sidebar';
 import AuthContext from './store/auth-context';
 // import Sidebar from './components/sidebar/Sidebar';
-import Dashboard from './pages/Dashboard';
+import BugsListPage from './pages/BugsListPage';
+//import BugsItemDetail from './components/Bugs/BugsItemDetail';
+import BugDetailPage from './pages/BugDetailPage';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -22,8 +24,8 @@ function App() {
           </Redirect>
         )}
         {authCtx.loggedIn && (
-          <Redirect to='/dashboard/bugs-list' exact>
-            <Dashboard />
+          <Redirect to='/bugs-list' exact>
+            <BugsListPage />
             {/* <h1>display dashboard</h1> */}
           </Redirect>
         )}
@@ -34,8 +36,13 @@ function App() {
         </Route>
       )}
       {authCtx.loggedIn && (
-        <Route path='/dashboard/bugs-list' exact>
-          <Dashboard />
+        <Route path='/bugs-list' exact>
+          <BugsListPage />
+        </Route>
+      )}
+      {authCtx.loggedIn && (
+        <Route path='/bugs-list/:bugId'>
+          <BugDetailPage />
         </Route>
       )}
     </div>

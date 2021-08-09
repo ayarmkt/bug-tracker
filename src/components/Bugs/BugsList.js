@@ -8,7 +8,7 @@ import BugItem from './BugItem';
 
 const DUMMY_DATA = [
   {
-    _id: 23456789,
+    id: 23456789,
     name: 'Crashed on Load',
     details: 'Crashed after 3 seconds',
     steps: 'Open application and it will crash',
@@ -19,7 +19,7 @@ const DUMMY_DATA = [
     time: '23:30',
   },
   {
-    _id: 23456786,
+    id: 23456786,
     name: 'cannot enter again',
     details: 'Crashed after 3 seconds',
     steps: 'Open application and it will crash',
@@ -30,7 +30,7 @@ const DUMMY_DATA = [
     time: '23:38',
   },
   {
-    _id: 23456787,
+    id: 23456787,
     name: 'cannot enter ',
     details: 'Crashed after 3 seconds',
     steps: 'Open application and it will crash',
@@ -76,8 +76,8 @@ const BugsList = () => {
           <BugItem
             className={classes.items}
             bug={bug}
-            key={bug._id}
-            id={bug._id}
+            key={bug.id}
+            id={bug.id}
           />
         ))}
       </ul>

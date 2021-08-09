@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const BugItem = (props) => {
   return (
-    <Link to={`/dashboard/bugs-list/${props.id}`}>
+    <Link to={`/bugs-list/${props.id}`}>
       <li className={classes.item} key={props.bug._id}>
         <p>{props.bug.name}</p>
         <p>{props.bug.version}</p>
