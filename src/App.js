@@ -10,7 +10,7 @@ import AuthContext from './store/auth-context';
 // import Sidebar from './components/sidebar/Sidebar';
 //import BugsListPage from './pages/BugsListPage';
 import BugsList from './components/Bugs/BugsList';
-import BugsItemDetail from './components/Bugs/BugItemDetail';
+import BugItemDetail from './components/Bugs/BugItemDetail';
 //import BugDetailPage from './pages/BugDetailPage';
 import Sidebar from './components/sidebar/Sidebar';
 
@@ -49,7 +49,7 @@ function App() {
               <BugsList className={classes.bugslist} />
             </Route>
             <Route path='/bugs-list/:bugId'>
-              <BugsItemDetail className={classes['bug-detail']} />
+              <BugItemDetail className={classes['bug-detail']} />
             </Route>
           </Switch>
         </div>
