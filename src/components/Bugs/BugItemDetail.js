@@ -11,6 +11,7 @@ const BugsItemDetail = () => {
       <h1 className={classes.title}>Bug Detail</h1>
       {/* <p>{params.name}</p> */}
       <p>{params.bugId}</p>
+
       {/* <Link to='/dashboard/bugs-list'>Return to list</Link> */}
     </div>
   );
