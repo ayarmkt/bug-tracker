@@ -5,3 +5,16 @@ p {
 
 p {
 }
+
+.item {
+  width: 100%;
+  /* justify-self: center; */
+  background-color: violet;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.item p {
+  border: 1px solid red;
+  text-align: start;
+}

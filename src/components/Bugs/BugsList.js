@@ -1,9 +1,9 @@
 // import { useEffect } from 'react';
 import React from 'react';
 import classes from './BugsList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { getBugs } from '../../store/bug-slice';
+import { useSelector } from 'react-redux';
+//import { useDispatch } from 'react-redux';
+//import { getBugs } from '../../store/bug-slice';
 import BugItem from './BugItem';
 
 const DUMMY_DATA = [
@@ -19,8 +19,19 @@ const DUMMY_DATA = [
     time: '23:30',
   },
   {
-    _id: 23456788,
-    name: 'cannot enter',
+    _id: 23456786,
+    name: 'cannot enter again',
+    details: 'Crashed after 3 seconds',
+    steps: 'Open application and it will crash',
+    version: 'V2.0',
+    priority: 5,
+    assigned: 'Tom',
+    creator: 'Joe',
+    time: '23:38',
+  },
+  {
+    _id: 23456787,
+    name: 'cannot enter ',
     details: 'Crashed after 3 seconds',
     steps: 'Open application and it will crash',
     version: 'V2.0',
@@ -32,12 +43,17 @@ const DUMMY_DATA = [
 ];
 
 const BugsList = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const bugs = useSelector((state) => state.bugs);
 
+  let sortedData;
+
   if (bugs.length < 1) {
-    dispatch(getBugs());
+    // sortedData = dispatch(getBugs(DUMMY_DATA));
+    sortedData = DUMMY_DATA.sort((a, b) => a.priority - b.priority);
+    // return sortedData;
+    console.log(sortedData);
   }
 
   // useEffect(() => {
@@ -48,7 +64,7 @@ const BugsList = () => {
     <div className={classes.container}>
       {/* <p>VIEWBUGS</p> */}
       <h1>Bugs</h1>
-      <ul>
+      <ul className={classes['list-container']}>
         <li className={classes.labels}>
           <p>Name</p>
           <p>Version</p>
@@ -56,8 +72,13 @@ const BugsList = () => {
           <p>Assigned</p>
           <p>Creator</p>
         </li>
-        {DUMMY_DATA.map((bug) => (
-          <BugItem bug={bug} key={bug._id} />
+        {sortedData.map((bug) => (
+          <BugItem
+            className={classes.items}
+            bug={bug}
+            key={bug._id}
+            id={bug._id}
+          />
         ))}
       </ul>
     </div>

@@ -1,4 +1,4 @@
-// //import BugModel from "../Models/BugModel";
+//import BugModel from "../Models/BugModel";
 
 // const RetrieveData = () => {
 //   const sortedData = DUMMY_DATA.sort((a, b) => {

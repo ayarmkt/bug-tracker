@@ -6,7 +6,7 @@
 //   name: 'user',
 //   initialState: [{}],
 //   reducers: {
-//     getUser() {
+//     getUser(state) {
 //       //state=DUMMY_USERS;
 //     },
 //   },

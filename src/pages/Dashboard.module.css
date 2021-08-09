@@ -12,5 +12,10 @@
 
 .bugslist {
   grid-column: 2;
-  background-color: violet;
+  /* background-color: violet; */
+}
+
+.bug-detail {
+  grid-column: 2;
+  background-color: navajowhite;
 }
