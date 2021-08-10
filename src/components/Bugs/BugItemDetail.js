@@ -13,7 +13,39 @@ const BugItemDetail = () => {
 
   return (
     <div className={classes.container}>
-      <h1 className={classes.title}>Bug Detail</h1>
+      <h1>Bug Detail</h1>
+
+      <div className={classes['bug-detail']}>
+        <div className={classes['detail-content']}>
+          <p className={classes.label}>Title</p>
+          <p className={classes.content}></p>
+        </div>
+        <div className={classes['detail-content']}>
+          <p className={classes.label}>Details</p>
+          <p className={classes.content}></p>
+        </div>
+        <div className={classes['detail-content']}>
+          <p className={classes.label}>Steps</p>
+          <p className={classes.content}></p>
+        </div>
+        <div className={classes['detail-content']}>
+          <p className={classes.label}>Version</p>
+          <p className={classes.content}></p>
+        </div>
+        <div className={classes['detail-content']}>
+          <p className={classes.label}>Priority</p>
+          <p className={classes.content}></p>
+        </div>
+        <div className={classes['detail-content']}>
+          <p className={classes.label}>Assigned</p>
+          <p className={classes.content}></p>
+        </div>
+        <div className={classes['detail-content']}>
+          <p className={classes.label}>Creator</p>
+          <p className={classes.content}></p>
+        </div>
+      </div>
+
       {/* <p>{params.name}</p> */}
       <p>{params.bugId}</p>
       {/* <ul>

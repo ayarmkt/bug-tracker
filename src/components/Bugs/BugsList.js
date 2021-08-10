@@ -63,7 +63,7 @@ const BugsList = () => {
   return (
     <div className={classes.container}>
       {/* <p>VIEWBUGS</p> */}
-      <h1>Bugs</h1>
+      <h1>All Bugs</h1>
       <ul className={classes['list-container']}>
         <li className={classes.labels}>
           <p>Title</p>
