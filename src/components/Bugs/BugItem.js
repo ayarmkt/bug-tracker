@@ -6,7 +6,7 @@ const BugItem = (props) => {
   return (
     <Link className={classes.link} to={`/bugs-list/${props.id}`}>
       <li className={classes.item} key={props.bug.id} bug={props.bug}>
-        <p>{props.bug.name}</p>
+        <p>{props.bug.title}</p>
         <p>{props.bug.version}</p>
         <p>{props.bug.priority}</p>
         <p>{props.bug.assigned}</p>

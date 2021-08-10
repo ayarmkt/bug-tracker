@@ -44,10 +44,12 @@ const Sidebar = () => {
           </li>
         </NavLink>
 
-        <li className={classes['nav-item']}>
-          <IoCreate size='30px' color='white' />
-          {!menuCollapse && <p>Create New Bug</p>}
-        </li>
+        <NavLink className={classes.navlink} to='/new-bug'>
+          <li className={classes['nav-item']}>
+            <IoCreate size='30px' color='white' />
+            {!menuCollapse && <p>Create New Bug</p>}
+          </li>
+        </NavLink>
       </ul>
     </nav>
   );

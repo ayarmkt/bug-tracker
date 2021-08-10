@@ -2,17 +2,13 @@ import classes from './App.module.css';
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
-//import ViewBugs from './pages/ViewBugs';
 
-import Login from './components/Login/Login';
-//import Sidebar from './components/sidebar/Sidebar';
 import AuthContext from './store/auth-context';
-// import Sidebar from './components/sidebar/Sidebar';
-//import BugsListPage from './pages/BugsListPage';
+import Login from './components/Login/Login';
 import BugsList from './components/Bugs/BugsList';
 import BugItemDetail from './components/Bugs/BugItemDetail';
-//import BugDetailPage from './pages/BugDetailPage';
 import Sidebar from './components/sidebar/Sidebar';
+import AddNewBug from './components/Bugs/AddNewBug';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -50,6 +46,9 @@ function App() {
             </Route>
             <Route path='/bugs-list/:bugId'>
               <BugItemDetail className={classes['bug-detail']} />
+            </Route>
+            <Route path='/new-bug'>
+              <AddNewBug className={classes['new-bug']} />
             </Route>
           </Switch>
         </div>
