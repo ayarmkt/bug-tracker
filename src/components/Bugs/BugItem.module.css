@@ -1,21 +1,28 @@
-li,
-p {
-  color: black;
-}
-
 .link {
   text-decoration: none;
 }
 
+.link:hover {
+  /* background-color: rgba(var(--third-color), 1); */
+}
+
 .item {
   width: 100%;
-  /* justify-self: center; */
-  background-color: violet;
+  /* background-color: violet; */
+
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
 
+.item:hover {
+  background-color: rgba(90, 86, 86, 0.3);
+}
+
 .item p {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   text-align: start;
+  color: black;
+  height: 40px;
+  line-height: 40px;
+  /* background-color: rgba(var(--third-color), 1); */
 }
