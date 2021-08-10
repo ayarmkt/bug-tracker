@@ -37,14 +37,34 @@ import { createSlice } from '@reduxjs/toolkit';
 //   },
 // ];
 
+const initialBugsState = { bugs: [] };
+
 const bugSlice = createSlice({
   name: 'bug',
-  initialState: [],
+  initialState: initialBugsState,
   reducers: {
     getBugs() {
       //RetrieveData();
     },
-    createBugs() {},
+    createBugs() {
+      //state, action
+      // const newBug = action.payload;
+      // const existingItem = state.bugs.fund((bug) => bug.id === newBug.id);
+      // if (!existingItem) {
+      //   state.bugs.push({
+      //     id: toString(new Date().getTime() + newBug.title),
+      //     title: newBug.title,
+      //     details: newBug.details,
+      //     steps: newBug.steps,
+      //     version: newBug.version,
+      //     priority: newBug.priority,
+      //     assigned: newBug.assigned,
+      //     creator: newBug.creator,
+      //     time: new Date(),
+      //   });
+      // }
+      // console.log(state);
+    },
     updateBugs() {},
     markComplete() {},
   },

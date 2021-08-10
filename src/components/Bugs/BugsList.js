@@ -1,7 +1,7 @@
 // import { useEffect } from 'react';
 import React from 'react';
 import classes from './BugsList.module.css';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 //import { useDispatch } from 'react-redux';
 //import { getBugs } from '../../store/bug-slice';
 import BugItem from './BugItem';
@@ -9,7 +9,7 @@ import BugItem from './BugItem';
 const DUMMY_DATA = [
   {
     id: 23456789,
-    name: 'Crashed on Load',
+    title: 'Crashed on Load',
     details: 'Crashed after 3 seconds',
     steps: 'Open application and it will crash',
     version: 'V2.0',
@@ -20,7 +20,7 @@ const DUMMY_DATA = [
   },
   {
     id: 23456786,
-    name: 'cannot enter again',
+    title: 'cannot enter again',
     details: 'Crashed after 3 seconds',
     steps: 'Open application and it will crash',
     version: 'V2.0',
@@ -31,7 +31,7 @@ const DUMMY_DATA = [
   },
   {
     id: 23456787,
-    name: 'cannot enter ',
+    title: 'cannot enter ',
     details: 'Crashed after 3 seconds',
     steps: 'Open application and it will crash',
     version: 'V2.0',
@@ -45,11 +45,11 @@ const DUMMY_DATA = [
 const BugsList = () => {
   //const dispatch = useDispatch();
 
-  const bugs = useSelector((state) => state.bugs);
+  //const bugs = useSelector((state) => state.bugs);
 
   let sortedData;
 
-  if (bugs.length < 1) {
+  if (DUMMY_DATA.length > 1) {
     // sortedData = dispatch(getBugs(DUMMY_DATA));
     sortedData = DUMMY_DATA.sort((a, b) => a.priority - b.priority);
     // return sortedData;
@@ -66,7 +66,7 @@ const BugsList = () => {
       <h1>Bugs</h1>
       <ul className={classes['list-container']}>
         <li className={classes.labels}>
-          <p>Name</p>
+          <p>Title</p>
           <p>Version</p>
           <p>Priority</p>
           <p>Assigned</p>
