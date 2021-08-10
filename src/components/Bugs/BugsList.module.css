@@ -34,3 +34,8 @@
   height: 40px;
   line-height: 40px;
 }
+
+/* ERROR */
+.error {
+  color: black;
+}
