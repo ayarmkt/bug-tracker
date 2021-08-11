@@ -50,6 +50,7 @@ const Sidebar = () => {
             {!menuCollapse && <p>Create New Bug</p>}
           </li>
         </NavLink>
+        <li>Logout</li>
       </ul>
     </nav>
   );
