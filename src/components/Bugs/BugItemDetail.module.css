@@ -46,7 +46,7 @@
 .content {
   grid-column: 2;
   border: none;
-  border-left: 2px solid var(--third-color);
+  border-left: 2px solid var(--darkgray);
   /* border-bottom: 1px solid var(--third-color); */
   padding: 5px 0 5px 5px;
   font-size: 18px;

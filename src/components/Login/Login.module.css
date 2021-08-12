@@ -2,7 +2,7 @@
 .login-bg {
   width: 100vw;
   height: 100vh;
-  background-color: var(--base-color);
+  background-color: white;
   /* border: 1px solid red; */
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@
 /* login panel */
 .login-form {
   /* margin: 0 auto; */
-  background-color: var(--prim-color);
+  background-color: var(--navy);
   /* width: 35vw; */
   width: 80vw;
   max-width: 600px;
@@ -27,16 +27,16 @@
 
 /* login title */
 .login-form h1 {
-  color: var(--base-color);
+  color: white;
   font-size: 35px;
   margin-top: 35px;
-  margin-bottom: 25px;
+  margin-bottom: 18px;
   /* border: 1px solid red; */
 }
 
 /* input field */
 .login-items {
-  margin-bottom: 25px;
+  margin-bottom: 18px;
 }
 
 .login-item {
@@ -50,7 +50,7 @@
 }
 
 .login-item label {
-  color: var(--base-color);
+  color: white;
   font-size: 18px;
   padding-bottom: 3px;
 }
@@ -82,14 +82,14 @@
 
 /* Login Button */
 .login-btn {
-  background-color: var(--secondary-color);
-  color: var(--base-color);
+  background-color: var(--darkgray);
+  color: white;
   font-size: 18px;
   border: none;
   border-radius: 5px;
-  margin-bottom: 25px;
-  width: 12vw;
-  max-width: 90px;
+  margin-bottom: 18px;
+  width: 20vw;
+  max-width: 150px;
   height: 6vh;
 }
 
@@ -98,24 +98,41 @@
 }
 
 .login-btn:hover:enabled {
-  background-color: var(--third-color);
+  background-color: var(--lightgray);
+  color: var(--navy);
   cursor: pointer;
 }
 
 /* other option description */
 .options {
   margin-bottom: 35px;
+  /* border: 1px solid red; */
 }
 
-.options p {
-  color: var(--secondary-color);
+.new-account {
+  color: var(--lightgray);
   font-size: 18px;
   padding: 5px 0;
   text-align: center;
   /* border: 1px solid red; */
 }
 
-.options p:hover {
-  color: var(--base-color);
+.new-account:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.guest {
+  background-color: yellow;
+  border-radius: 5px;
+  color: var(--navy);
+  font-size: 18px;
+  padding: 5px 15px;
+  text-align: center;
+}
+
+.guest:hover {
+  background-color: white;
+  /* color: var(--secondary-color); */
   cursor: pointer;
 }

@@ -29,13 +29,20 @@
 
 .labels p {
   /* border: 1px solid red; */
-  border-bottom: 2px solid var(--third-color);
+  border-bottom: 2px solid var(--darkgray);
   text-align: start;
   height: 40px;
   line-height: 40px;
+  font-size: 16px;
 }
 
 /* ERROR */
 .error {
   color: black;
+  /* border: 1px solid red; */
+  text-align: center;
+  margin-top: 50px;
+  font-size: 16px;
+  /* justify-self: center;
+  align-self: center; */
 }
