@@ -46,8 +46,8 @@
 .add-bug-input input {
   grid-column: 2;
   border: none;
-  border-left: 2px solid var(--third-color);
-  border-bottom: 1px solid var(--third-color);
+  border-left: 2px solid var(--darkgray);
+  border-bottom: 1px solid var(--darkgray);
   padding: 5px 0 5px 5px;
   font-size: 18px;
 }

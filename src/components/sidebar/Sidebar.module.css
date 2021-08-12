@@ -1,8 +1,8 @@
 /* NAV BAR */
 nav {
   width: 80px;
-  background-color: var(--prim-color);
-  color: var(--base-color);
+  background-color: var(--navy);
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -45,11 +45,11 @@ ul {
 }
 
 .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--graytransparent);
 }
 
 .nav-item p {
-  color: var(--base-color);
+  color: white;
   text-decoration: none;
 }
 

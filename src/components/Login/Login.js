@@ -159,8 +159,12 @@ const Login = () => {
         )}
         {isLoading && <p>Loading...</p>}
         <div className={classes.options}>
-          <p onClick={switchFormHandler}>{optionText}</p>
-          <p onClick={loginAsGuestHandler}>Log in as a guest</p>
+          <p className={classes['new-account']} onClick={switchFormHandler}>
+            {optionText}
+          </p>
+          <p className={classes.guest} onClick={loginAsGuestHandler}>
+            Log in as a guest
+          </p>
         </div>
       </form>
     </div>

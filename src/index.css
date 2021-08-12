@@ -13,11 +13,11 @@ code {
 } */
 
 :root {
-  --base-color: white;
-  --prim-color: rgb(0, 0, 49);
-  --secondary-color: rgb(136, 130, 130);
-  --third-color: rgb(90, 86, 86);
-  --additional-color: rgb(9, 9, 255);
+  --navy: rgb(0, 0, 49);
+  --darkgray: rgb(100, 92, 92);
+  --lightgray: rgb(196, 196, 196);
+  --graytransparent: rgba(196, 196, 196, 0.3);
+  --blue: rgb(9, 9, 255);
 }
 
 * {
