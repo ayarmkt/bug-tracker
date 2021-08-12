@@ -58,7 +58,7 @@ const AddNewBug = () => {
     console.log('added');
 
     const enteredTime = new Date().getTime();
-    const enteredId = toString(enteredTime) + enteredTitle;
+    const enteredId = enteredTime + enteredTitle;
 
     const newBug = {
       title: enteredTitle,

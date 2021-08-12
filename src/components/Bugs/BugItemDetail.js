@@ -3,12 +3,17 @@ import React from 'react';
 import { useParams } from 'react-router';
 import classes from './BugItemDetail.module.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const BugItemDetail = () => {
   const params = useParams();
   console.log(params);
 
-  // const bug =
+  const { bugs } = useSelector((state) => state.bugs);
+  console.log(bugs);
+
+  const selectedBug = bugs.find((bug) => bug.id === params.bugId);
+
   // const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
 
   return (
@@ -18,31 +23,31 @@ const BugItemDetail = () => {
       <div className={classes['bug-detail']}>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Title</p>
-          <p className={classes.content}></p>
+          <p className={classes.content}>{selectedBug.title}</p>
         </div>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Details</p>
-          <p className={classes.content}></p>
+          <p className={classes.content}>{selectedBug.details}</p>
         </div>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Steps</p>
-          <p className={classes.content}></p>
+          <p className={classes.content}>{selectedBug.steps}</p>
         </div>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Version</p>
-          <p className={classes.content}></p>
+          <p className={classes.content}>{selectedBug.version}</p>
         </div>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Priority</p>
-          <p className={classes.content}></p>
+          <p className={classes.content}>{selectedBug.priority}</p>
         </div>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Assigned</p>
-          <p className={classes.content}></p>
+          <p className={classes.content}>{selectedBug.assigned}</p>
         </div>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Creator</p>
-          <p className={classes.content}></p>
+          <p className={classes.content}>{selectedBug.creator}</p>
         </div>
       </div>
 
