@@ -33,7 +33,7 @@
   text-align: start;
   height: 40px;
   line-height: 40px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* ERROR */
@@ -42,7 +42,7 @@
   /* border: 1px solid red; */
   text-align: center;
   margin-top: 50px;
-  font-size: 16px;
+  font-size: 18px;
   /* justify-self: center;
   align-self: center; */
 }

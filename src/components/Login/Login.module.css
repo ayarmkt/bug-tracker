@@ -98,7 +98,7 @@
 }
 
 .login-btn:hover:enabled {
-  background-color: var(--lightgray);
+  background-color: white;
   color: var(--navy);
   cursor: pointer;
 }
@@ -123,16 +123,17 @@
 }
 
 .guest {
-  background-color: yellow;
+  background-color: var(--blue);
   border-radius: 5px;
-  color: var(--navy);
+  color: var(--lightgray);
   font-size: 18px;
-  padding: 5px 15px;
+  padding: 8px 15px;
   text-align: center;
 }
 
 .guest:hover {
   background-color: white;
+  color: var(--darkgray);
   /* color: var(--secondary-color); */
   cursor: pointer;
 }
