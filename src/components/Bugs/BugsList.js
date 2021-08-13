@@ -84,6 +84,10 @@ const BugsList = () => {
           <p>Priority</p>
           <p>Assigned</p>
           <p>Creator</p>
+          <div className={classes.actions}>
+            <p>Edit</p>
+            <p>Delete</p>
+          </div>
         </li>
         {sortedArray.length >= 1 &&
           sortedArray.map((bug) => (
