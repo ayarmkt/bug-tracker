@@ -7,7 +7,7 @@ import AuthContext from '../../store/auth-context';
 
 //Guest Info
 const guestEmail = 'guest@guest.com';
-const guestPassword = '123456789';
+const guestPassword = 'abcdefg';
 
 const Login = () => {
   const history = useHistory();

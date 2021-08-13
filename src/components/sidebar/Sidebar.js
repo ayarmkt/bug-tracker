@@ -1,22 +1,23 @@
 import classes from './Sidebar.module.css';
+import { useContext } from 'react';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router';
+
+import AuthContext from '../../store/auth-context';
+import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
+import { FaListAlt } from 'react-icons/fa';
+import { IoCreate } from 'react-icons/io5';
+import { BiLogOut } from 'react-icons/bi';
 
 // //import icons from react icons
 //  import { FaList, FaRegHeart } from 'react-icons/fa';
-import {
-  //  FiHome,
-  //  FiLogOut,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-} from 'react-icons/fi';
 //  import { RiPencilLine } from 'react-icons/ri';
 //  import { BiCog } from 'react-icons/bi';
 
-import { FaListAlt } from 'react-icons/fa';
-import { IoCreate } from 'react-icons/io5';
-
 const Sidebar = () => {
+  const authCtx = useContext(AuthContext);
+  const history = useHistory();
   //change false default later
   const [menuCollapse, setMenuCollapse] = useState(false);
 
@@ -24,11 +25,17 @@ const Sidebar = () => {
     setMenuCollapse((prevState) => !prevState);
   };
 
+  const logoutHandler = () => {
+    //logout
+    authCtx.logout();
+    history.replace('/login');
+  };
+
   const sidebarClass = menuCollapse ? '' : classes.active;
   //className={classes.sidebar}
 
   return (
-    <nav className={sidebarClass}>
+    <nav className={`${classes.sidebar} ${sidebarClass}`}>
       <div className={classes.closemenu} onClick={menuToggleHandler}>
         {menuCollapse ? (
           <FiArrowRightCircle size='30px' />
@@ -38,19 +45,24 @@ const Sidebar = () => {
       </div>
       <ul>
         <NavLink className={classes.navlink} to='/bugs-list' exact>
-          <li className={classes['nav-item']}>
+          <li className={classes.navItem}>
             <FaListAlt size='30px' color='white' />
             {!menuCollapse && <p>All Bugs</p>}
           </li>
         </NavLink>
 
         <NavLink className={classes.navlink} to='/new-bug'>
-          <li className={classes['nav-item']}>
+          <li className={classes.navItem}>
             <IoCreate size='30px' color='white' />
             {!menuCollapse && <p>Create New Bug</p>}
           </li>
         </NavLink>
-        <li>Logout</li>
+        {/* <li className={`${classes.navItem} ${classes.logoutBtn}`}>Logout</li> */}
+
+        <li className={classes.navItem} onClick={logoutHandler}>
+          <BiLogOut size='30px' color='white' />
+          {!menuCollapse && <p>Logout</p>}
+        </li>
       </ul>
     </nav>
   );
