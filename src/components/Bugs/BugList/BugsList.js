@@ -3,9 +3,11 @@ import React from 'react';
 import classes from './BugsList.module.css';
 import { useSelector } from 'react-redux';
 //import { useEffect } from 'react';
+//import { useEffect } from 'react';
 //import { useDispatch } from 'react-redux';
 //import { getBugs } from '../../store/bug-slice';
-import BugItem from './BugItem';
+import BugItem from '../BugItem/BugItem';
+//import { getBugData } from '../../../store/bug-slice';
 
 // const DUMMY_DATA = [
 //   {
@@ -50,13 +52,19 @@ const BugsList = () => {
   const { bugs } = useSelector((state) => state.bugs);
   console.log(bugs);
 
+  // useEffect(() => {
+  //   const data = getBugData();
+  //   console.log(data);
+  //   //console.log(sortedArray);
+  // }, [sortedArray]);
+
   let sortedArray = [...bugs];
-  console.log(sortedArray);
   if (sortedArray.length > 1) {
     // sortedData = dispatch(getBugs(DUMMY_DATA));
     sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
   }
-  console.log(sortedArray);
+
+  //console.log(sortedArray);
 
   // useEffect(() => {
   //   dispatch(getBugs());

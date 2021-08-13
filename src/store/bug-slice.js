@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 //import RetrieveData from '../components/RetrieveData';
 
-const initialBugsState = { bugs: [] };
+const initialBugsState = { bugs: [], isUpdatingBug: false };
 
 const bugSlice = createSlice({
   name: 'bug',
@@ -20,6 +20,7 @@ const bugSlice = createSlice({
     },
 
     addNewBugs(state, action) {
+      state.isUpdatingBug = false;
       const newBug = action.payload;
 
       const existingItem = state.bugs.find((bug) => bug.id === newBug.id);
@@ -39,10 +40,79 @@ const bugSlice = createSlice({
       }
       console.log(state);
     },
-    updateBugs() {},
+
+    updateBugs(state, action) {
+      state.isUpdatingBug = true;
+      const selectedBug = action.payload;
+      const existingItem = state.bugs.find((bug) => bug.id === selectedBug.id);
+      const existingItemIndex = state.bugs.indexOf(existingItem);
+      console.log(existingItem);
+      console.log(existingItemIndex);
+
+      const bugUpdate = {
+        id: state.bugs.id,
+        title: selectedBug.title,
+        details: selectedBug.details,
+        steps: selectedBug.steps,
+        version: selectedBug.version,
+        priority: selectedBug.priority,
+        assigned: selectedBug.assigned,
+        creator: selectedBug.creator,
+        time: selectedBug.time,
+      };
+
+      if (existingItem) {
+        state.bugs.splice(existingItemIndex, 1, bugUpdate);
+      }
+      console.log(state.bugs);
+      state.isUpdatingBug = false;
+    },
     markComplete() {},
   },
 });
+
+// export const getBugData = () => {
+//   const fetchData = async () => {
+//     const response = await fetch(
+//       'https://bug-tracker-auth-development-default-rtdb.europe-west1.firebasedatabase.app/bugs.json'
+//     );
+
+//     if (!response.ok) {
+//       throw new Error('error occurred');
+//     }
+
+//     const data = await response.json();
+//     return data;
+//   };
+
+//   try {
+//     fetchData();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// export const storeBugData = (bugsData) => {
+//   const fetchData = async () => {
+//     const response = await fetch(
+//       'https://bug-tracker-auth-development-default-rtdb.europe-west1.firebasedatabase.app/bugs.json',
+//       { method: 'PUT', body: JSON.stringify(bugsData) }
+//     );
+
+//     if (!response.ok) {
+//       throw new Error('error occurred');
+//     }
+
+//     const data = await response.json();
+//     console.log(data);
+//   };
+
+//   try {
+//     fetchData();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export default bugSlice.reducer;
 export const { getBugs, addNewBugs, updateBugs, markComplete } =
