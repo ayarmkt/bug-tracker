@@ -51,7 +51,7 @@ const Sidebar = () => {
           </li>
         </NavLink>
 
-        <NavLink className={classes.navlink} to='/new-bug'>
+        <NavLink className={classes.navlink} to='/submit-bug'>
           <li className={classes.navItem}>
             <IoCreate size='30px' color='white' />
             {!menuCollapse && <p>Create New Bug</p>}

@@ -11,7 +11,8 @@
 }
 
 .bugslistm .bug-detail,
-.new-bug {
+.submit-bug,
+.update-bug {
   grid-column: 2;
   /* background-color: violet; */
 }

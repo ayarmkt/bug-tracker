@@ -5,10 +5,11 @@ import { Switch } from 'react-router';
 
 import AuthContext from './store/auth-context';
 import Login from './components/Login/Login';
-import BugsList from './components/Bugs/BugsList';
-import BugItemDetail from './components/Bugs/BugItemDetail';
+import BugsList from './components/Bugs/BugList/BugsList';
+import BugItemDetail from './components/Bugs/BugItemDetail/BugItemDetail';
 import Sidebar from './components/sidebar/Sidebar';
-import AddNewBug from './components/Bugs/AddNewBug';
+import AddNewBug from './components/Bugs/AddNewBug/AddNewBug';
+import UpdateBug from './components/Bugs/UpdateBug/UpdateBug';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -47,8 +48,11 @@ function App() {
             <Route path='/bugs-list/:bugId'>
               <BugItemDetail className={classes['bug-detail']} />
             </Route>
-            <Route path='/new-bug'>
-              <AddNewBug className={classes['new-bug']} />
+            <Route path='/submit-bug'>
+              <AddNewBug className={classes['submit-bug']} />
+            </Route>
+            <Route path='/update-bug/:bugId'>
+              <UpdateBug className={classes['update-bug']} />
             </Route>
           </Switch>
         </div>
