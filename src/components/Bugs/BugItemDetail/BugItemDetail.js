@@ -49,6 +49,9 @@ const BugItemDetail = () => {
           <p className={classes.label}>Creator</p>
           <p className={classes.content}>{selectedBug.creator}</p>
         </div>
+        <Link to={`/update-bug/${selectedBug.id}`}>
+          <button>Edit</button>
+        </Link>
       </div>
 
       {/* <p>{params.name}</p> */}

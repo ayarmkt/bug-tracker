@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-const useAddNewBug = () => {
-  const [enteredValue, setEnteredValue] = useState('');
+const useBugInput = (initValue) => {
+  const [enteredValue, setEnteredValue] = useState(initValue);
+  console.log(enteredValue);
 
   const valueChangeHandler = (e) => {
     setEnteredValue(e.target.value);
@@ -14,4 +15,4 @@ const useAddNewBug = () => {
   return { enteredValue, valueChangeHandler, resetValue };
 };
 
-export default useAddNewBug;
+export default useBugInput;
