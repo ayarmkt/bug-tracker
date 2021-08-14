@@ -3,6 +3,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../../store/ui-slice';
 //import { useParams } from 'react-router';
+import { useSelector } from 'react-redux';
+import { storeSelectedBug } from '../../../store/bug-slice';
 
 import { Link } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi';
@@ -11,18 +13,27 @@ import { BsTrashFill } from 'react-icons/bs';
 const BugItem = (props) => {
   const dispatch = useDispatch();
 
-  // const params = useParams();
-  // console.log(params);
-  // const { bugs } = useSelector((state) => state.bugs);
-  // console.log(bugs);
-  // const selectedBug = bugs.find((bug) => bug.id === params.bugId);
+  //const params = useParams();
+  //console.log(params);
 
-  const editBugHandler = (e) => {
-    console.log(e.target);
-    console.log(e.currentTarget);
-  };
+  const { bugs } = useSelector((state) => state.bugs);
+
+  const selectedBug = bugs.find((bug) => bug.id === props.bug.id);
+
+  console.log(bugs);
+  console.log(selectedBug);
+
+  // const editBugHandler = (e) => {
+  //   console.log(e.target);
+  //   console.log(e.currentTarget);
+  // };
 
   const openModalHandler = () => {
+    console.log(bugs);
+    console.log(selectedBug);
+    console.log(selectedBug.id);
+    console.log(props.bug.id);
+    dispatch(storeSelectedBug(selectedBug));
     dispatch(openModal());
   };
 
@@ -43,12 +54,7 @@ const BugItem = (props) => {
       </Link>
       <div className={classes.actions}>
         <Link to={`/update-bug/${props.id}`}>
-          <BiEdit
-            className={classes.icon}
-            size='25px'
-            color='green'
-            onClick={editBugHandler}
-          />
+          <BiEdit className={classes.icon} size='25px' color='green' />
         </Link>
         <BsTrashFill
           className={classes.icon}
