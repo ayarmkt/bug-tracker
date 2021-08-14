@@ -71,6 +71,7 @@ const EditBug = () => {
 
     const enteredTime = new Date().getTime();
     const enteredId = selectedBug.id;
+    console.log(enteredId);
 
     const newBug = {
       title: enteredTitle,
