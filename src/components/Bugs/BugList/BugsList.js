@@ -87,11 +87,11 @@ const BugsList = () => {
       <h1>All Bugs</h1>
       <ul className={classes['list-container']}>
         <li className={classes.labels}>
-          <p>Title</p>
-          <p>Version</p>
-          <p>Priority</p>
-          <p>Assigned</p>
-          <p>Creator</p>
+          <p key='title'>Title</p>
+          <p key='version'>Version</p>
+          <p key='priority'>Priority</p>
+          <p key='assigned'>Assigned</p>
+          <p key='creator'>Creator</p>
           <div className={classes.actions}>
             <p>Edit</p>
             <p>Delete</p>
@@ -101,9 +101,9 @@ const BugsList = () => {
           sortedArray.map((bug) => (
             <BugItem
               className={classes.items}
-              bug={bug}
               key={bug.id}
               id={bug.id}
+              bug={bug}
             />
           ))}
         {sortedArray.length === 0 && (
