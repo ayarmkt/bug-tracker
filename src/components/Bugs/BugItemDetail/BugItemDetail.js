@@ -13,6 +13,7 @@ const BugItemDetail = () => {
   console.log(bugs);
 
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
+  console.log(selectedBug);
 
   // const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
 
