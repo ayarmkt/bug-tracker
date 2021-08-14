@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 //import RetrieveData from '../components/RetrieveData';
 
-const initialBugsState = { bugs: [], isUpdatingBug: false };
+const initialBugsState = { bugs: [], isUpdatingBug: false, selectedBug: null };
 
 const bugSlice = createSlice({
   name: 'bug',
@@ -68,8 +68,35 @@ const bugSlice = createSlice({
       state.isUpdatingBug = false;
     },
     markComplete() {},
+    deleteBugs(state, action) {
+      const selectedBug = action.payload;
+      const existingItem = state.bugs.find((bug) => bug.id === selectedBug.id);
+      const existingItemIndex = state.bugs.indexOf(existingItem);
+      console.log(existingItem);
+      console.log(existingItemIndex);
+
+      if (existingItem) {
+        state.bugs.splice(existingItemIndex, 1);
+      }
+      console.log(state.bugs);
+      console.log('removed item');
+    },
+    storeSelectedBug(state, action) {
+      state.selectedBug = action.payload;
+      console.log(state.selectedBug);
+    },
   },
 });
+
+export default bugSlice.reducer;
+export const {
+  getBugs,
+  addNewBugs,
+  updateBugs,
+  markComplete,
+  deleteBugs,
+  storeSelectedBug,
+} = bugSlice.actions;
 
 // export const getBugData = () => {
 //   const fetchData = async () => {
@@ -113,7 +140,3 @@ const bugSlice = createSlice({
 //     console.log(error);
 //   }
 // };
-
-export default bugSlice.reducer;
-export const { getBugs, addNewBugs, updateBugs, markComplete } =
-  bugSlice.actions;
