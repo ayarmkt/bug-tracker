@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 //import RetrieveData from '../components/RetrieveData';
 
-const initialBugsState = { bugs: [], isUpdatingBug: false };
+const initialBugsState = { bugs: [], isUpdatingBug: false, selectedBug: null };
 
 const bugSlice = createSlice({
   name: 'bug',
@@ -43,22 +43,25 @@ const bugSlice = createSlice({
 
     updateBugs(state, action) {
       state.isUpdatingBug = true;
-      const selectedBug = action.payload;
-      const existingItem = state.bugs.find((bug) => bug.id === selectedBug.id);
+      state.selectedBug = action.payload;
+      const existingItem = state.bugs.find(
+        (bug) => bug.id === state.selectedBug.id
+      );
       const existingItemIndex = state.bugs.indexOf(existingItem);
       console.log(existingItem);
       console.log(existingItemIndex);
+      console.log(state);
 
       const bugUpdate = {
         id: existingItem.id,
-        title: selectedBug.title,
-        details: selectedBug.details,
-        steps: selectedBug.steps,
-        version: selectedBug.version,
-        priority: selectedBug.priority,
-        assigned: selectedBug.assigned,
-        creator: selectedBug.creator,
-        time: selectedBug.time,
+        title: state.selectedBug.title,
+        details: state.selectedBug.details,
+        steps: state.selectedBug.steps,
+        version: state.selectedBug.version,
+        priority: state.selectedBug.priority,
+        assigned: state.selectedBug.assigned,
+        creator: state.selectedBug.creator,
+        time: state.selectedBug.time,
       };
 
       if (existingItem) {
@@ -66,10 +69,45 @@ const bugSlice = createSlice({
       }
       console.log(state.bugs);
       state.isUpdatingBug = false;
+      state.selectedBug = null;
+      console.log(state);
     },
     markComplete() {},
+    deleteBugs(state, action) {
+      console.log(state);
+      state.selectedBug = action.payload;
+      const existingItem = state.bugs.find(
+        (bug) => bug.id === state.selectedBug.id
+      );
+      const existingItemIndex = state.bugs.indexOf(existingItem);
+      console.log(existingItem);
+      console.log(existingItemIndex);
+
+      if (existingItem) {
+        state.bugs.splice(existingItemIndex, 1);
+      }
+      console.log(state.bugs);
+      console.log('removed item');
+      state.selectedBug = null;
+      console.log(state);
+    },
+    storeSelectedBug(state, action) {
+      state.selectedBug = action.payload;
+      console.log(state.selectedBug);
+      console.log(state);
+    },
   },
 });
+
+export default bugSlice.reducer;
+export const {
+  getBugs,
+  addNewBugs,
+  updateBugs,
+  markComplete,
+  deleteBugs,
+  storeSelectedBug,
+} = bugSlice.actions;
 
 // export const getBugData = () => {
 //   const fetchData = async () => {
@@ -113,7 +151,3 @@ const bugSlice = createSlice({
 //     console.log(error);
 //   }
 // };
-
-export default bugSlice.reducer;
-export const { getBugs, addNewBugs, updateBugs, markComplete } =
-  bugSlice.actions;
