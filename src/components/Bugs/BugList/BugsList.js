@@ -16,7 +16,7 @@ const BugsList = () => {
 
   const { bugs } = useSelector((state) => state.bugs);
   console.log(bugs);
-  //const { modalOpen } = useSelector((state) => state.ui);
+  const { modalOpen } = useSelector((state) => state.ui);
 
   // useEffect(() => {
   //   const data = getBugData();
@@ -78,7 +78,7 @@ const BugsList = () => {
           )}
         </ul>
       </div>
-      <ModalOverlay />
+      {modalOpen && <ModalOverlay />}
     </React.Fragment>
   );
 };
