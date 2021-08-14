@@ -35,7 +35,7 @@ const BugItem = (props) => {
         </li>
       </Link>
       <div className={classes.actions}>
-        <Link to={`/update-bug/${props.bug.id}`}>
+        <Link to={`/update-bug/${props.id}`}>
           <BiEdit
             className={classes.icon}
             size='25px'
