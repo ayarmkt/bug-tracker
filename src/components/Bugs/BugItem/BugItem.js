@@ -1,13 +1,16 @@
 import classes from './BugItem.module.css';
 import React from 'react';
+//import { useDispatch } from 'react-redux';
+//import { openModal } from '../../../store/ui-slice';
 //import { useParams } from 'react-router';
-//import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi';
 import { BsTrashFill } from 'react-icons/bs';
 
 const BugItem = (props) => {
+  //const dispatch = useDispatch();
+
   // const params = useParams();
   // console.log(params);
   // const { bugs } = useSelector((state) => state.bugs);
@@ -18,6 +21,11 @@ const BugItem = (props) => {
     console.log(e.target);
     console.log(e.currentTarget);
   };
+
+  // const openModalHandler = () => {
+  //   dispatch(openModal());
+  // };
+  // onClick={openModalHandler}
 
   return (
     <div className={classes['bug-item']}>
