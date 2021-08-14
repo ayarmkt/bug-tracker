@@ -50,7 +50,7 @@ const bugSlice = createSlice({
       console.log(existingItemIndex);
 
       const bugUpdate = {
-        id: state.bugs.id,
+        id: existingItem.id,
         title: selectedBug.title,
         details: selectedBug.details,
         steps: selectedBug.steps,
