@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../store/ui-slice';
 import { deleteBugs } from '../store/bug-slice';
 import Button from './Button';
+import { useHistory } from 'react-router-dom';
 
 const Backdrop = () => {
   return <div className={classes.backdrop}></div>;
@@ -15,6 +16,7 @@ const Modal = () => {
   const dispatch = useDispatch();
   const { bugs } = useSelector((state) => state.bugs);
   const { selectedBug } = useSelector((state) => state.bugs);
+  const history = useHistory();
   console.log(bugs);
   console.log(selectedBug);
 
@@ -28,6 +30,7 @@ const Modal = () => {
     dispatch(deleteBugs(selectedBug));
     //want to identify which bug to delete from list
     dispatch(closeModal());
+    history.push('/bugs-list');
   };
 
   return (
