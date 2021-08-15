@@ -1,0 +1,21 @@
+.btn {
+  /* background-color: var(--darkgray);
+  color: white; */
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 18px;
+  width: 20vw;
+  max-width: 150px;
+  height: 6vh;
+}
+
+/* .btn:disabled {
+  cursor: not-allowed;
+} */
+
+.btn:hover:enabled {
+  /* background-color: white;
+  color: var(--navy); */
+  cursor: pointer;
+}
