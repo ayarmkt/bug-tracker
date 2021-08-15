@@ -24,43 +24,43 @@ const EditBug = () => {
   const {
     enteredValue: enteredTitle,
     valueChangeHandler: titleChangeHandler,
-    resetValue: resetTitle,
+    resetValueHandler: resetTitle,
   } = useBugInput(selectedBug.title);
 
   const {
     enteredValue: enteredDetails,
     valueChangeHandler: detailsChangeHandler,
-    resetValue: resetDetails,
+    resetValueHandler: resetDetails,
   } = useBugInput(selectedBug.details);
 
   const {
     enteredValue: enteredSteps,
     valueChangeHandler: stepsChangeHandler,
-    resetValue: resetSteps,
+    resetValueHandler: resetSteps,
   } = useBugInput(selectedBug.steps);
 
   const {
     enteredValue: enteredVersion,
     valueChangeHandler: versionChangeHandler,
-    resetValue: resetVersion,
+    resetValueHandler: resetVersion,
   } = useBugInput(selectedBug.version);
 
   const {
     enteredValue: enteredPriority,
     valueChangeHandler: priorityChangeHandler,
-    resetValue: resetPriority,
+    resetValueHandler: resetPriority,
   } = useBugInput(selectedBug.priority);
 
   const {
     enteredValue: enteredAssigned,
     valueChangeHandler: assignedChangeHandler,
-    resetValue: resetAssigned,
+    resetValueHandler: resetAssigned,
   } = useBugInput(selectedBug.assigned);
 
   const {
     enteredValue: enteredCreator,
     valueChangeHandler: creatorChangeHandler,
-    resetValue: resetCreator,
+    resetValueHandler: resetCreator,
   } = useBugInput(selectedBug.creator);
 
   console.log(enteredTitle);

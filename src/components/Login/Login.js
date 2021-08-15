@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 
 import useInputValidation from '../../hooks/useInputValidation';
 import AuthContext from '../../store/auth-context';
+import Button from '../../UI/Button';
 
 //Guest Info
 const guestEmail = 'guest@guest.com';
@@ -148,6 +149,15 @@ const Login = () => {
         </div>
 
         {!isLoading && (
+          <Button
+            type='submit'
+            disabled={!formIsValid}
+            className={classes['login-btn']}
+            onClick={submitLoginHandler}
+            text={isLogin ? 'Log In' : 'Sign Up'}
+          />
+        )}
+        {/* {!isLoading && (
           <button
             type='submit'
             disabled={!formIsValid}
@@ -156,7 +166,7 @@ const Login = () => {
           >
             {isLogin ? 'Log In' : 'Sign Up'}
           </button>
-        )}
+        )} */}
         {isLoading && <p>Loading...</p>}
         <div className={classes.options}>
           <p className={classes['new-account']} onClick={switchFormHandler}>
