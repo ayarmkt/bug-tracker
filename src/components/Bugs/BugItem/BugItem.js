@@ -1,12 +1,11 @@
 import classes from './BugItem.module.css';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { openModal } from '../../../store/ui-slice';
-//import { useParams } from 'react-router';
-import { useSelector } from 'react-redux';
 import { storeSelectedBug } from '../../../store/bug-slice';
 
-import { Link } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi';
 import { BsTrashFill } from 'react-icons/bs';
 
@@ -22,9 +21,6 @@ const adjustLength = (word) => {
 const BugItem = (props) => {
   const dispatch = useDispatch();
 
-  //const params = useParams();
-  //console.log(params);
-
   const { bugs } = useSelector((state) => state.bugs);
 
   const selectedBug = bugs.find((bug) => bug.id === props.bug.id);
@@ -32,10 +28,6 @@ const BugItem = (props) => {
   console.log(bugs);
   console.log(selectedBug);
 
-  // const editBugHandler = (e) => {
-  //   console.log(e.target);
-  //   console.log(e.currentTarget);
-  // };
 
   const openModalHandler = () => {
     console.log(bugs);

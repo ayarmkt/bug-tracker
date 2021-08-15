@@ -1,12 +1,10 @@
 import classes from './UpdateBug.module.css';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router';
+
 import { updateBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
-import { useHistory } from 'react-router';
-//import { storeBugData } from '../../../store/bug-slice';
 
 const EditBug = () => {
   const dispatch = useDispatch();
@@ -15,11 +13,10 @@ const EditBug = () => {
   const history = useHistory();
 
   const { bugs } = useSelector((state) => state.bugs);
-  //console.log(bugs);
+
 
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
-  //console.log(selectedBug);
-  //console.log(selectedBug.title);
+
 
   const {
     enteredValue: enteredTitle,

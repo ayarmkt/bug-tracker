@@ -1,8 +1,8 @@
 import classes from './AddNewBug.module.css';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { addNewBugs } from '../../../store/bug-slice';
-import { useSelector } from 'react-redux';
 import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
 
@@ -73,12 +73,6 @@ const AddNewBug = () => {
     console.log(newBug);
 
     dispatch(addNewBugs(newBug));
-
-    // if (isUpdatingBug) {
-    //   dispatch(updateBugs(newBug));
-    // } else {
-
-    // }
 
     resetTitle();
     resetDetails();

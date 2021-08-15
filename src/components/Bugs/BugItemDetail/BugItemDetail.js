@@ -1,9 +1,9 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import classes from './BugItemDetail.module.css';
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import classes from './BugItemDetail.module.css';
 import Button from '../../../UI/Button';
 
 const BugItemDetail = () => {
@@ -30,8 +30,6 @@ const BugItemDetail = () => {
     default:
       bugPriority = 'High';
   }
-
-  // const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
 
   return (
     <div className={classes.container}>
@@ -88,33 +86,6 @@ const BugItemDetail = () => {
           <p>↶Back to List</p>
         </Link>
       </div>
-
-      {/* <p>{params.name}</p> */}
-      {/* <p>{params.bugId}</p> */}
-      {/* <ul>
-        <li>
-          <p>Name</p>
-          <p>{props.bug.name}</p>
-        </li>
-        <li>
-          <p>Version</p>
-          <p>{props.bug.version}</p>
-        </li>
-        <li>
-          <p>Priority</p>
-          <p>{props.bug.priority}</p>
-        </li>
-        <li>
-          <p>Assigned</p>
-          <p>{props.bug.assigned}</p>
-        </li>
-        <li>
-          <p>Creator</p>
-          <p>{props.bug.creator}</p>
-        </li>
-      </ul> */}
-
-      {/* <Link to='/dashboard/bugs-list'>Return to list</Link> */}
     </div>
   );
 };
