@@ -1,6 +1,7 @@
 import classes from './AddNewBug.module.css';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 import { addNewBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
@@ -8,6 +9,7 @@ import Button from '../../../UI/Button';
 
 const AddNewBug = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const {
     enteredValue: enteredTitle,
@@ -73,6 +75,7 @@ const AddNewBug = () => {
     console.log(newBug);
 
     dispatch(addNewBugs(newBug));
+    history.push('/bugs-list');
 
     resetTitle();
     resetDetails();
