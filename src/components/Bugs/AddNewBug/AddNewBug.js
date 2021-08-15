@@ -16,45 +16,43 @@ const AddNewBug = () => {
   const {
     enteredValue: enteredTitle,
     valueChangeHandler: titleChangeHandler,
-    resetValue: resetTitle,
+    resetValueHandler: resetTitle,
   } = useBugInput('');
 
   const {
     enteredValue: enteredDetails,
     valueChangeHandler: detailsChangeHandler,
-    resetValue: resetDetails,
+    resetValueHandler: resetDetails,
   } = useBugInput('');
 
   const {
     enteredValue: enteredSteps,
     valueChangeHandler: stepsChangeHandler,
-    resetValue: resetSteps,
+    resetValueHandler: resetSteps,
   } = useBugInput('');
 
   const {
     enteredValue: enteredVersion,
     valueChangeHandler: versionChangeHandler,
-    resetValue: resetVersion,
+    resetValueHandler: resetVersion,
   } = useBugInput('');
 
   const {
     enteredValue: enteredPriority,
     valueChangeHandler: priorityChangeHandler,
-    resetValue: resetPriority,
+    resetValueHandler: resetPriority,
   } = useBugInput('');
-
-  //const [enteredPriority, setEnteredPriority] = useState();
 
   const {
     enteredValue: enteredAssigned,
     valueChangeHandler: assignedChangeHandler,
-    resetValue: resetAssigned,
+    resetValueHandler: resetAssigned,
   } = useBugInput('');
 
   const {
     enteredValue: enteredCreator,
     valueChangeHandler: creatorChangeHandler,
-    resetValue: resetCreator,
+    resetValueHandler: resetCreator,
   } = useBugInput('');
 
   const submitNewBugHandler = (e) => {
@@ -63,6 +61,7 @@ const AddNewBug = () => {
 
     const enteredTime = new Date().getTime();
     const enteredId = enteredTime + enteredTitle;
+    console.log(typeof enteredTitle);
     // if (isUpdatingBug) {
     //   enteredId = editingId;
     // } else {
@@ -115,18 +114,18 @@ const AddNewBug = () => {
               value={enteredTitle}
             />
           </div>
-          <div className={classes['add-bug-input']}>
+          <div className={classes['add-bug-textarea']}>
             <label>Details</label>
-            <input
+            <textarea
               type='text'
               placeholder='enter details'
               onChange={detailsChangeHandler}
               value={enteredDetails}
             />
           </div>
-          <div className={classes['add-bug-input']}>
+          <div className={classes['add-bug-textarea']}>
             <label>Steps</label>
-            <input
+            <textarea
               type='text'
               placeholder='enter steps'
               onChange={stepsChangeHandler}
@@ -137,25 +136,31 @@ const AddNewBug = () => {
             <label>Version</label>
             <input
               type='text'
-              placeholder='version 2'
+              placeholder='enter version'
               onChange={versionChangeHandler}
               value={enteredVersion}
             />
           </div>
           <div className={classes['add-bug-input']}>
             <label>Priority</label>
-            <input
+            <select onChange={priorityChangeHandler} value={enteredPriority}>
+              {/* defaultValue={'1'} */}
+              <option value='1'>High</option>
+              <option value='2'>Mid</option>
+              <option value='3'>Low</option>
+            </select>
+            {/* <input
               type='number'
               placeholder='1'
               onChange={priorityChangeHandler}
               value={enteredPriority}
-            />
+            /> */}
           </div>
           <div className={classes['add-bug-input']}>
             <label>Assigned</label>
             <input
               type='text'
-              placeholder='assigned person here'
+              placeholder='enter assigned person'
               onChange={assignedChangeHandler}
               value={enteredAssigned}
             />
@@ -164,7 +169,7 @@ const AddNewBug = () => {
             <label>Creator</label>
             <input
               type='text'
-              placeholder='creator name'
+              placeholder='enter creator'
               onChange={creatorChangeHandler}
               value={enteredCreator}
             />

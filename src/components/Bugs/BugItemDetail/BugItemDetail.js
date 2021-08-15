@@ -15,6 +15,19 @@ const BugItemDetail = () => {
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
   console.log(selectedBug);
 
+  let bugPriority;
+  switch (selectedBug.priority) {
+    case '1':
+      bugPriority = 'High';
+      break;
+    case '2':
+      bugPriority = 'Mid';
+      break;
+    case '3':
+      bugPriority = 'Low';
+      break;
+  }
+
   // const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
 
   return (
@@ -40,7 +53,7 @@ const BugItemDetail = () => {
         </div>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Priority</p>
-          <p className={classes.content}>{selectedBug.priority}</p>
+          <p className={classes.content}>{bugPriority}</p>
         </div>
         <div className={classes['detail-content']}>
           <p className={classes.label}>Assigned</p>

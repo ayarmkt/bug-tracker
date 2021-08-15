@@ -25,25 +25,39 @@
 }
 
 /* EACH INPUT */
-.add-bug-input {
+.add-bug-input,
+.add-bug-textarea {
   display: grid;
   grid-template-columns: 100px 1fr;
   padding: 5px 0;
+  /* height: 50px;
+  line-height: 50px; */
+}
+
+.add-bug-input {
   height: 50px;
   line-height: 50px;
 }
 
-.add-bug-input label {
+.add-bug-textarea {
+  height: 100px;
+  line-height: 100px;
+}
+
+.add-bug-input label,
+.add-bug-textarea label {
   grid-column: 1;
   /* background-color: var(--third-color);
-    border: 1px red solid; */
+  border: 1px red solid; */
   font-size: 18px;
   color: black;
   text-align: center;
   border: none;
 }
 
-.add-bug-input input {
+.add-bug-input input,
+.add-bug-input select,
+.add-bug-textarea textarea {
   grid-column: 2;
   border: none;
   border-left: 2px solid var(--darkgray);
@@ -51,3 +65,7 @@
   padding: 5px 0 5px 5px;
   font-size: 18px;
 }
+
+/* .add-bug-input textarea {
+  height: auto;
+} */
