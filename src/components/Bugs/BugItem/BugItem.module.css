@@ -1,20 +1,21 @@
+.bug-item {
+  width: 100%;
+  /* background-color: violet; */
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.bug-item:hover {
+  background-color: var(--graytransparent);
+}
+
 .link {
   text-decoration: none;
 }
 
 .link:hover {
   /* background-color: rgba(var(--third-color), 1); */
-}
-
-.bug-item {
-  width: 100%;
-  /* background-color: violet; */
-  display: grid;
-  grid-template-columns: 1fr 110px;
-}
-
-.bug-item:hover {
-  background-color: var(--graytransparent);
 }
 
 .bug-detail {
@@ -33,8 +34,8 @@
   /* border: 1px solid red; */
   text-align: start;
   color: black;
-  height: 40px;
-  line-height: 40px;
+  height: 50px;
+  line-height: 50px;
   font-size: 18px;
   /* background-color: rgba(var(--third-color), 1); */
   /* border: 1px solid red; */

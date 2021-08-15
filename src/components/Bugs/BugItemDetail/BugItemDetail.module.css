@@ -25,29 +25,103 @@
 }
 
 /* EACH CONTENT */
-.detail-content {
+.detail-content,
+.detail-content-long-text {
   display: grid;
   grid-template-columns: 100px 1fr;
   padding: 5px 0;
+  /* height: 50px;
+  line-height: 50px; */
+}
+
+.detail-content {
+  /* display: grid;
+  grid-template-columns: 100px 1fr;
+  padding: 5px 0; */
   height: 50px;
   line-height: 50px;
 }
 
+.detail-content-long-text {
+  /* display: grid;
+  grid-template-columns: 100px 1fr;
+  padding: 5px 0; */
+  height: 100px;
+  line-height: 100px;
+}
+
+/* LABEL */
 .label {
   grid-column: 1;
   /* background-color: var(--third-color);
   border: 1px red solid; */
-  font-size: 18px;
+  font-size: 20px;
   color: black;
-  text-align: center;
+  font-weight: 500;
+  text-align: end;
+  padding-right: 10px;
   border: none;
 }
 
+/* CONTENT */
 .content {
   grid-column: 2;
   border: none;
   border-left: 2px solid var(--darkgray);
+  border-bottom: 1px solid var(--lightgray);
   /* border-bottom: 1px solid var(--third-color); */
   padding: 5px 0 5px 5px;
   font-size: 18px;
+}
+
+/* UPDATE BTN */
+.update-btn {
+  background-color: var(--blue);
+  color: white;
+  position: relative;
+  top: 50px;
+  left: 10px;
+
+  /* font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 18px;
+  width: 20vw;
+  max-width: 150px;
+  height: 6vh; */
+}
+
+/* .btn:disabled {
+  cursor: not-allowed;
+} */
+
+.update-btn:hover:enabled {
+  /* background-color: white;
+  color: var(--blue); */
+  /* border: 3px solid var(--blue); */
+  /* cursor: pointer; */
+}
+
+/* DELETE BTN */
+.delete-btn {
+  background-color: white;
+  color: red;
+  border: 3px solid red;
+  position: relative;
+  top: 50px;
+}
+
+.delete-btn:hover:enabled {
+  background-color: red;
+  color: white;
+  /* cursor: pointer; */
+}
+
+/* BACK TO LIST */
+.back-to-list {
+  color: black;
+  font-size: 18px;
+  text-decoration: none;
+  position: relative;
+  top: 50px;
 }

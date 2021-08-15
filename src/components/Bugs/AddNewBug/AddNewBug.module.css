@@ -6,6 +6,7 @@
   align-content: center;
   justify-content: flex-start;
   /* align-items: center; */
+  /* border: 1px solid red; */
 }
 
 /* TITLE */
@@ -22,6 +23,9 @@
   /* background-color: var(--third-color); */
   width: 90%;
   margin: 30px 5%;
+  /* border: 1px solid red; */
+  /* position: absolute; */
+  /* position: relative; */
 }
 
 /* EACH INPUT */
@@ -30,6 +34,7 @@
   display: grid;
   grid-template-columns: 100px 1fr;
   padding: 5px 0;
+
   /* height: 50px;
   line-height: 50px; */
 }
@@ -49,9 +54,11 @@
   grid-column: 1;
   /* background-color: var(--third-color);
   border: 1px red solid; */
-  font-size: 18px;
+  font-size: 20px;
   color: black;
-  text-align: center;
+  font-weight: 500;
+  text-align: end;
+  padding-right: 10px;
   border: none;
 }
 
@@ -61,7 +68,7 @@
   grid-column: 2;
   border: none;
   border-left: 2px solid var(--darkgray);
-  border-bottom: 1px solid var(--darkgray);
+  border-bottom: 1px solid var(--lightgray);
   padding: 5px 0 5px 5px;
   font-size: 18px;
 }
@@ -69,3 +76,29 @@
 /* .add-bug-input textarea {
   height: auto;
 } */
+
+/* ADD BUG BTN */
+.add-bug-btn {
+  background-color: var(--blue);
+  color: white;
+  position: relative;
+  top: 50px;
+  /* font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 18px;
+  width: 20vw;
+  max-width: 150px;
+  height: 6vh; */
+}
+
+/* .btn:disabled {
+  cursor: not-allowed;
+} */
+
+.add-bug-btn:hover:enabled {
+  /* background-color: white;
+  color: var(--blue);
+  border: 3px solid var(--blue); */
+  /* cursor: pointer; */
+}
