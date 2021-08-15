@@ -10,6 +10,15 @@ import { Link } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi';
 import { BsTrashFill } from 'react-icons/bs';
 
+const adjustLength = (word) => {
+  if (word.length > 17) {
+    const adjustedWord = word.slice(0, 15) + '...';
+    return adjustedWord;
+  } else {
+    return word;
+  }
+};
+
 const BugItem = (props) => {
   const dispatch = useDispatch();
 
@@ -37,6 +46,19 @@ const BugItem = (props) => {
     dispatch(openModal());
   };
 
+  let bugPriority;
+  switch (props.bug.priority) {
+    case '1':
+      bugPriority = 'High';
+      break;
+    case '2':
+      bugPriority = 'Mid';
+      break;
+    case '3':
+      bugPriority = 'Low';
+      break;
+  }
+
   return (
     <div className={classes['bug-item']}>
       <Link className={classes.link} to={`/bugs-list/${props.id}`}>
@@ -45,9 +67,9 @@ const BugItem = (props) => {
           key={props.bug.id}
           bug={props.bug}
         >
-          <p>{props.bug.title}</p>
+          <p>{adjustLength(props.bug.title)}</p>
           <p>{props.bug.version}</p>
-          <p>{props.bug.priority}</p>
+          <p>{bugPriority}</p>
           <p>{props.bug.assigned}</p>
           <p>{props.bug.creator}</p>
         </li>
