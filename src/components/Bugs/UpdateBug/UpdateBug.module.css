@@ -69,3 +69,11 @@
 /* .add-bug-input textarea {
   height: auto;
 } */
+
+/* UPDATE BUG BTN */
+.update-bug-btn {
+  background-color: var(--blue);
+  color: white;
+  position: relative;
+  top: 50px;
+}
