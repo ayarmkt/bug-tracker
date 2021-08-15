@@ -1,17 +1,13 @@
 import classes from './AddNewBug.module.css';
 import React from 'react';
-//import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNewBugs } from '../../../store/bug-slice';
 import { useSelector } from 'react-redux';
 import useBugInput from '../../../hooks/useBugInput';
+import Button from '../../../UI/Button';
 
 const AddNewBug = () => {
   const dispatch = useDispatch();
-  // const [isUpdatingBug, setIsUpdatingBug] = useState(false);
-  //const { isUpdatingBug } = useSelector((state) => state.bugs);
-  //const editingId = useSelector((state) => state.bugs.bugs.id);
-  //console.log(editingId);
 
   const {
     enteredValue: enteredTitle,
@@ -41,7 +37,7 @@ const AddNewBug = () => {
     enteredValue: enteredPriority,
     valueChangeHandler: priorityChangeHandler,
     resetValueHandler: resetPriority,
-  } = useBugInput('');
+  } = useBugInput('1');
 
   const {
     enteredValue: enteredAssigned,
@@ -62,10 +58,6 @@ const AddNewBug = () => {
     const enteredTime = new Date().getTime();
     const enteredId = enteredTime + enteredTitle;
     console.log(typeof enteredTitle);
-    // if (isUpdatingBug) {
-    //   enteredId = editingId;
-    // } else {
-    // }
 
     const newBug = {
       title: enteredTitle,
@@ -175,7 +167,14 @@ const AddNewBug = () => {
             />
           </div>
         </div>
-        <button type='submit'>Add new bug</button>
+        <Button
+          type='submit'
+          disabled={false}
+          className={classes['add-bug-btn']}
+          onClick={submitNewBugHandler}
+          text='Add new bug'
+        />
+        {/* <button type='submit'>Add new bug</button> */}
       </form>
     </div>
   );

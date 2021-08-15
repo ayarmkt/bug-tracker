@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import classes from './BugItemDetail.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Button from '../../../UI/Button';
 
 const BugItemDetail = () => {
   const params = useParams();
@@ -26,6 +27,8 @@ const BugItemDetail = () => {
     case '3':
       bugPriority = 'Low';
       break;
+    default:
+      bugPriority = 'High';
   }
 
   // const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
@@ -39,11 +42,11 @@ const BugItemDetail = () => {
           <p className={classes.label}>Title</p>
           <p className={classes.content}>{selectedBug.title}</p>
         </div>
-        <div className={classes['detail-content']}>
+        <div className={classes['detail-content-long-text']}>
           <p className={classes.label}>Details</p>
           <p className={classes.content}>{selectedBug.details}</p>
         </div>
-        <div className={classes['detail-content']}>
+        <div className={classes['detail-content-long-text']}>
           <p className={classes.label}>Steps</p>
           <p className={classes.content}>{selectedBug.steps}</p>
         </div>
@@ -63,13 +66,31 @@ const BugItemDetail = () => {
           <p className={classes.label}>Creator</p>
           <p className={classes.content}>{selectedBug.creator}</p>
         </div>
+        <Button
+          type='button'
+          disabled={false}
+          className={classes['delete-btn']}
+          //onClick={submitNewBugHandler}
+          text='Delete bug'
+        />
         <Link to={`/update-bug/${selectedBug.id}`}>
-          <button>Edit</button>
+          <Button
+            type='button'
+            disabled={false}
+            className={classes['update-btn']}
+            //onClick={submitNewBugHandler}
+            text='Update bug'
+          />
+          {/* <button>Edit</button> */}
+        </Link>
+
+        <Link to='/bugs-list' className={classes['back-to-list']}>
+          <p>↶Back to List</p>
         </Link>
       </div>
 
       {/* <p>{params.name}</p> */}
-      <p>{params.bugId}</p>
+      {/* <p>{params.bugId}</p> */}
       {/* <ul>
         <li>
           <p>Name</p>
@@ -94,7 +115,6 @@ const BugItemDetail = () => {
       </ul> */}
 
       {/* <Link to='/dashboard/bugs-list'>Return to list</Link> */}
-      <Link to='/bugs-list'>Back to List</Link>
     </div>
   );
 };

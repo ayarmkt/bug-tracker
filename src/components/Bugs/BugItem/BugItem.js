@@ -57,6 +57,8 @@ const BugItem = (props) => {
     case '3':
       bugPriority = 'Low';
       break;
+    default:
+      bugPriority = 'High';
   }
 
   return (
