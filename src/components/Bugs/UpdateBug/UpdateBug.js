@@ -5,6 +5,7 @@ import { useParams, useHistory } from 'react-router';
 
 import { updateBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
+import Button from '../../../UI/Button';
 
 const EditBug = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,7 @@ const EditBug = () => {
 
   const { bugs } = useSelector((state) => state.bugs);
 
-
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
-
 
   const {
     enteredValue: enteredTitle,
@@ -170,7 +169,14 @@ const EditBug = () => {
             />
           </div>
         </div>
-        <button type='submit'>Save updated bug</button>
+        <Button
+          type='submit'
+          disabled={false}
+          className={classes['update-bug-btn']}
+          //onClick={submitNewBugHandler}
+          text='Save updated bug'
+        />
+        {/* <button type='submit'>Save updated bug</button> */}
       </form>
     </div>
   );

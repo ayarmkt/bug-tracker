@@ -9,16 +9,52 @@
 }
 
 .modal {
-  background-color: aqua;
+  background-color: white;
   position: fixed;
-  top: 30vh;
-  left: 10%;
-  width: 80%;
+  height: 30%;
+  width: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  /* top: 30vh;
+  left: 10%; */
+
   z-index: 100;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-msg,
-button {
+.cancel-btn,
+.confirm-btn {
   color: black;
+}
+
+.modal-msg {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* 
+.btns {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.cancel-btn,
+.confirm-btn {
+  width: 15vw;
+  height: 5vh;
+  margin: 2px;
+  /* width: 20vw;
+height: 6vh; */
+}
+
+.confirm-btn {
+  background-color: red;
+  color: white;
 }
