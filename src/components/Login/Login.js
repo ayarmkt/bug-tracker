@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import useInputValidation from '../../hooks/useInputValidation';
 import AuthContext from '../../store/auth-context';
 import Button from '../../UI/Button';
+import { webAPI } from '../../API';
 
 //Guest Info
 const guestEmail = 'guest@guest.com';
@@ -60,12 +61,18 @@ const Login = () => {
       setIsLoading(true);
       let url;
 
+      // if (isLogin) {
+      //   url =
+      //     'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCVDj_kpR2CpxzM-KKn0r3pdfMIa-hrUkE';
+      // } else {
+      //   url =
+      //     'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCVDj_kpR2CpxzM-KKn0r3pdfMIa-hrUkE';
+      // }
+
       if (isLogin) {
-        url =
-          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCVDj_kpR2CpxzM-KKn0r3pdfMIa-hrUkE';
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${webAPI}`;
       } else {
-        url =
-          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCVDj_kpR2CpxzM-KKn0r3pdfMIa-hrUkE';
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${webAPI}`;
       }
 
       //Both sign up and log in
