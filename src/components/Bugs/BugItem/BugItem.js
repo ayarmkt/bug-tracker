@@ -46,6 +46,19 @@ const BugItem = (props) => {
     dispatch(openModal());
   };
 
+  let bugPriority;
+  switch (props.bug.priority) {
+    case '1':
+      bugPriority = 'High';
+      break;
+    case '2':
+      bugPriority = 'Mid';
+      break;
+    case '3':
+      bugPriority = 'Low';
+      break;
+  }
+
   return (
     <div className={classes['bug-item']}>
       <Link className={classes.link} to={`/bugs-list/${props.id}`}>
@@ -56,7 +69,7 @@ const BugItem = (props) => {
         >
           <p>{adjustLength(props.bug.title)}</p>
           <p>{props.bug.version}</p>
-          <p>{props.bug.priority}</p>
+          <p>{bugPriority}</p>
           <p>{props.bug.assigned}</p>
           <p>{props.bug.creator}</p>
         </li>

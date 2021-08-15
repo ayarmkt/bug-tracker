@@ -113,18 +113,18 @@ const EditBug = () => {
               value={enteredTitle}
             />
           </div>
-          <div className={classes['add-bug-input']}>
+          <div className={classes['add-bug-textarea']}>
             <label>Details</label>
-            <input
+            <textarea
               type='text'
               placeholder='enter details'
               onChange={detailsChangeHandler}
               value={enteredDetails}
             />
           </div>
-          <div className={classes['add-bug-input']}>
+          <div className={classes['add-bug-textarea']}>
             <label>Steps</label>
-            <input
+            <textarea
               type='text'
               placeholder='enter steps'
               onChange={stepsChangeHandler}
@@ -135,25 +135,30 @@ const EditBug = () => {
             <label>Version</label>
             <input
               type='text'
-              placeholder='version 2'
+              placeholder='enter version'
               onChange={versionChangeHandler}
               value={enteredVersion}
             />
           </div>
           <div className={classes['add-bug-input']}>
             <label>Priority</label>
-            <input
+            <select onChange={priorityChangeHandler} value={enteredPriority}>
+              <option value='1'>High</option>
+              <option value='2'>Mid</option>
+              <option value='3'>Low</option>
+            </select>
+            {/* <input
               type='number'
               placeholder='1'
               onChange={priorityChangeHandler}
               value={enteredPriority}
-            />
+            /> */}
           </div>
           <div className={classes['add-bug-input']}>
             <label>Assigned</label>
             <input
               type='text'
-              placeholder='assigned person here'
+              placeholder='enter assigned person'
               onChange={assignedChangeHandler}
               value={enteredAssigned}
             />
@@ -162,7 +167,7 @@ const EditBug = () => {
             <label>Creator</label>
             <input
               type='text'
-              placeholder='creator name'
+              placeholder='enter creator'
               onChange={creatorChangeHandler}
               value={enteredCreator}
             />
