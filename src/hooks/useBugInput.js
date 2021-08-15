@@ -8,11 +8,11 @@ const useBugInput = (initValue) => {
     setEnteredValue(e.target.value);
   };
 
-  const resetValue = () => {
+  const resetValueHandler = () => {
     setEnteredValue('');
   };
 
-  return { enteredValue, valueChangeHandler, resetValue };
+  return { enteredValue, valueChangeHandler, resetValueHandler };
 };
 
 export default useBugInput;
