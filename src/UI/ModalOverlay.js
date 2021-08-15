@@ -1,11 +1,11 @@
 import classes from './ModalOverlay.module.css';
-import ReactDOM from 'react-dom';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { useDispatch,useSelector } from 'react-redux';
+
 import { closeModal } from '../store/ui-slice';
-//import { createPortal } from 'react-dom';
-import { useDispatch } from 'react-redux';
 import { deleteBugs } from '../store/bug-slice';
-import { useSelector } from 'react-redux';
+
 
 const Backdrop = () => {
   return <div className={classes.backdrop}></div>;

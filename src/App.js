@@ -62,35 +62,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <div>
-<Route path='/' exact>
-  {!authCtx.loggedIn && (
-    <Redirect to='/login' exact>
-      <Login />
-    </Redirect>
-  )}
-  {authCtx.loggedIn && (
-    <Redirect to='/bugs-list' exact>
-      <BugsListPage />
-    </Redirect>
-  )}
-</Route>
-{!authCtx.loggedIn && (
-  <Route path='/login' exact>
-    <Login />
-  </Route>
-)}
-{authCtx.loggedIn && (
-  <Route path='/bugs-list' exact>
-    <BugsListPage />
-  </Route>
-)}
-{authCtx.loggedIn && (
-  <Route path='/bugs-list/:bugId'>
-    <BugDetailPage />
-  </Route>
-)}
-</div> */
-}
