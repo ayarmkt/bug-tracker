@@ -14,8 +14,6 @@ import UpdateBug from './components/Bugs/UpdateBug/UpdateBug';
 function App() {
   const authCtx = useContext(AuthContext);
 
-  console.log(authCtx.loggedIn);
-
   return (
     <div>
       <Route path='/bug-tracker' exact>
