@@ -1,6 +1,6 @@
 import classes from './AddNewBug.module.css';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import { addNewBugs } from '../../../store/bug-slice';
@@ -55,11 +55,9 @@ const AddNewBug = () => {
 
   const submitNewBugHandler = (e) => {
     e.preventDefault();
-    console.log('added');
 
     const enteredTime = new Date().getTime();
     const enteredId = enteredTime + enteredTitle;
-    console.log(typeof enteredTitle);
 
     const newBug = {
       title: enteredTitle,
@@ -72,10 +70,9 @@ const AddNewBug = () => {
       time: enteredTime,
       id: enteredId,
     };
-    console.log(newBug);
 
     dispatch(addNewBugs(newBug));
-    history.push('/bugs-list');
+    history.push('/bug-tracker/bugs-list');
 
     resetTitle();
     resetDetails();
@@ -85,9 +82,6 @@ const AddNewBug = () => {
     resetAssigned();
     resetCreator();
   };
-
-  const { bugs } = useSelector((state) => state.bugs);
-  console.log(bugs);
 
   return (
     <div className={classes.container}>
@@ -138,12 +132,6 @@ const AddNewBug = () => {
               <option value='2'>Mid</option>
               <option value='3'>Low</option>
             </select>
-            {/* <input
-              type='number'
-              placeholder='1'
-              onChange={priorityChangeHandler}
-              value={enteredPriority}
-            /> */}
           </div>
           <div className={classes['add-bug-input']}>
             <label>Assigned</label>
@@ -171,7 +159,6 @@ const AddNewBug = () => {
           onClick={submitNewBugHandler}
           text='Add new bug'
         />
-        {/* <button type='submit'>Add new bug</button> */}
       </form>
     </div>
   );

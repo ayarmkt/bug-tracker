@@ -10,11 +10,9 @@ import Button from '../../../UI/Button';
 const EditBug = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  console.log(params);
   const history = useHistory();
 
   const { bugs } = useSelector((state) => state.bugs);
-
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
 
   const {
@@ -59,15 +57,11 @@ const EditBug = () => {
     resetValueHandler: resetCreator,
   } = useBugInput(selectedBug.creator);
 
-  console.log(enteredTitle);
-
   const submitUpdatedBugHandler = (e) => {
     e.preventDefault();
-    console.log('updated');
 
     const enteredTime = new Date().getTime();
     const enteredId = selectedBug.id;
-    console.log(enteredId);
 
     const newBug = {
       title: enteredTitle,
@@ -80,11 +74,9 @@ const EditBug = () => {
       time: enteredTime,
       id: enteredId,
     };
-    console.log(newBug);
 
     dispatch(updateBugs(newBug));
-    //storeBugData(bugs);
-    history.push('/bugs-list');
+    history.push('/bug-tracker/bugs-list');
 
     resetTitle();
     resetDetails();
@@ -143,12 +135,6 @@ const EditBug = () => {
               <option value='2'>Mid</option>
               <option value='3'>Low</option>
             </select>
-            {/* <input
-              type='number'
-              placeholder='1'
-              onChange={priorityChangeHandler}
-              value={enteredPriority}
-            /> */}
           </div>
           <div className={classes['add-bug-input']}>
             <label>Assigned</label>
@@ -173,57 +159,11 @@ const EditBug = () => {
           type='submit'
           disabled={false}
           className={classes['update-bug-btn']}
-          //onClick={submitNewBugHandler}
           text='Save updated bug'
         />
-        {/* <button type='submit'>Save updated bug</button> */}
       </form>
     </div>
   );
 };
 
 export default EditBug;
-
-// const [enteredTitle, setEnteredTitle] = useState(bugs.title);
-// const [enteredDetails, setEnteredDetails] = useState(bugs.details);
-// const [enteredSteps, setEnteredSteps] = useState(bugs.steps);
-// const [enteredVersion, setEnteredVersion] = useState(bugs.version);
-// const [enteredPriority, setEnteredPriority] = useState(bugs.priority);
-// const [enteredAssigned, setEnteredAssigned] = useState(bugs.assigned);
-// const [enteredCreator, setEnteredCreator] = useState(bugs.creator);
-
-// const titleChangeHandler = (e) => {
-//   setEnteredValue(e.target.value);
-// };
-
-// const detailsChangeHandler = (e) => {
-//   setEnteredValue(e.target.value);
-// };
-
-// const stepsChangeHandler = (e) => {
-//   setEnteredValue(e.target.value);
-// };
-
-// const versionChangeHandler = (e) => {
-//   setEnteredValue(e.target.value);
-// };
-
-// const priorityChangeHandler = (e) => {
-//   setEnteredValue(e.target.value);
-// };
-
-// const assignedChangeHandler = (e) => {
-//   setEnteredValue(e.target.value);
-// };
-
-// const creatorChangeHandler = (e) => {
-//   setEnteredValue(e.target.value);
-// };
-
-// setEnteredTitle('');
-// setEnteredDetails('');
-// setEnteredSteps('');
-// setEnteredVersion('');
-// setEnteredTitle('');
-// setEnteredTitle('');
-// setEnteredTitle('');

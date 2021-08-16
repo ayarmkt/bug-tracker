@@ -11,28 +11,14 @@ import { storeSelectedBug } from '../../../store/bug-slice';
 
 const BugItemDetail = () => {
   const params = useParams();
-  console.log(params);
   const dispatch = useDispatch();
 
-  const { bugs } = useSelector((state) => state.bugs);
-  console.log(bugs);
-
-  const selectedBug = bugs.find((bug) => bug.id === params.bugId);
-  console.log(selectedBug);
-  //dispatch(storeSelectedBug(selectedBugItem));
-
-  //const { selectedBug } = useSelector((state) => state.bugs);
-  //console.log(selectedBug);
   const { modalOpen } = useSelector((state) => state.ui);
+  const { bugs } = useSelector((state) => state.bugs);
+  const selectedBug = bugs.find((bug) => bug.id === params.bugId);
 
   const openModalHandler = () => {
-    console.log(bugs);
-    console.log(selectedBug);
-    console.log(selectedBug.id);
-    //console.log(props.bug.id);
     dispatch(storeSelectedBug(selectedBug));
-    //console.log(selectedBug2);
-    console.log(selectedBug);
     dispatch(openModal());
   };
 
@@ -92,18 +78,16 @@ const BugItemDetail = () => {
             onClick={openModalHandler}
             text='Delete bug'
           />
-          <Link to={`/update-bug/${selectedBug.id}`}>
+          <Link to={`/bug-tracker/update-bug/${selectedBug.id}`}>
             <Button
               type='button'
               disabled={false}
               className={classes['update-btn']}
-              //onClick={submitNewBugHandler}
               text='Update bug'
             />
-            {/* <button>Edit</button> */}
           </Link>
 
-          <Link to='/bugs-list' className={classes['back-to-list']}>
+          <Link to='/bug-tracker/bugs-list' className={classes['back-to-list']}>
             <p>↶Back to List</p>
           </Link>
         </div>

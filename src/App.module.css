@@ -1,7 +1,6 @@
 .container {
   display: grid;
   grid-template-columns: auto 1fr;
-  /* background-color: turquoise; */
   height: 100vh;
   width: 100vw;
 }
@@ -14,5 +13,4 @@
 .submit-bug,
 .update-bug {
   grid-column: 2;
-  /* background-color: violet; */
 }

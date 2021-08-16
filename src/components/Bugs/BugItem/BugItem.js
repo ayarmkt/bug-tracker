@@ -22,25 +22,12 @@ const BugItem = (props) => {
   const dispatch = useDispatch();
 
   const { bugs } = useSelector((state) => state.bugs);
-  //const { selectedBug } = useSelector((state) => state.bugs);
-
   const selectedBug = bugs.find((bug) => bug.id === props.bug.id);
 
-  console.log(bugs);
-  console.log(selectedBug);
-
   const openModalHandler = () => {
-    console.log(bugs);
-    console.log(selectedBug);
-    console.log(selectedBug.id);
-    console.log(props.bug.id);
     dispatch(storeSelectedBug(selectedBug));
     dispatch(openModal());
   };
-
-  // const storeSelectedBugHandler = () => {
-  //   dispatch(storeSelectedBug(selectedBug));
-  // };
 
   let bugPriority;
   switch (props.bug.priority) {
@@ -59,11 +46,7 @@ const BugItem = (props) => {
 
   return (
     <div className={classes['bug-item']}>
-      <Link
-        className={classes.link}
-        to={`/bugs-list/${props.id}`}
-        // onClick={storeSelectedBugHandler}
-      >
+      <Link className={classes.link} to={`/bug-tracker/bugs-list/${props.id}`}>
         <li
           className={classes['bug-detail']}
           key={props.bug.id}
@@ -77,7 +60,7 @@ const BugItem = (props) => {
         </li>
       </Link>
       <div className={classes.actions}>
-        <Link to={`/update-bug/${props.id}`}>
+        <Link to={`/bug-tracker/update-bug/${props.id}`}>
           <BiEdit className={classes.icon} size='25px' color='green' />
         </Link>
         <BsTrashFill

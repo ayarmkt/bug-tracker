@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useInputValidation = (validateValue) => {
+const useAuthInputValidation = (validateValue) => {
   const [enteredValue, setEnteredValue] = useState('');
   const [valueIsTouched, setValueIsTouched] = useState(false);
 
@@ -35,4 +35,4 @@ const useInputValidation = (validateValue) => {
   };
 };
 
-export default useInputValidation;
+export default useAuthInputValidation;

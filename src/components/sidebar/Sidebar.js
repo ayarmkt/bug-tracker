@@ -9,12 +9,9 @@ import { FaListAlt } from 'react-icons/fa';
 import { IoCreate } from 'react-icons/io5';
 import { BiLogOut } from 'react-icons/bi';
 
-
-
 const Sidebar = () => {
   const authCtx = useContext(AuthContext);
   const history = useHistory();
-  //change false default later
   const [menuCollapse, setMenuCollapse] = useState(false);
 
   const menuToggleHandler = () => {
@@ -22,13 +19,11 @@ const Sidebar = () => {
   };
 
   const logoutHandler = () => {
-    //logout
     authCtx.logout();
-    history.replace('/login');
+    history.replace('/bug-tracker/login');
   };
 
   const sidebarClass = menuCollapse ? '' : classes.active;
-  //className={classes.sidebar}
 
   return (
     <nav className={`${classes.sidebar} ${sidebarClass}`}>
@@ -40,20 +35,19 @@ const Sidebar = () => {
         )}
       </div>
       <ul>
-        <NavLink className={classes.navlink} to='/bugs-list' exact>
+        <NavLink className={classes.navlink} to='/bug-tracker/bugs-list' exact>
           <li className={classes.navItem}>
             <FaListAlt size='30px' color='white' />
             {!menuCollapse && <p>All Bugs</p>}
           </li>
         </NavLink>
 
-        <NavLink className={classes.navlink} to='/submit-bug'>
+        <NavLink className={classes.navlink} to='/bug-tracker/submit-bug'>
           <li className={classes.navItem}>
             <IoCreate size='30px' color='white' />
-            {!menuCollapse && <p>Create New Bug</p>}
+            {!menuCollapse && <p>Add New Bug</p>}
           </li>
         </NavLink>
-        {/* <li className={`${classes.navItem} ${classes.logoutBtn}`}>Logout</li> */}
 
         <li className={classes.navItem} onClick={logoutHandler}>
           <BiLogOut size='30px' color='white' />

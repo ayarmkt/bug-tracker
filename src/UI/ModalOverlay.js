@@ -2,11 +2,11 @@ import classes from './ModalOverlay.module.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { closeModal } from '../store/ui-slice';
 import { deleteBugs } from '../store/bug-slice';
 import Button from './Button';
-import { useHistory } from 'react-router-dom';
 
 const Backdrop = () => {
   return <div className={classes.backdrop}></div>;
@@ -14,23 +14,17 @@ const Backdrop = () => {
 
 const Modal = () => {
   const dispatch = useDispatch();
-  const { bugs } = useSelector((state) => state.bugs);
   const { selectedBug } = useSelector((state) => state.bugs);
   const history = useHistory();
-  console.log(bugs);
-  console.log(selectedBug);
 
   const closeModalHandler = () => {
     dispatch(closeModal());
   };
 
   const deleteBugHandler = () => {
-    console.log(bugs);
-    console.log(selectedBug);
     dispatch(deleteBugs(selectedBug));
-    //want to identify which bug to delete from list
     dispatch(closeModal());
-    history.push('/bugs-list');
+    history.push('/bug-tracker/bugs-list');
   };
 
   return (
@@ -52,9 +46,6 @@ const Modal = () => {
           text={'Confirm'}
         />
       </div>
-
-      {/* <button onClick={closeModalHandler}>Cancel</button>
-      <button onClick={deleteBugHandler}>Confirm</button> */}
     </section>
   );
 };

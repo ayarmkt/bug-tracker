@@ -2,7 +2,7 @@ import classes from './Login.module.css';
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router';
 
-import useInputValidation from '../../hooks/useInputValidation';
+import useAuthInputValidation from '../../hooks/useAuthInputValidation';
 import AuthContext from '../../store/auth-context';
 import Button from '../../UI/Button';
 import { webAPI, guestEmail, guestPassword } from '../../ignoreInfo';
@@ -22,7 +22,7 @@ const Login = () => {
     valueTouchedHandler: emailTouchedHandler,
     guestLoginHandler: guestEmailHandler,
     resetValue: resetEmail,
-  } = useInputValidation((value) => value.trim().includes('@'));
+  } = useAuthInputValidation((value) => value.trim().includes('@'));
 
   const {
     value: enteredPassword,
@@ -32,7 +32,7 @@ const Login = () => {
     valueTouchedHandler: passwordTouchedHandler,
     guestLoginHandler: guestPasswordHandler,
     resetValue: resetPassword,
-  } = useInputValidation((value) => value.trim().length !== 0);
+  } = useAuthInputValidation((value) => value.trim().length !== 0);
 
   let formIsValid = false;
   if (enteredEmailIsValid && enteredPasswordIsValid) {
@@ -82,14 +82,11 @@ const Login = () => {
       }
 
       const data = await response.json();
-      //console.log(data);
-      //console.log('Logged in');
       const tokenExpireTime = new Date(
         new Date().getTime() + +data.expiresIn * 1000
       );
       authCtx.login(data.idToken, tokenExpireTime.toISOString());
-      //console.log(authCtx);
-      history.replace('/bugs-list');
+      history.replace('/bug-tracker/bugs-list');
     };
 
     storeLoginData().catch((error) => {
@@ -152,16 +149,7 @@ const Login = () => {
             text={isLogin ? 'Log In' : 'Sign Up'}
           />
         )}
-        {/* {!isLoading && (
-          <button
-            type='submit'
-            disabled={!formIsValid}
-            className={classes['login-btn']}
-            onClick={submitLoginHandler}
-          >
-            {isLogin ? 'Log In' : 'Sign Up'}
-          </button>
-        )} */}
+
         {isLoading && <p>Loading...</p>}
         <div className={classes.options}>
           <p className={classes['new-account']} onClick={switchFormHandler}>

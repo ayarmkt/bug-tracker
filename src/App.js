@@ -18,23 +18,21 @@ function App() {
 
   return (
     <div>
-      <Route path='/' exact>
+      <Route path='/bug-tracker' exact>
         {!authCtx.loggedIn && (
-          <Redirect to='/login' exact>
+          <Redirect to='/bug-tracker/login' exact>
             <Login />
           </Redirect>
         )}
         {authCtx.loggedIn && (
-          <Redirect to='/bugs-list' exact>
-            {/* <BugsListPage /> */}
+          <Redirect to='/bug-tracker/bugs-list' exact>
             <Sidebar className={classes.sidebar} />
             <BugsList className={classes.bugslist} />
-            {/* <h1>display dashboard</h1> */}
           </Redirect>
         )}
       </Route>
       {!authCtx.loggedIn && (
-        <Route path='/login' exact>
+        <Route path='/bug-tracker/login' exact>
           <Login />
         </Route>
       )}
@@ -42,16 +40,16 @@ function App() {
         <div className={classes.container}>
           <Sidebar className={classes.sidebar} />
           <Switch>
-            <Route path='/bugs-list' exact>
+            <Route path='/bug-tracker/bugs-list' exact>
               <BugsList className={classes.bugslist} />
             </Route>
-            <Route path='/bugs-list/:bugId'>
+            <Route path='/bug-tracker/bugs-list/:bugId'>
               <BugItemDetail className={classes['bug-detail']} />
             </Route>
-            <Route path='/submit-bug'>
+            <Route path='/bug-tracker/submit-bug'>
               <AddNewBug className={classes['submit-bug']} />
             </Route>
-            <Route path='/update-bug/:bugId'>
+            <Route path='/bug-tracker/update-bug/:bugId'>
               <UpdateBug className={classes['update-bug']} />
             </Route>
           </Switch>

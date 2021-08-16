@@ -17,9 +17,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
-  /* top: 30vh;
-  left: 10%; */
-
   z-index: 100;
   overflow: hidden;
   display: flex;
@@ -39,19 +36,11 @@
   margin-bottom: 10px;
 }
 
-/* 
-.btns {
-  display: flex;
-  justify-content: space-between;
-} */
-
 .cancel-btn,
 .confirm-btn {
   width: 15vw;
   height: 5vh;
   margin: 2px;
-  /* width: 20vw;
-height: 6vh; */
 }
 
 .confirm-btn {

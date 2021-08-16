@@ -1,6 +1,4 @@
 .btn {
-  /* background-color: var(--darkgray);
-  color: white; */
   font-size: 18px;
   border: none;
   border-radius: 5px;
@@ -10,12 +8,6 @@
   height: 6vh;
 }
 
-/* .btn:disabled {
-  cursor: not-allowed;
-} */
-
 .btn:hover:enabled {
-  /* background-color: white;
-  color: var(--navy); */
   cursor: pointer;
 }

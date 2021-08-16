@@ -5,21 +5,16 @@
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
-  /* align-items: center; */
 }
 
 /* TITLE */
 .container h1 {
-  /* justify-self: flex-start;
-      align-self: flex-start; */
-  /* background-color: tomato; */
   font-size: 40px;
   font-weight: 900;
 }
 
 /* FORM */
 .bug-form {
-  /* background-color: var(--third-color); */
   width: 90%;
   margin: 30px 5%;
 }
@@ -30,8 +25,6 @@
   display: grid;
   grid-template-columns: 100px 1fr;
   padding: 5px 0;
-  /* height: 50px;
-  line-height: 50px; */
 }
 
 .add-bug-input {
@@ -47,8 +40,6 @@
 .add-bug-input label,
 .add-bug-textarea label {
   grid-column: 1;
-  /* background-color: var(--third-color);
-  border: 1px red solid; */
   font-size: 18px;
   color: black;
   text-align: center;
@@ -65,10 +56,6 @@
   padding: 5px 0 5px 5px;
   font-size: 18px;
 }
-
-/* .add-bug-input textarea {
-  height: auto;
-} */
 
 /* UPDATE BUG BTN */
 .update-bug-btn {
