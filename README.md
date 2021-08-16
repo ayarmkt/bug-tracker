@@ -1,4 +1,4 @@
-Project Link: http://ayarmkt.github.io/bug-tracker/
+Project Link: http://ayarmkt.github.io/bug-tracker
 
 
 
