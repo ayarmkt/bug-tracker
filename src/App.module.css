@@ -9,7 +9,8 @@
   grid-column: 1;
 }
 
-.bugslistm .bug-detail,
+.bugslist,
+.bug-detail,
 .submit-bug,
 .update-bug {
   grid-column: 2;
