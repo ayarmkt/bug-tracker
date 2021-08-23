@@ -34,6 +34,30 @@ export const addBugsToServer = (newBug) => {
   console.log('adding succeeded');
 };
 
+export const getBugsFromServer = async () => {
+  const bugs = await db.collection('bugs').orderBy('priority');
+
+  bugs.get().then((querySnapshot) => {
+    let bugsList = [];
+    querySnapshot.forEach((doc) => {
+      bugsList.push({
+        id: doc.data().id,
+        title: doc.data().title,
+        details: doc.data().details,
+        steps: doc.data().steps,
+        version: doc.data().version,
+        priority: doc.data().priority,
+        assigned: doc.data().assigned,
+        creator: doc.data().creator,
+        time: doc.data().time,
+      });
+    });
+    return bugsList;
+  });
+
+  console.log('getting succeeded');
+};
+
 // Add a new document with a generated id.
 // db.collection('cities')
 //   .add({

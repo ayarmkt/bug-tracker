@@ -1,19 +1,31 @@
 import classes from './BugsList.module.css';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import BugItem from '../BugItem/BugItem';
 import ModalOverlay from '../../../UI/ModalOverlay';
+import { getBugsFromServer } from '../../../store/firebase-api';
 
 const BugsList = () => {
   const { bugs } = useSelector((state) => state.bugs);
   const { modalOpen } = useSelector((state) => state.ui);
 
   //eventually move to bug-slice
-  let sortedArray = [...bugs];
-  if (sortedArray.length > 1) {
-    sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
-  }
+  // let sortedArray = [...bugs];
+  // if (sortedArray.length > 1) {
+  //   sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
+  // }
+
+  const getBugs = async () => {
+    const bugsList = await getBugsFromServer();
+    console.log(bugsList);
+  };
+
+  useEffect(() => {
+    //fetch bugs
+    getBugs();
+  }, [bugs]);
 
   return (
     <React.Fragment>
