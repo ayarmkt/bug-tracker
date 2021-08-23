@@ -1,15 +1,16 @@
 import classes from './AddNewBug.module.css';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
+//import { useDispatch } from 'react-redux';
+//import { useHistory } from 'react-router';
 
-import { addNewBugs } from '../../../store/bug-slice';
+//import { addNewBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
+import { addBugsToServer } from '../../../store/firebase-api';
 
 const AddNewBug = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  //const dispatch = useDispatch();
+  //const history = useHistory();
 
   const {
     enteredValue: enteredTitle,
@@ -53,13 +54,9 @@ const AddNewBug = () => {
     resetValueHandler: resetCreator,
   } = useBugInput('');
 
-  const submitNewBugHandler = (e) => {
-    e.preventDefault();
-
-    const enteredTime = new Date().getTime();
-    const enteredId = enteredTime + enteredTitle;
-
+  const postNewBugs = () => {
     const newBug = {
+      //id: enteredTitle,
       title: enteredTitle,
       details: enteredDetails,
       steps: enteredSteps,
@@ -67,13 +64,11 @@ const AddNewBug = () => {
       priority: enteredPriority,
       assigned: enteredAssigned,
       creator: enteredCreator,
-      time: enteredTime,
-      id: enteredId,
+      //time: enteredTime,
     };
+    console.log(newBug);
 
-    dispatch(addNewBugs(newBug));
-    history.push('/bug-tracker/bugs-list');
-
+    addBugsToServer(newBug);
     resetTitle();
     resetDetails();
     resetSteps();
@@ -81,6 +76,33 @@ const AddNewBug = () => {
     resetPriority();
     resetAssigned();
     resetCreator();
+  };
+
+  const submitNewBugHandler = (e) => {
+    e.preventDefault();
+
+    //temporarily unabing time
+    //const enteredTime = new Date().getTime();
+    //const enteredId = enteredTitle;
+    //enteredTime +
+
+    // const newBug = {
+    //   //id: enteredTitle,
+    //   title: enteredTitle,
+    //   details: enteredDetails,
+    //   steps: enteredSteps,
+    //   version: enteredVersion,
+    //   priority: enteredPriority,
+    //   assigned: enteredAssigned,
+    //   creator: enteredCreator,
+    //   //time: enteredTime,
+    // };
+    // console.log(newBug);
+
+    //dispatch(addNewBugs(newBug));
+    //addBugsToServer(newBug);
+    postNewBugs();
+    // history.push('/bug-tracker/bugs-list');
   };
 
   return (

@@ -10,26 +10,26 @@ const bugSlice = createSlice({
       //sort bugs here
     },
 
-    addNewBugs(state, action) {
-      state.isUpdatingBug = false;
-      const newBug = action.payload;
+    // addNewBugs(state, action) {
+    //   state.isUpdatingBug = false;
+    //   const newBug = action.payload;
 
-      const existingItem = state.bugs.find((bug) => bug.id === newBug.id);
+    //   const existingItem = state.bugs.find((bug) => bug.id === newBug.id);
 
-      if (!existingItem) {
-        state.bugs.push({
-          id: newBug.id,
-          title: newBug.title,
-          details: newBug.details,
-          steps: newBug.steps,
-          version: newBug.version,
-          priority: newBug.priority,
-          assigned: newBug.assigned,
-          creator: newBug.creator,
-          time: newBug.time,
-        });
-      }
-    },
+    //   if (!existingItem) {
+    //     state.bugs.push({
+    //       id: newBug.id,
+    //       title: newBug.title,
+    //       details: newBug.details,
+    //       steps: newBug.steps,
+    //       version: newBug.version,
+    //       priority: newBug.priority,
+    //       assigned: newBug.assigned,
+    //       creator: newBug.creator,
+    //       time: newBug.time,
+    //     });
+    //   }
+    //},
 
     updateBugs(state, action) {
       state.isUpdatingBug = true;
@@ -81,7 +81,7 @@ const bugSlice = createSlice({
 export default bugSlice.reducer;
 export const {
   getBugs,
-  addNewBugs,
+  //addNewBugs,
   updateBugs,
   markComplete,
   deleteBugs,
