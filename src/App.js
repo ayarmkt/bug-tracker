@@ -10,6 +10,7 @@ import BugItemDetail from './components/Bugs/BugItemDetail/BugItemDetail';
 import Sidebar from './components/sidebar/Sidebar';
 import AddNewBug from './components/Bugs/AddNewBug/AddNewBug';
 import UpdateBug from './components/Bugs/UpdateBug/UpdateBug';
+import './store/firebase';
 
 function App() {
   const authCtx = useContext(AuthContext);
