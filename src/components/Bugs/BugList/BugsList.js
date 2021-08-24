@@ -19,18 +19,18 @@ const BugsList = () => {
   //   bugs.sort((a, b) => Number(a.priority) - Number(b.priority));
   // }
 
-  const getBugs = async () => {
+  const getBugs = useCallback(async () => {
     if (bugs) {
       await getBugsFromServer();
       await console.log(bugs);
-      //dispatch(getBugs(bugsList));
+      await dispatch(getBugs(bugsList));
     }
-  };
+  }, []);
 
   useEffect(() => {
     //fetch bugs
     getBugs();
-  }, [bugs]);
+  }, [getBugs]);
 
   return (
     <React.Fragment>
