@@ -6,7 +6,10 @@ const bugSlice = createSlice({
   name: 'bug',
   initialState: initialBugsState,
   reducers: {
-    getBugs() {
+    getBugs(state, action) {
+      const bugsList = action.payload;
+      state.bugs = bugsList;
+      console.log('dispatch getBugs running');
       //sort bugs here
     },
 
