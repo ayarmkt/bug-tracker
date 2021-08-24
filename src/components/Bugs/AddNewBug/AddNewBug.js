@@ -4,83 +4,53 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import { addNewBugs } from '../../../store/bug-slice';
-import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
+import useForm from '../../../hooks/useForm';
 
 const AddNewBug = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const {
-    enteredValue: enteredTitle,
-    valueChangeHandler: titleChangeHandler,
-    resetValueHandler: resetTitle,
-  } = useBugInput('');
+  const initialFormState = {
+    title: '',
+    details: '',
+    steps: '',
+    version: '',
+    priority: '',
+    assigned: '',
+    creator: '',
+  };
 
-  const {
-    enteredValue: enteredDetails,
-    valueChangeHandler: detailsChangeHandler,
-    resetValueHandler: resetDetails,
-  } = useBugInput('');
+  const resetFormState = {
+    title: '',
+    details: '',
+    steps: '',
+    version: '',
+    priority: '',
+    assigned: '',
+    creator: '',
+  };
 
-  const {
-    enteredValue: enteredSteps,
-    valueChangeHandler: stepsChangeHandler,
-    resetValueHandler: resetSteps,
-  } = useBugInput('');
-
-  const {
-    enteredValue: enteredVersion,
-    valueChangeHandler: versionChangeHandler,
-    resetValueHandler: resetVersion,
-  } = useBugInput('');
-
-  const {
-    enteredValue: enteredPriority,
-    valueChangeHandler: priorityChangeHandler,
-    resetValueHandler: resetPriority,
-  } = useBugInput('1');
-
-  const {
-    enteredValue: enteredAssigned,
-    valueChangeHandler: assignedChangeHandler,
-    resetValueHandler: resetAssigned,
-  } = useBugInput('');
-
-  const {
-    enteredValue: enteredCreator,
-    valueChangeHandler: creatorChangeHandler,
-    resetValueHandler: resetCreator,
-  } = useBugInput('');
+  const { formData, handleInputChange, resetForm } = useForm(
+    initialFormState,
+    resetFormState
+  );
 
   const submitNewBugHandler = (e) => {
     e.preventDefault();
 
     const enteredTime = new Date().getTime();
-    const enteredId = enteredTime + enteredTitle;
+    const enteredId = enteredTime + formData.title;
 
     const newBug = {
-      title: enteredTitle,
-      details: enteredDetails,
-      steps: enteredSteps,
-      version: enteredVersion,
-      priority: enteredPriority,
-      assigned: enteredAssigned,
-      creator: enteredCreator,
+      ...formData,
       time: enteredTime,
       id: enteredId,
     };
 
     dispatch(addNewBugs(newBug));
+    resetForm();
     history.push('/bug-tracker/bugs-list');
-
-    resetTitle();
-    resetDetails();
-    resetSteps();
-    resetVersion();
-    resetPriority();
-    resetAssigned();
-    resetCreator();
   };
 
   return (
@@ -92,41 +62,49 @@ const AddNewBug = () => {
             <label>Title</label>
             <input
               type='text'
+              name='title'
               placeholder='enter title'
-              onChange={titleChangeHandler}
-              value={enteredTitle}
+              onChange={handleInputChange}
+              value={formData.title}
             />
           </div>
           <div className={classes['add-bug-textarea']}>
             <label>Details</label>
             <textarea
               type='text'
+              name='details'
               placeholder='enter details'
-              onChange={detailsChangeHandler}
-              value={enteredDetails}
+              onChange={handleInputChange}
+              value={formData.details}
             />
           </div>
           <div className={classes['add-bug-textarea']}>
             <label>Steps</label>
             <textarea
               type='text'
+              name='steps'
               placeholder='enter steps'
-              onChange={stepsChangeHandler}
-              value={enteredSteps}
+              onChange={handleInputChange}
+              value={formData.steps}
             />
           </div>
           <div className={classes['add-bug-input']}>
             <label>Version</label>
             <input
               type='text'
+              name='version'
               placeholder='enter version'
-              onChange={versionChangeHandler}
-              value={enteredVersion}
+              onChange={handleInputChange}
+              value={formData.version}
             />
           </div>
           <div className={classes['add-bug-input']}>
             <label>Priority</label>
-            <select onChange={priorityChangeHandler} value={enteredPriority}>
+            <select
+              name='priority'
+              onChange={handleInputChange}
+              value={formData.priority}
+            >
               {/* defaultValue={'1'} */}
               <option value='1'>High</option>
               <option value='2'>Mid</option>
@@ -137,18 +115,20 @@ const AddNewBug = () => {
             <label>Assigned</label>
             <input
               type='text'
+              name='assigned'
               placeholder='enter assigned person'
-              onChange={assignedChangeHandler}
-              value={enteredAssigned}
+              onChange={handleInputChange}
+              value={formData.assigned}
             />
           </div>
           <div className={classes['add-bug-input']}>
             <label>Creator</label>
             <input
               type='text'
+              name='creator'
               placeholder='enter creator'
-              onChange={creatorChangeHandler}
-              value={enteredCreator}
+              onChange={handleInputChange}
+              value={formData.creator}
             />
           </div>
         </div>
