@@ -6,7 +6,10 @@ import { useHistory } from 'react-router';
 //import { addNewBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
-import { sendBugsToServer } from '../../../store/bug-actions';
+import {
+  sendBugsToServer,
+  getBugsFromServer,
+} from '../../../store/bug-actions';
 
 const AddNewBug = () => {
   //const dispatch = useDispatch();
@@ -54,7 +57,7 @@ const AddNewBug = () => {
     resetValueHandler: resetCreator,
   } = useBugInput('');
 
-  const submitNewBugToServer = () => {
+  const submitNewBugToServer = async () => {
     //const enteredTime = new Date().getTime();
     //const enteredId = enteredTime + enteredTitle;
 
@@ -70,18 +73,19 @@ const AddNewBug = () => {
       //id: enteredId,
     };
 
-    sendBugsToServer(newBug);
+    await sendBugsToServer(newBug);
+    //await dispatch(addNewBugs(newBug));
 
-    //dispatch(addNewBugs(newBug));
-    history.push('/bug-tracker/bugs-list');
-
-    resetTitle();
-    resetDetails();
-    resetSteps();
-    resetVersion();
-    resetPriority();
-    resetAssigned();
-    resetCreator();
+    //change later
+    await resetTitle();
+    await resetDetails();
+    await resetSteps();
+    await resetVersion();
+    await resetPriority();
+    await resetAssigned();
+    await resetCreator();
+    await getBugsFromServer();
+    await history.push('/bug-tracker/bugs-list');
   };
 
   const submitNewBugHandler = (e) => {

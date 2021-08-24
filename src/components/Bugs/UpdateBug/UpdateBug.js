@@ -75,7 +75,9 @@ const EditBug = () => {
       id: enteredId,
     };
 
+    //1. dispatch and update bugs state
     dispatch(updateBugs(newBug));
+    //2. PUT the whole new bugs list
     history.push('/bug-tracker/bugs-list');
 
     resetTitle();

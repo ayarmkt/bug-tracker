@@ -1,10 +1,10 @@
-import { bugsDataURL } from '../ignoreInfo';
+const databaseURL = process.env.REACT_APP_DATABASE_URL;
 
 export const sendBugsToServer = (newBug) => {
   const storeData = async (newBug) => {
     console.log('running sendBugsToServer');
 
-    const response = await fetch(bugsDataURL, {
+    const response = await fetch(`${databaseURL}/bugs.json`, {
       method: 'POST',
       body: JSON.stringify({
         id: `${new Date().getTime()}${newBug.title}`.split(' ').join(''),
@@ -32,11 +32,11 @@ export const sendBugsToServer = (newBug) => {
   }
 };
 
-export const getBugsFromServer = () => {
+export const getBugsFromServer = async () => {
   const fetchData = async () => {
     console.log('running getBugsFromServer');
 
-    const response = await fetch(bugsDataURL);
+    const response = await fetch(`${databaseURL}/bugs.json`);
 
     if (!response.ok) {
       throw new Error('cannot get bugs list');
@@ -45,7 +45,7 @@ export const getBugsFromServer = () => {
     const data = await response.json();
     console.log(data);
 
-    const bugsList = [];
+    let bugsList = [];
     //Firebase has a key for each item
     for (const key in data) {
       bugsList.push({
@@ -71,7 +71,8 @@ export const getBugsFromServer = () => {
   };
 
   try {
-    fetchData();
+    const bugsList = await fetchData();
+    return bugsList;
   } catch (error) {
     console.error(error.message);
   }
@@ -82,7 +83,7 @@ export const getBugsFromServer = () => {
 //     const storeData = async (newBug) => {
 //       console.log('running storeDataToServer');
 
-//       const response = await fetch(bugsDataURL, {
+//       const response = await fetch(databaseURL, {
 //         method: 'POST',
 //         body: JSON.stringify({
 //           id: `${new Date().getTime()}${newBug.title}`,
