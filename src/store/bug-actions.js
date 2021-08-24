@@ -32,6 +32,7 @@ export const sendBugsToServer = (newBug) => {
   }
 };
 
+
 export const getBugsFromServer = async () => {
   const fetchData = async () => {
     console.log('running getBugsFromServer');
