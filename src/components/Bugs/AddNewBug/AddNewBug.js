@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 //import { addNewBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
+
 import {
   sendBugsToServer,
   getBugsFromServer,
@@ -86,6 +87,37 @@ const AddNewBug = () => {
     await resetCreator();
     await getBugsFromServer();
     await history.push('/bug-tracker/bugs-list');
+  };
+
+  const submitNewBugHandler = (e) => {
+    e.preventDefault();
+    submitNewBugToServer();
+
+    // const enteredTime = new Date().getTime();
+    // const enteredId = enteredTime + enteredTitle;
+
+    // const newBug = {
+    //   title: enteredTitle,
+    //   details: enteredDetails,
+    //   steps: enteredSteps,
+    //   version: enteredVersion,
+    //   priority: enteredPriority,
+    //   assigned: enteredAssigned,
+    //   creator: enteredCreator,
+    //   time: enteredTime,
+    //   id: enteredId,
+    // };
+
+    // dispatch(addNewBugs(newBug));
+    // history.push('/bug-tracker/bugs-list');
+
+    // resetTitle();
+    // resetDetails();
+    // resetSteps();
+    // resetVersion();
+    // resetPriority();
+    // resetAssigned();
+    // resetCreator();
   };
 
   const submitNewBugHandler = (e) => {
