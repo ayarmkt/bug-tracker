@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import { db } from './firebase';
+import { setBugsState } from '../store/bug-slice';
 
 export const addBugsToServer = (newBug) => {
   const timestampString = new Date().getTime();
@@ -34,28 +35,34 @@ export const addBugsToServer = (newBug) => {
   console.log('adding succeeded');
 };
 
-export const getBugsFromServer = async () => {
-  const bugs = await db.collection('bugs').orderBy('priority');
+export const getBugsFromServer = () => {
+  return (dispatch) => {
+    const getData = async () => {
+      const bugs = await db.collection('bugs').orderBy('priority');
 
-  bugs.get().then((querySnapshot) => {
-    let bugsList = [];
-    querySnapshot.forEach((doc) => {
-      bugsList.push({
-        id: doc.data().id,
-        title: doc.data().title,
-        details: doc.data().details,
-        steps: doc.data().steps,
-        version: doc.data().version,
-        priority: doc.data().priority,
-        assigned: doc.data().assigned,
-        creator: doc.data().creator,
-        time: doc.data().time,
+      const bugsList = await bugs.get().then((querySnapshot) => {
+        let bugsArray = [];
+        querySnapshot.forEach((doc) => {
+          bugsArray.push({
+            id: doc.data().id,
+            title: doc.data().title,
+            details: doc.data().details,
+            steps: doc.data().steps,
+            version: doc.data().version,
+            priority: doc.data().priority,
+            assigned: doc.data().assigned,
+            creator: doc.data().creator,
+            time: doc.data().time,
+          });
+        });
+        console.log(bugsArray);
+        return bugsArray;
       });
-    });
-    return bugsList;
-  });
-
-  console.log('getting succeeded');
+      await dispatch(setBugsState(bugsList));
+      //return bugsList;
+    };
+    getData();
+  };
 };
 
 // Add a new document with a generated id.

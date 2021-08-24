@@ -6,7 +6,13 @@ const bugSlice = createSlice({
   name: 'bug',
   initialState: initialBugsState,
   reducers: {
-    getBugs() {
+    setBugsState(state, action) {
+      console.log('big slice getBugs working');
+
+      const bugsList = action.payload;
+      state.bugs = bugsList;
+      console.log(state.bugs);
+
       //sort bugs here
     },
 
@@ -80,7 +86,7 @@ const bugSlice = createSlice({
 
 export default bugSlice.reducer;
 export const {
-  getBugs,
+  setBugsState,
   //addNewBugs,
   updateBugs,
   markComplete,

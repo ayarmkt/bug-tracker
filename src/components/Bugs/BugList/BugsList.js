@@ -2,24 +2,29 @@ import classes from './BugsList.module.css';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+//import { useDispatch } from 'react-redux';
 
 import BugItem from '../BugItem/BugItem';
 import ModalOverlay from '../../../UI/ModalOverlay';
 import { getBugsFromServer } from '../../../store/firebase-api';
 
 const BugsList = () => {
+  //const dispatch = useDispatch();
   const { bugs } = useSelector((state) => state.bugs);
   const { modalOpen } = useSelector((state) => state.ui);
 
   //eventually move to bug-slice
-  // let sortedArray = [...bugs];
-  // if (sortedArray.length > 1) {
-  //   sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
+  // let bugs = [...bugs];
+  // if (bugs.length > 1) {
+  //   bugs.sort((a, b) => Number(a.priority) - Number(b.priority));
   // }
 
   const getBugs = async () => {
-    const bugsList = await getBugsFromServer();
-    console.log(bugsList);
+    if (bugs) {
+      await getBugsFromServer();
+      await console.log(bugs);
+      //dispatch(getBugs(bugsList));
+    }
   };
 
   useEffect(() => {
@@ -43,8 +48,8 @@ const BugsList = () => {
               <p>Delete</p>
             </div>
           </li>
-          {sortedArray.length >= 1 &&
-            sortedArray.map((bug) => (
+          {bugs.length >= 1 &&
+            bugs.map((bug) => (
               <BugItem
                 className={classes.items}
                 key={bug.id}
@@ -52,9 +57,7 @@ const BugsList = () => {
                 bug={bug}
               />
             ))}
-          {sortedArray.length === 0 && (
-            <p className={classes.error}>No bugs found.</p>
-          )}
+          {bugs.length === 0 && <p className={classes.error}>No bugs found.</p>}
         </ul>
       </div>
       {modalOpen && <ModalOverlay />}
