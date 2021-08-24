@@ -1,14 +1,15 @@
 import classes from './AddNewBug.module.css';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
-import { addNewBugs } from '../../../store/bug-slice';
+//import { addNewBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
+import { sendBugsToServer } from '../../../store/bug-actions';
 
 const AddNewBug = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const history = useHistory();
 
   const {
@@ -53,11 +54,9 @@ const AddNewBug = () => {
     resetValueHandler: resetCreator,
   } = useBugInput('');
 
-  const submitNewBugHandler = (e) => {
-    e.preventDefault();
-
-    const enteredTime = new Date().getTime();
-    const enteredId = enteredTime + enteredTitle;
+  const submitNewBugToServer = () => {
+    //const enteredTime = new Date().getTime();
+    //const enteredId = enteredTime + enteredTitle;
 
     const newBug = {
       title: enteredTitle,
@@ -67,11 +66,13 @@ const AddNewBug = () => {
       priority: enteredPriority,
       assigned: enteredAssigned,
       creator: enteredCreator,
-      time: enteredTime,
-      id: enteredId,
+      //time: enteredTime,
+      //id: enteredId,
     };
 
-    dispatch(addNewBugs(newBug));
+    sendBugsToServer(newBug);
+
+    //dispatch(addNewBugs(newBug));
     history.push('/bug-tracker/bugs-list');
 
     resetTitle();
@@ -81,6 +82,37 @@ const AddNewBug = () => {
     resetPriority();
     resetAssigned();
     resetCreator();
+  };
+
+  const submitNewBugHandler = (e) => {
+    e.preventDefault();
+    submitNewBugToServer();
+
+    // const enteredTime = new Date().getTime();
+    // const enteredId = enteredTime + enteredTitle;
+
+    // const newBug = {
+    //   title: enteredTitle,
+    //   details: enteredDetails,
+    //   steps: enteredSteps,
+    //   version: enteredVersion,
+    //   priority: enteredPriority,
+    //   assigned: enteredAssigned,
+    //   creator: enteredCreator,
+    //   time: enteredTime,
+    //   id: enteredId,
+    // };
+
+    // dispatch(addNewBugs(newBug));
+    // history.push('/bug-tracker/bugs-list');
+
+    // resetTitle();
+    // resetDetails();
+    // resetSteps();
+    // resetVersion();
+    // resetPriority();
+    // resetAssigned();
+    // resetCreator();
   };
 
   return (
