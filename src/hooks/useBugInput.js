@@ -1,17 +1,17 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-const useBugInput = (initValue) => {
-  const [enteredValue, setEnteredValue] = useState(initValue);
+// const useBugInput = (initValue) => {
+//   const [enteredValue, setEnteredValue] = useState(initValue);
 
-  const valueChangeHandler = (e) => {
-    setEnteredValue(e.target.value);
-  };
+//   const valueChangeHandler = (e) => {
+//     setEnteredValue(e.target.value);
+//   };
 
-  const resetValueHandler = () => {
-    setEnteredValue('');
-  };
+//   const resetValueHandler = () => {
+//     setEnteredValue('');
+//   };
 
-  return { enteredValue, valueChangeHandler, resetValueHandler };
-};
+//   return { enteredValue, valueChangeHandler, resetValueHandler };
+// };
 
-export default useBugInput;
+// export default useBugInput;
