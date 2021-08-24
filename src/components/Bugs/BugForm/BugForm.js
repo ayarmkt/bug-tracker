@@ -1,62 +1,12 @@
-import classes from './AddNewBug.module.css';
+import classes from './BugForm.module.css';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-
-import { addNewBugs } from '../../../store/bug-slice';
 import Button from '../../../UI/Button';
-import useForm from '../../../hooks/useForm';
 
-const AddNewBug = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  const initialFormState = {
-    title: '',
-    details: '',
-    steps: '',
-    version: '',
-    priority: '',
-    assigned: '',
-    creator: '',
-  };
-
-  const resetFormState = {
-    title: '',
-    details: '',
-    steps: '',
-    version: '',
-    priority: '',
-    assigned: '',
-    creator: '',
-  };
-
-  const { formData, handleInputChange, resetForm } = useForm(
-    initialFormState,
-    resetFormState
-  );
-
-  const submitNewBugHandler = (e) => {
-    e.preventDefault();
-
-    const enteredTime = new Date().getTime();
-    const enteredId = enteredTime + formData.title;
-
-    const newBug = {
-      ...formData,
-      time: enteredTime,
-      id: enteredId,
-    };
-
-    dispatch(addNewBugs(newBug));
-    resetForm();
-    history.push('/bug-tracker/bugs-list');
-  };
-
+const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
   return (
     <div className={classes.container}>
-      <h1>Add New Bug</h1>
-      <form className={classes['bug-form']} onSubmit={submitNewBugHandler}>
+      <h1>{title}</h1>
+      <form className={classes['bug-form']} onSubmit={onSubmit}>
         <div className={classes['add-bug-form']}>
           <div className={classes['add-bug-input']}>
             <label>Title</label>
@@ -64,7 +14,7 @@ const AddNewBug = () => {
               type='text'
               name='title'
               placeholder='enter title'
-              onChange={handleInputChange}
+              onChange={onChange}
               value={formData.title}
             />
           </div>
@@ -74,7 +24,7 @@ const AddNewBug = () => {
               type='text'
               name='details'
               placeholder='enter details'
-              onChange={handleInputChange}
+              onChange={onChange}
               value={formData.details}
             />
           </div>
@@ -84,7 +34,7 @@ const AddNewBug = () => {
               type='text'
               name='steps'
               placeholder='enter steps'
-              onChange={handleInputChange}
+              onChange={onChange}
               value={formData.steps}
             />
           </div>
@@ -94,7 +44,7 @@ const AddNewBug = () => {
               type='text'
               name='version'
               placeholder='enter version'
-              onChange={handleInputChange}
+              onChange={onChange}
               value={formData.version}
             />
           </div>
@@ -102,10 +52,9 @@ const AddNewBug = () => {
             <label>Priority</label>
             <select
               name='priority'
-              onChange={handleInputChange}
+              onChange={onChange}
               value={formData.priority}
             >
-              {/* defaultValue={'1'} */}
               <option value='1'>High</option>
               <option value='2'>Mid</option>
               <option value='3'>Low</option>
@@ -117,7 +66,7 @@ const AddNewBug = () => {
               type='text'
               name='assigned'
               placeholder='enter assigned person'
-              onChange={handleInputChange}
+              onChange={onChange}
               value={formData.assigned}
             />
           </div>
@@ -127,7 +76,7 @@ const AddNewBug = () => {
               type='text'
               name='creator'
               placeholder='enter creator'
-              onChange={handleInputChange}
+              onChange={onChange}
               value={formData.creator}
             />
           </div>
@@ -135,13 +84,13 @@ const AddNewBug = () => {
         <Button
           type='submit'
           disabled={false}
-          className={classes['add-bug-btn']}
-          onClick={submitNewBugHandler}
-          text='Add new bug'
+          className={classes['submit-btn']}
+          onClick={onClick}
+          text={btnText}
         />
       </form>
     </div>
   );
 };
 
-export default AddNewBug;
+export default BugForm;
