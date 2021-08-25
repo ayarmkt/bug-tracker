@@ -22,16 +22,19 @@ const BugsList = () => {
     sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
   }
 
+  dispatch(getBugs(bugs));
+
   const getData = useCallback(async () => {
     //await console.log('getData running');
     const storedBugs = await getBugsFromServer();
-    await console.log(storedBugs);
+    //await console.log(storedBugs);
     await dispatch(getBugs(storedBugs));
     //await sortArray(bugs);
     //await console.log(sortedArray);
     //await console.log(bugs);
   }, []);
 
+  //added bugs
   useEffect(() => {
     getData();
   }, [getData]);

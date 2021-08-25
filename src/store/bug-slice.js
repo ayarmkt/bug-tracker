@@ -9,7 +9,7 @@ const bugSlice = createSlice({
     getBugs(state, action) {
       const bugsList = action.payload;
       state.bugs = bugsList;
-      console.log('dispatch getBugs running');
+      //console.log('dispatch getBugs running');
       console.log(state.bugs);
       //sort bugs here
     },
@@ -64,7 +64,7 @@ const bugSlice = createSlice({
       state.isUpdatingBug = false;
       state.selectedBug = null;
     },
-    markComplete() {},
+    //markComplete() {},
     deleteBugs(state, action) {
       state.selectedBug = action.payload;
       const existingItem = state.bugs.find(
@@ -76,6 +76,7 @@ const bugSlice = createSlice({
         state.bugs.splice(existingItemIndex, 1);
       }
 
+      console.log(state.bugs);
       state.selectedBug = null;
     },
     storeSelectedBug(state, action) {
@@ -89,7 +90,7 @@ export const {
   getBugs,
   //addNewBugs,
   updateBugs,
-  markComplete,
+  //markComplete,
   deleteBugs,
   storeSelectedBug,
 } = bugSlice.actions;

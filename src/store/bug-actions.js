@@ -2,7 +2,7 @@ const databaseURL = process.env.REACT_APP_DATABASE_URL;
 
 export const sendNewBugsToServer = (newBug) => {
   const storeData = async (newBug) => {
-    console.log('running sendBugsToServer');
+    //console.log('running sendBugsToServer');
 
     const response = await fetch(`${databaseURL}/bugs.json`, {
       method: 'POST',
@@ -34,8 +34,8 @@ export const sendNewBugsToServer = (newBug) => {
 
 export const sendUpdatedBugToServer = (newBug, key) => {
   const storeData = async (newBug) => {
-    console.log('running sendUpdatedBugsToServer');
-    console.log(newBug);
+    //console.log('running sendUpdatedBugsToServer');
+    //console.log(newBug);
 
     const response = await fetch(`${databaseURL}/bugs/${key}.json`, {
       method: 'PUT',
@@ -55,9 +55,32 @@ export const sendUpdatedBugToServer = (newBug, key) => {
   }
 };
 
+export const sendDeletedBugInfoToServer = (selectedBug, key) => {
+  const storeData = async (selectedBug) => {
+    //console.log('running sendDeletedBugInfoToServer');
+    //console.log(selectedBug);
+
+    const response = await fetch(`${databaseURL}/bugs/${key}.json`, {
+      method: 'DELETE',
+      body: JSON.stringify(selectedBug),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      throw new Error('cannot store new bug');
+    }
+  };
+
+  try {
+    storeData(selectedBug);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
 export const getBugsFromServer = async () => {
   const fetchData = async () => {
-    console.log('running getBugsFromServer');
+    //console.log('running getBugsFromServer');
 
     const response = await fetch(`${databaseURL}/bugs.json`);
 
@@ -66,7 +89,7 @@ export const getBugsFromServer = async () => {
     }
 
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     // for (const key in data) {
     //   console.log({ ...data[key], key });
     // }
@@ -89,7 +112,7 @@ export const getBugsFromServer = async () => {
       const newData = { ...data[key], key };
       bugsList.push(newData);
     }
-    console.log(bugsList);
+    //console.log(bugsList);
     return bugsList;
 
     // const sortedArray = [...bugsList];
