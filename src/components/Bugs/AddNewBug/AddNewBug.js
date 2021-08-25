@@ -1,14 +1,19 @@
 import classes from './AddNewBug.module.css';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
-import { addNewBugs } from '../../../store/bug-slice';
+//import { addNewBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
 
+import {
+  sendNewBugsToServer,
+  getBugsFromServer,
+} from '../../../store/bug-actions';
+
 const AddNewBug = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const history = useHistory();
 
   const {
@@ -53,11 +58,9 @@ const AddNewBug = () => {
     resetValueHandler: resetCreator,
   } = useBugInput('');
 
-  const submitNewBugHandler = (e) => {
-    e.preventDefault();
-
-    const enteredTime = new Date().getTime();
-    const enteredId = enteredTime + enteredTitle;
+  const submitNewBug = async () => {
+    //const enteredTime = new Date().getTime();
+    //const enteredId = enteredTime + enteredTitle;
 
     const newBug = {
       title: enteredTitle,
@@ -67,20 +70,28 @@ const AddNewBug = () => {
       priority: enteredPriority,
       assigned: enteredAssigned,
       creator: enteredCreator,
-      time: enteredTime,
-      id: enteredId,
+      //time: enteredTime,
+      //id: enteredId,
     };
 
-    dispatch(addNewBugs(newBug));
-    history.push('/bug-tracker/bugs-list');
+    await sendNewBugsToServer(newBug);
+    //await dispatch(addNewBugs(newBug));
 
-    resetTitle();
-    resetDetails();
-    resetSteps();
-    resetVersion();
-    resetPriority();
-    resetAssigned();
-    resetCreator();
+    //change later
+    await resetTitle();
+    await resetDetails();
+    await resetSteps();
+    await resetVersion();
+    await resetPriority();
+    await resetAssigned();
+    await resetCreator();
+    await getBugsFromServer();
+    await history.push('/bug-tracker/bugs-list');
+  };
+
+  const submitNewBugHandler = (e) => {
+    e.preventDefault();
+    submitNewBug();
   };
 
   return (
