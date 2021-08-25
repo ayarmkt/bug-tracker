@@ -18,8 +18,6 @@ const EditBug = () => {
 
   const { bugs } = useSelector((state) => state.bugs);
   console.log(bugs);
-  const newBugsList = [...bugs];
-  console.log(newBugsList);
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
 
   const {
