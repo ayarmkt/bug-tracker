@@ -6,32 +6,37 @@ const bugSlice = createSlice({
   name: 'bug',
   initialState: initialBugsState,
   reducers: {
-    getBugs() {
+    getBugs(state, action) {
+      const bugsList = action.payload;
+      state.bugs = bugsList;
+      console.log('dispatch getBugs running');
+      console.log(state.bugs);
       //sort bugs here
     },
 
-    addNewBugs(state, action) {
-      state.isUpdatingBug = false;
-      const newBug = action.payload;
+    // addNewBugs(state, action) {
+    //   state.isUpdatingBug = false;
+    //   const newBug = action.payload;
 
-      const existingItem = state.bugs.find((bug) => bug.id === newBug.id);
+    //   const existingItem = state.bugs.find((bug) => bug.id === newBug.id);
 
-      if (!existingItem) {
-        state.bugs.push({
-          id: newBug.id,
-          title: newBug.title,
-          details: newBug.details,
-          steps: newBug.steps,
-          version: newBug.version,
-          priority: newBug.priority,
-          assigned: newBug.assigned,
-          creator: newBug.creator,
-          time: newBug.time,
-        });
-      }
-    },
+    //   if (!existingItem) {
+    //     state.bugs.push({
+    //       id: newBug.id,
+    //       title: newBug.title,
+    //       details: newBug.details,
+    //       steps: newBug.steps,
+    //       version: newBug.version,
+    //       priority: newBug.priority,
+    //       assigned: newBug.assigned,
+    //       creator: newBug.creator,
+    //       time: newBug.time,
+    //     });
+    //   }
+    // },
 
     updateBugs(state, action) {
+      console.log('dispatch updateBugs running');
       state.isUpdatingBug = true;
       state.selectedBug = action.payload;
       const existingItem = state.bugs.find(
@@ -48,13 +53,14 @@ const bugSlice = createSlice({
         priority: state.selectedBug.priority,
         assigned: state.selectedBug.assigned,
         creator: state.selectedBug.creator,
-        time: state.selectedBug.time,
+        time: new Date().getTime(),
       };
 
       if (existingItem) {
         state.bugs.splice(existingItemIndex, 1, bugUpdate);
       }
 
+      console.log(state.bugs);
       state.isUpdatingBug = false;
       state.selectedBug = null;
     },
@@ -81,7 +87,7 @@ const bugSlice = createSlice({
 export default bugSlice.reducer;
 export const {
   getBugs,
-  addNewBugs,
+  //addNewBugs,
   updateBugs,
   markComplete,
   deleteBugs,
