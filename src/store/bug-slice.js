@@ -9,7 +9,7 @@ const bugSlice = createSlice({
     getBugs(state, action) {
       const bugsList = action.payload;
       state.bugs = bugsList;
-      //console.log('dispatch getBugs running');
+      console.log('dispatch getBugs running');
       console.log(state.bugs);
       //sort bugs here
     },
