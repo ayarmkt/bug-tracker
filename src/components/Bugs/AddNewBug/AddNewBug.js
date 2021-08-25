@@ -8,7 +8,7 @@ import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
 
 import {
-  sendBugsToServer,
+  sendNewBugsToServer,
   getBugsFromServer,
 } from '../../../store/bug-actions';
 
@@ -58,7 +58,7 @@ const AddNewBug = () => {
     resetValueHandler: resetCreator,
   } = useBugInput('');
 
-  const submitNewBugToServer = async () => {
+  const submitNewBug = async () => {
     //const enteredTime = new Date().getTime();
     //const enteredId = enteredTime + enteredTitle;
 
@@ -74,7 +74,7 @@ const AddNewBug = () => {
       //id: enteredId,
     };
 
-    await sendBugsToServer(newBug);
+    await sendNewBugsToServer(newBug);
     //await dispatch(addNewBugs(newBug));
 
     //change later
@@ -91,64 +91,7 @@ const AddNewBug = () => {
 
   const submitNewBugHandler = (e) => {
     e.preventDefault();
-    submitNewBugToServer();
-
-    // const enteredTime = new Date().getTime();
-    // const enteredId = enteredTime + enteredTitle;
-
-    // const newBug = {
-    //   title: enteredTitle,
-    //   details: enteredDetails,
-    //   steps: enteredSteps,
-    //   version: enteredVersion,
-    //   priority: enteredPriority,
-    //   assigned: enteredAssigned,
-    //   creator: enteredCreator,
-    //   time: enteredTime,
-    //   id: enteredId,
-    // };
-
-    // dispatch(addNewBugs(newBug));
-    // history.push('/bug-tracker/bugs-list');
-
-    // resetTitle();
-    // resetDetails();
-    // resetSteps();
-    // resetVersion();
-    // resetPriority();
-    // resetAssigned();
-    // resetCreator();
-  };
-
-  const submitNewBugHandler = (e) => {
-    e.preventDefault();
-    submitNewBugToServer();
-
-    // const enteredTime = new Date().getTime();
-    // const enteredId = enteredTime + enteredTitle;
-
-    // const newBug = {
-    //   title: enteredTitle,
-    //   details: enteredDetails,
-    //   steps: enteredSteps,
-    //   version: enteredVersion,
-    //   priority: enteredPriority,
-    //   assigned: enteredAssigned,
-    //   creator: enteredCreator,
-    //   time: enteredTime,
-    //   id: enteredId,
-    // };
-
-    // dispatch(addNewBugs(newBug));
-    // history.push('/bug-tracker/bugs-list');
-
-    // resetTitle();
-    // resetDetails();
-    // resetSteps();
-    // resetVersion();
-    // resetPriority();
-    // resetAssigned();
-    // resetCreator();
+    submitNewBug();
   };
 
   return (
