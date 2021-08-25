@@ -2,7 +2,7 @@ import classes from './ModalOverlay.module.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
-//import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 //import { useCallback } from 'react';
 //import { useEffect } from 'react';
 
@@ -27,7 +27,7 @@ const Modal = () => {
   //console.log(selectedBug);
   const selectedBugKey = selectedBug.key;
   //console.log(selectedBugKey);
-  //const history = useHistory();
+  const history = useHistory();
 
   const closeModalHandler = () => {
     dispatch(closeModal());
@@ -36,43 +36,14 @@ const Modal = () => {
   const sendBugDelete = async () => {
     dispatch(deleteBugs(selectedBug));
     await sendDeletedBugInfoToServer(selectedBug, selectedBugKey);
-    //const storedBugs = await getBugsFromServer();
     await getBugsFromServer();
-    //await dispatch(getBugs(storedBugs));
-    //await history.push('/bug-tracker/bugs-list');
-    // if (!modalOpen) {
-    //   await getBugsFromServer();
-    //   await history.push('/bug-tracker/bugs-list');
-    // }
   };
 
   const deleteBugHandler = () => {
     sendBugDelete();
-    //dispatch(deleteBugs(selectedBug));
     dispatch(closeModal());
+    history.push('/bug-tracker/bugs-list');
   };
-
-  //////////PASTE/////////////
-  // //eventually move to bug-slice
-  // let sortedArray = [...bugs];
-  // if (sortedArray.length > 1) {
-  //   sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
-  // }
-
-  // const getData = useCallback(async () => {
-  //   //await console.log('getData running');
-  //   const storedBugs = await getBugsFromServer();
-  //   await dispatch(getBugs(storedBugs));
-  //   //await sortArray(bugs);
-  //   //await console.log(sortedArray);
-  //   //await console.log(bugs);
-  // }, []);
-
-  // //added bugs
-  // useEffect(() => {
-  //   getData();
-  // }, [getData, bugs]);
-  //////////PASTE/////////////
 
   return (
     <section className={classes.modal}>
