@@ -32,28 +32,28 @@ export const sendNewBugsToServer = (newBug) => {
   }
 };
 
-// export const sendUpdatedBugsToServer = (newBugsList) => {
-//   const storeData = async (newBugsList) => {
-//     console.log('running sendUpdatedBugsToServer');
-//     console.log(newBugsList);
+export const sendUpdatedBugToServer = (newBug, key) => {
+  const storeData = async (newBug) => {
+    console.log('running sendUpdatedBugsToServer');
+    console.log(newBug);
 
-//     const response = await fetch(`${databaseURL}/bugs.json`, {
-//       method: 'PUT',
-//       body: JSON.stringify(newBugsList),
-//       headers: { 'Content-Type': 'application/json' },
-//     });
+    const response = await fetch(`${databaseURL}/bugs/${key}.json`, {
+      method: 'PUT',
+      body: JSON.stringify(newBug),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-//     if (!response.ok) {
-//       throw new Error('cannot store new bug');
-//     }
-//   };
+    if (!response.ok) {
+      throw new Error('cannot store new bug');
+    }
+  };
 
-//   try {
-//     storeData(newBugsList);
-//   } catch (error) {
-//     console.error(error.message);
-//   }
-// };
+  try {
+    storeData(newBug);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
 
 export const getBugsFromServer = async () => {
   const fetchData = async () => {
@@ -67,21 +67,27 @@ export const getBugsFromServer = async () => {
 
     const data = await response.json();
     console.log(data);
+    // for (const key in data) {
+    //   console.log({ ...data[key], key });
+    // }
 
     let bugsList = [];
     //Firebase has a key for each item
     for (const key in data) {
-      bugsList.push({
-        id: data[key].id,
-        title: data[key].title,
-        details: data[key].details,
-        steps: data[key].steps,
-        version: data[key].version,
-        priority: data[key].priority,
-        assigned: data[key].assigned,
-        creator: data[key].creator,
-        time: data[key].time,
-      });
+      // bugsList.push({
+      //   id: data[key].id,
+      //   title: data[key].title,
+      //   details: data[key].details,
+      //   steps: data[key].steps,
+      //   version: data[key].version,
+      //   priority: data[key].priority,
+      //   assigned: data[key].assigned,
+      //   creator: data[key].creator,
+      //   time: data[key].time,
+      //   //keyId: key,
+      // });
+      const newData = { ...data[key], key };
+      bugsList.push(newData);
     }
     console.log(bugsList);
     return bugsList;
