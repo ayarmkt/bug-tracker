@@ -1,6 +1,6 @@
 const databaseURL = process.env.REACT_APP_DATABASE_URL;
 
-export const sendBugsToServer = (newBug) => {
+export const sendNewBugsToServer = (newBug) => {
   const storeData = async (newBug) => {
     console.log('running sendBugsToServer');
 
@@ -32,6 +32,28 @@ export const sendBugsToServer = (newBug) => {
   }
 };
 
+// export const sendUpdatedBugsToServer = (newBugsList) => {
+//   const storeData = async (newBugsList) => {
+//     console.log('running sendUpdatedBugsToServer');
+//     console.log(newBugsList);
+
+//     const response = await fetch(`${databaseURL}/bugs.json`, {
+//       method: 'PUT',
+//       body: JSON.stringify(newBugsList),
+//       headers: { 'Content-Type': 'application/json' },
+//     });
+
+//     if (!response.ok) {
+//       throw new Error('cannot store new bug');
+//     }
+//   };
+
+//   try {
+//     storeData(newBugsList);
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// };
 
 export const getBugsFromServer = async () => {
   const fetchData = async () => {
@@ -78,37 +100,3 @@ export const getBugsFromServer = async () => {
     console.error(error.message);
   }
 };
-
-// export const sendBugsToServer = (newBug) => {
-//   return () => {
-//     const storeData = async (newBug) => {
-//       console.log('running storeDataToServer');
-
-//       const response = await fetch(databaseURL, {
-//         method: 'POST',
-//         body: JSON.stringify({
-//           id: `${new Date().getTime()}${newBug.title}`,
-//           title: newBug.title,
-//           details: newBug.details,
-//           steps: newBug.steps,
-//           version: newBug.version,
-//           priority: newBug.priority,
-//           assigned: newBug.assigned,
-//           creator: newBug.creator,
-//           time: new Date().getTime(),
-//         }),
-//         headers: { 'Content-Type': 'application/json' },
-//       });
-
-//       if (!response.ok) {
-//         throw new Error('cannot store new bug');
-//       }
-//     };
-
-//     try {
-//       storeData(newBug);
-//     } catch (error) {
-//       console.error(error.message);
-//     }
-//   };
-// };

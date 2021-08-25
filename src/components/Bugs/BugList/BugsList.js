@@ -22,29 +22,6 @@ const BugsList = () => {
     sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
   }
 
-  const getData = async () => {
-    console.log('getData running');
-    sortedArray = await getBugsFromServer();
-    await dispatch(getBugs());
-    //await sortArray(bugs);
-    await console.log(sortedArray);
-    await console.log(bugs);
-  };
-
-  useEffect(() => {
-    getData();
-  }, [getData]);
-
-  //console.log(sortedArray);
-
-  // const sortArray = (array) => {
-  //   sortedArray = [...array];
-  //   if (sortedArray.length > 1) {
-  //     sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
-  //   }
-  //   return sortedArray;
-  // };
-
   const getData = useCallback(async () => {
     //await console.log('getData running');
     const storedBugs = await getBugsFromServer();

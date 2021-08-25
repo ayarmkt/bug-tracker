@@ -1,18 +1,25 @@
 import classes from './UpdateBug.module.css';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router';
 
-import { updateBugs } from '../../../store/bug-slice';
+//import { updateBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
+import {
+  //sendUpdatedBugsToServer,
+  getBugsFromServer,
+} from '../../../store/bug-actions';
 
 const EditBug = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
 
   const { bugs } = useSelector((state) => state.bugs);
+  console.log(bugs);
+  const newBugsList = [...bugs];
+  console.log(newBugsList);
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
 
   const {
@@ -57,10 +64,7 @@ const EditBug = () => {
     resetValueHandler: resetCreator,
   } = useBugInput(selectedBug.creator);
 
-  const submitUpdatedBugHandler = (e) => {
-    e.preventDefault();
-
-    const enteredTime = new Date().getTime();
+  const submitUpdatedBugs = async () => {
     const enteredId = selectedBug.id;
 
     const newBug = {
@@ -71,22 +75,29 @@ const EditBug = () => {
       priority: enteredPriority,
       assigned: enteredAssigned,
       creator: enteredCreator,
-      time: enteredTime,
+      //time: enteredTime,
       id: enteredId,
     };
 
-    //1. dispatch and update bugs state
-    dispatch(updateBugs(newBug));
-    //2. PUT the whole new bugs list
-    history.push('/bug-tracker/bugs-list');
+    console.log(newBug);
+    await console.log('submitUpdateBugs running');
+    await console.log(bugs);
 
-    resetTitle();
-    resetDetails();
-    resetSteps();
-    resetVersion();
-    resetPriority();
-    resetAssigned();
-    resetCreator();
+    //change later
+    await resetTitle();
+    await resetDetails();
+    await resetSteps();
+    await resetVersion();
+    await resetPriority();
+    await resetAssigned();
+    await resetCreator();
+    await getBugsFromServer();
+    await history.push('/bug-tracker/bugs-list');
+  };
+
+  const submitUpdatedBugHandler = (e) => {
+    e.preventDefault();
+    submitUpdatedBugs();
   };
 
   return (
