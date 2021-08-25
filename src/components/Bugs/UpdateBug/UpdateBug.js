@@ -7,7 +7,7 @@ import { useParams, useHistory } from 'react-router';
 import useBugInput from '../../../hooks/useBugInput';
 import Button from '../../../UI/Button';
 import {
-  //sendUpdatedBugsToServer,
+  sendUpdatedBugToServer,
   getBugsFromServer,
 } from '../../../store/bug-actions';
 
@@ -19,6 +19,9 @@ const EditBug = () => {
   const { bugs } = useSelector((state) => state.bugs);
   console.log(bugs);
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
+  console.log(selectedBug);
+  const selectedBugKey = selectedBug.key;
+  console.log(selectedBugKey);
 
   const {
     enteredValue: enteredTitle,
@@ -75,11 +78,13 @@ const EditBug = () => {
       creator: enteredCreator,
       //time: enteredTime,
       id: enteredId,
+      key: selectedBugKey,
     };
 
     console.log(newBug);
     await console.log('submitUpdateBugs running');
     await console.log(bugs);
+    await sendUpdatedBugToServer(newBug, selectedBugKey);
 
     //change later
     await resetTitle();
