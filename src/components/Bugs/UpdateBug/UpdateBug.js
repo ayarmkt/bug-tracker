@@ -2,6 +2,7 @@ import classes from './UpdateBug.module.css';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 
 //import { updateBugs } from '../../../store/bug-slice';
 import useBugInput from '../../../hooks/useBugInput';
@@ -10,18 +11,20 @@ import {
   sendUpdatedBugToServer,
   getBugsFromServer,
 } from '../../../store/bug-actions';
+import { getBugs } from '../../../store/bug-slice';
+import { updateBugs } from '../../../store/bug-slice';
 
 const EditBug = () => {
-  //const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const { bugs } = useSelector((state) => state.bugs);
   console.log(bugs);
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
-  console.log(selectedBug);
+  //console.log(selectedBug);
   const selectedBugKey = selectedBug.key;
-  console.log(selectedBugKey);
+  //console.log(selectedBugKey);
 
   const {
     enteredValue: enteredTitle,
@@ -67,6 +70,7 @@ const EditBug = () => {
 
   const submitUpdatedBugs = async () => {
     const enteredId = selectedBug.id;
+    const enteredTime = selectedBug.time;
 
     const newBug = {
       title: enteredTitle,
@@ -76,14 +80,15 @@ const EditBug = () => {
       priority: enteredPriority,
       assigned: enteredAssigned,
       creator: enteredCreator,
-      //time: enteredTime,
+      time: enteredTime,
       id: enteredId,
       key: selectedBugKey,
     };
 
-    console.log(newBug);
-    await console.log('submitUpdateBugs running');
-    await console.log(bugs);
+    //console.log(newBug);
+    //await console.log('submitUpdateBugs running');
+    //await console.log(bugs);
+    dispatch(updateBugs(newBug));
     await sendUpdatedBugToServer(newBug, selectedBugKey);
 
     //change later
@@ -94,7 +99,9 @@ const EditBug = () => {
     await resetPriority();
     await resetAssigned();
     await resetCreator();
-    await getBugsFromServer();
+    //await getBugsFromServer();
+    const storedBugs = await getBugsFromServer();
+    await dispatch(getBugs(storedBugs));
     await history.push('/bug-tracker/bugs-list');
   };
 
