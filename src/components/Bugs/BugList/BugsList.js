@@ -1,9 +1,7 @@
 import classes from './BugsList.module.css';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 import BugItem from '../BugItem/BugItem';
 import ModalOverlay from '../../../UI/ModalOverlay';
@@ -25,13 +23,8 @@ const BugsList = () => {
   dispatch(getBugs(bugs));
 
   const getData = useCallback(async () => {
-    //await console.log('getData running');
     const storedBugs = await getBugsFromServer();
-    //await console.log(storedBugs);
     await dispatch(getBugs(storedBugs));
-    //await sortArray(bugs);
-    //await console.log(sortedArray);
-    //await console.log(bugs);
   }, []);
 
   //added bugs
