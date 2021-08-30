@@ -40,11 +40,9 @@
 .add-bug-input label,
 .add-bug-textarea label {
   grid-column: 1;
-  font-size: 20px;
+  font-size: 18px;
   color: black;
-  font-weight: 500;
-  text-align: end;
-  padding-right: 10px;
+  text-align: center;
   border: none;
 }
 
@@ -54,13 +52,13 @@
   grid-column: 2;
   border: none;
   border-left: 2px solid var(--darkgray);
-  border-bottom: 1px solid var(--lightgray);
+  border-bottom: 1px solid var(--darkgray);
   padding: 5px 0 5px 5px;
   font-size: 18px;
 }
 
-/* SUBMIT BUG BTN */
-.submit-btn {
+/* UPDATE BUG BTN */
+.update-bug-btn {
   background-color: var(--blue);
   color: white;
   position: relative;
