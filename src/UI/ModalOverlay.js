@@ -3,10 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+//import { useCallback } from 'react';
+//import { useEffect } from 'react';
 
 import { closeModal } from '../store/ui-slice';
-import { deleteBugs } from '../store/bug-slice';
+//import { deleteBugs } from '../store/bug-slice';
 import Button from './Button';
+import { sendDeletedBugInfoToServer } from '../store/bug-actions';
+import { getBugsFromServer } from '../store/bug-actions';
+//import { getBugs } from '../store/bug-slice';
+import { deleteBugs } from '../store/bug-slice';
 
 const Backdrop = () => {
   return <div className={classes.backdrop}></div>;
@@ -14,15 +20,27 @@ const Backdrop = () => {
 
 const Modal = () => {
   const dispatch = useDispatch();
+  const { bugs } = useSelector((state) => state.bugs);
+  console.log(bugs);
+  //const { modalOpen } = useSelector((state) => state.ui);
   const { selectedBug } = useSelector((state) => state.bugs);
+  //console.log(selectedBug);
+  const selectedBugKey = selectedBug.key;
+  //console.log(selectedBugKey);
   const history = useHistory();
 
   const closeModalHandler = () => {
     dispatch(closeModal());
   };
 
-  const deleteBugHandler = () => {
+  const sendBugDelete = async () => {
     dispatch(deleteBugs(selectedBug));
+    await sendDeletedBugInfoToServer(selectedBug, selectedBugKey);
+    await getBugsFromServer();
+  };
+
+  const deleteBugHandler = () => {
+    sendBugDelete();
     dispatch(closeModal());
     history.push('/bug-tracker/bugs-list');
   };

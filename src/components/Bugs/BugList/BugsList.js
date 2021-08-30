@@ -1,19 +1,43 @@
 import classes from './BugsList.module.css';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
 
 import BugItem from '../BugItem/BugItem';
 import ModalOverlay from '../../../UI/ModalOverlay';
+import { getBugsFromServer } from '../../../store/bug-actions';
+import { getBugs } from '../../../store/bug-slice';
 
 const BugsList = () => {
   const { bugs } = useSelector((state) => state.bugs);
+  console.log(bugs);
   const { modalOpen } = useSelector((state) => state.ui);
+  const dispatch = useDispatch();
 
-  //eventually move to bug-slice
+  // //eventually move to bug-slice
   let sortedArray = [...bugs];
   if (sortedArray.length > 1) {
     sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
   }
+
+  dispatch(getBugs(bugs));
+
+  const getData = useCallback(async () => {
+    //await console.log('getData running');
+    const storedBugs = await getBugsFromServer();
+    //await console.log(storedBugs);
+    await dispatch(getBugs(storedBugs));
+    //await sortArray(bugs);
+    //await console.log(sortedArray);
+    //await console.log(bugs);
+  }, []);
+
+  //added bugs
+  useEffect(() => {
+    getData();
+  }, [getData]);
 
   return (
     <React.Fragment>
@@ -31,7 +55,8 @@ const BugsList = () => {
               <p>Delete</p>
             </div>
           </li>
-          {sortedArray.length >= 1 &&
+          {sortedArray &&
+            sortedArray.length >= 1 &&
             sortedArray.map((bug) => (
               <BugItem
                 className={classes.items}
@@ -40,7 +65,7 @@ const BugsList = () => {
                 bug={bug}
               />
             ))}
-          {sortedArray.length === 0 && (
+          {(!sortedArray || sortedArray.length === 0) && (
             <p className={classes.error}>No bugs found.</p>
           )}
         </ul>
