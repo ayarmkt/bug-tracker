@@ -88,7 +88,7 @@ const bugSlice = createSlice({
 export default bugSlice.reducer;
 export const {
   getBugs,
-  addNewBugs,
+  //addNewBugs,
   updateBugs,
   //markComplete,
   deleteBugs,
