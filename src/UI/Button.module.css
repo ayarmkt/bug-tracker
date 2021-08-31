@@ -3,9 +3,11 @@
   border: none;
   border-radius: 5px;
   margin-bottom: 18px;
-  width: 20vw;
-  max-width: 150px;
+  /* width: 20vw; */
+  /* max-width: 150px; */
+  width: 170px;
   height: 6vh;
+  max-height: 50px;
 }
 
 .btn:hover:enabled {
