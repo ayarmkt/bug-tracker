@@ -14,6 +14,7 @@
   width: 80vw;
   max-width: 600px;
   height: auto;
+  min-height: 50vh;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -54,6 +55,7 @@
   width: 70vw;
   max-width: 525px;
   height: 5vh;
+  max-height: 50px;
   font-size: 18px;
   padding-left: 10px;
 }
@@ -75,13 +77,6 @@
 .login-btn {
   background-color: var(--darkgray);
   color: white;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 18px;
-  width: 20vw;
-  max-width: 150px;
-  height: 6vh;
 }
 
 .login-btn:disabled {
@@ -99,16 +94,21 @@
   margin-bottom: 35px;
 }
 
-.new-account {
+.option-text {
   color: var(--lightgray);
   font-size: 18px;
-  padding: 5px 0;
+  padding: 7px 0;
   text-align: center;
+  width: auto;
 }
 
-.new-account:hover {
+.option-text:hover {
   color: white;
   cursor: pointer;
+}
+
+.guest-info {
+  width: 100%;
 }
 
 .guest {
@@ -116,12 +116,57 @@
   border-radius: 5px;
   color: var(--lightgray);
   font-size: 18px;
-  padding: 8px 15px;
-  text-align: center;
+  padding: 0px 15px;
+  width: 170px;
+  margin: 0 auto;
+  height: 6vh;
+  line-height: inherit;
+  max-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .guest:hover {
   background-color: white;
   color: var(--darkgray);
   cursor: pointer;
+}
+
+/*  Tablets in landscape mode, older desktop monitors */
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  .login-form h1 {
+    margin-bottom: 25px;
+  }
+
+  .login-items {
+    margin-bottom: 25px;
+  }
+
+  .login-btn {
+    margin-bottom: 25px;
+  }
+
+  .option-text {
+    padding: 10px 0;
+  }
+}
+
+/*  Tablets in portrait mode, large display smartphones landscape mode */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* no need for change */
+}
+
+/*  Smartphones in landscape mode */
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+  /* no need for change */
+}
+
+/*  Smartphones in portrait mode  */
+@media only screen and (max-width: 420px) {
+  .login-form {
+    width: 100vw;
+    height: 100vh;
+    border-radius: none;
+  }
 }

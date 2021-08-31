@@ -107,8 +107,9 @@ const Login = () => {
   return (
     <div className={classes['login-bg']}>
       <form className={classes['login-form']} onSubmit={submitLoginHandler}>
-        {isLogin && <h1>Log In</h1>}
-        {!isLogin && <h1>Sign Up</h1>}
+        <h1>Bug Tracker App</h1>
+        {/* {isLogin && <h1>Log In</h1>}
+        {!isLogin && <h1>Sign Up</h1>} */}
         <div className={classes['login-items']}>
           <div className={classes['login-item']}>
             <label>Email</label>
@@ -155,12 +156,14 @@ const Login = () => {
 
         {isLoading && <p>Loading...</p>}
         <div className={classes.options}>
-          <p className={classes['new-account']} onClick={switchFormHandler}>
+          <p className={classes['option-text']} onClick={switchFormHandler}>
             {optionText}
           </p>
-          <p className={classes.guest} onClick={loginAsGuestHandler}>
-            Log in as a guest
-          </p>
+          <div className={classes['guest-info']}>
+            <p className={classes.guest} onClick={loginAsGuestHandler}>
+              Log in as a guest
+            </p>
+          </div>
         </div>
       </form>
     </div>
