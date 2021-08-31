@@ -1,17 +1,18 @@
 /* CONTAINER */
-.container {
+/* .container {
   margin: 22px 5%;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
-}
+  background-color: aquamarine;
+} */
 
 /* TITLE */
-.container h1 {
+/* .container h1 {
   font-size: 40px;
   font-weight: 900;
-}
+} */
 
 /* DETAILS */
 .bug-detail {
@@ -71,7 +72,7 @@
 .delete-btn {
   background-color: white;
   color: red;
-  border: 3px solid red;
+  /* border: 3px solid red; */
   position: relative;
   top: 50px;
 }

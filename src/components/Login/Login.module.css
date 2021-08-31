@@ -70,7 +70,7 @@
 }
 
 .login-item input.inputInvalid {
-  border: 5px solid red;
+  /* border: 5px solid red; */
 }
 
 /* Login Button */

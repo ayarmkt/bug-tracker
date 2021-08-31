@@ -20,6 +20,7 @@ const adjustLength = (word) => {
 
 const BugItem = (props) => {
   const dispatch = useDispatch();
+  const { mobileMenu } = useSelector((state) => state.ui);
 
   const { bugs } = useSelector((state) => state.bugs);
   const selectedBug = bugs.find((bug) => bug.id === props.bug.id);
@@ -55,8 +56,8 @@ const BugItem = (props) => {
           <p>{adjustLength(props.bug.title)}</p>
           <p>{props.bug.version}</p>
           <p>{bugPriority}</p>
-          <p>{props.bug.assigned}</p>
-          <p>{props.bug.creator}</p>
+          {!mobileMenu && <p>{props.bug.assigned}</p>}
+          {!mobileMenu && <p>{props.bug.creator}</p>}
         </li>
       </Link>
       <div className={classes.actions}>

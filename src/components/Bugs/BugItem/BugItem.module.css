@@ -59,3 +59,43 @@
   /* height: 100%;
   width: 100%; */
 }
+/*  Smartphones in landscape mode */
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+  .bug-item {
+    grid-template-columns: 1fr 70px;
+  }
+
+  .bug-detail {
+    width: 100%;
+    /* grid-column: 1; */
+    /* background-color: violet; */
+    display: grid;
+    grid-template-columns: 2.5fr repeat(2, 1fr);
+  }
+
+  .bug-detail p {
+    height: 40px;
+    line-height: 40px;
+  }
+}
+
+/*  Smartphones in portrait mode  */
+@media only screen and (max-width: 420px) {
+  .bug-item {
+    grid-template-columns: 1fr 70px;
+  }
+
+  .bug-detail {
+    width: 100%;
+    /* grid-column: 1; */
+    /* background-color: violet; */
+    display: grid;
+    grid-template-columns: 2.5fr repeat(2, 1fr);
+  }
+
+  .bug-detail p {
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+  }
+}

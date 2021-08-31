@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 
 import useAuthInputValidation from '../../hooks/useAuthInputValidation';
 import AuthContext from '../../store/auth-context';
-import Button from '../../UI/Button';
+import Button from '../../UI/Button/Button';
 
 const webAPI = process.env.REACT_APP_FIREBASE_API_KEY;
 const guestEmail = process.env.REACT_APP_GUEST_EMAIL;
