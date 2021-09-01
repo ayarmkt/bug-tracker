@@ -15,3 +15,86 @@
 .update-bug {
   grid-column: 2;
 }
+
+/*  Tablets in landscape mode, older desktop monitors */
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  /* .container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    color: aqua;
+    z-index: 100;
+    position: fixed;
+  }
+
+  .bugslist,
+  .bug-detail,
+  .submit-bug,
+  .update-bug {
+    grid-column: 1;
+    color: aqua;
+    position: fixed;
+    top: 22px;
+    left: 139.5625px;
+  } */
+}
+
+/*  Tablets in portrait mode, large display smartphones landscape mode */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* .sidebar {
+    color: pink;
+  }
+  .bugslist,
+  .bug-detail,
+  .submit-bug,
+  .update-bug {
+    color: pink;
+  } */
+}
+
+/*  Smartphones in landscape mode */
+@media only screen and (max-width: 767px) {
+  /* .sidebar {
+    color: yellow;
+  }
+  .bugslist,
+  .bug-detail,
+  .submit-bug,
+  .update-bug {
+    color: yellow;
+  } */
+
+  .container {
+    /* display: grid; */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    /* height: 100vh;
+    width: 100vw; */
+  }
+
+  .sidebar {
+    grid-row: 1;
+  }
+
+  .bugslist,
+  .bug-detail,
+  .submit-bug,
+  .update-bug {
+    grid-row: 2;
+  }
+}
+
+/*  Smartphones in portrait mode  */
+@media only screen and (max-width: 420px) {
+  /* .sidebar {
+    color: purple;
+  }
+  .bugslist,
+  .bug-detail,
+  .submit-bug,
+  .update-bug {
+    color: purple;
+  } */
+}

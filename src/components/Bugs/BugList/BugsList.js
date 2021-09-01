@@ -2,15 +2,19 @@ import classes from './BugsList.module.css';
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-
 import BugItem from '../BugItem/BugItem';
-import ModalOverlay from '../../../UI/ModalOverlay';
+import ModalOverlay from '../../../UI/Modal/ModalOverlay';
 import { getBugsFromServer } from '../../../store/bug-actions';
 import { getBugs } from '../../../store/bug-slice';
+import H1 from '../../../UI/H1/H1';
+import Card from '../../../UI/Card/Card';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
 const BugsList = () => {
   const { bugs } = useSelector((state) => state.bugs);
   console.log(bugs);
+  const { menuOpen } = useSelector((state) => state.ui);
+  //const { mobileMenu } = useSelector((state) => state.ui);
   const { modalOpen } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
@@ -32,20 +36,51 @@ const BugsList = () => {
     getData();
   }, [getData]);
 
+  // const getPosition = (el) => {
+  //   if (!el) return;
+
+  //   //in px
+  //   const vw = Math.max(
+  //     document.documentElement.clientWidth || 0,
+  //     window.innerWidth || 0
+  //   );
+
+  //   const vh = Math.max(
+  //     document.documentElement.clientHeight || 0,
+  //     window.innerHeight || 0
+  //   );
+
+  //   console.log(vh, vw);
+  //   console.log(el.getBoundingClientRect());
+  //   let position = el.getBoundingClientRect();
+
+  //   let topPercentage = (position.top / vh) * 100;
+  //   let leftPercentage = (position.left / vw) * 100;
+
+  //   let topPx = vh * console.log(topPercentage, leftPercentage);
+  // };
+  const { width: vw } = useWindowDimensions();
+  console.log(vw);
+
+  let mobileMenu = vw <= 767 ? true : false;
+
+  const containerMenu = mobileMenu && menuOpen ? classes.mobileMenuOpen : '';
+
   return (
     <React.Fragment>
-      <div className={classes.container}>
-        <h1>All Bugs</h1>
+      <Card className={containerMenu}>
+        {/* <div className={`${classes.container} ${containerMenu}`}> */}
+        <H1 title='All Bugs' />
         <ul className={classes['list-container']}>
           <li className={classes.labels}>
             <p key='title'>Title</p>
             <p key='version'>Version</p>
             <p key='priority'>Priority</p>
-            <p key='assigned'>Assigned</p>
-            <p key='creator'>Creator</p>
+            {!mobileMenu && <p key='assigned'>Assigned</p>}
+            {!mobileMenu && <p key='creator'>Creator</p>}
             <div className={classes.actions}>
-              <p>Edit</p>
-              <p>Delete</p>
+              <p>{mobileMenu ? '' : 'Edit'}</p>
+              <p>{mobileMenu ? '' : 'Delete'}</p>
             </div>
           </li>
           {sortedArray &&
@@ -59,10 +94,11 @@ const BugsList = () => {
               />
             ))}
           {(!sortedArray || sortedArray.length === 0) && (
-            <p className={classes.error}>No bugs found.</p>
+            <p className={classes.empty}>No bugs found.</p>
           )}
         </ul>
-      </div>
+        {/* </div> */}
+      </Card>
       {modalOpen && <ModalOverlay />}
     </React.Fragment>
   );

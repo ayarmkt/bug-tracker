@@ -1,60 +1,57 @@
-import classes from './Sidebar.module.css';
-import React, { useState, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useHistory } from 'react-router';
+import React from 'react';
 
-import AuthContext from '../../store/auth-context';
-import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
-import { FaListAlt } from 'react-icons/fa';
-import { IoCreate } from 'react-icons/io5';
-import { BiLogOut } from 'react-icons/bi';
+//import { useEffect } from 'react';
+//import { useDispatch } from 'react-redux';
+//import { useSelector } from 'react-redux';
+//import { useState } from 'react';
+
+//import { toggleMenu } from '../../store/ui-slice';
+
+import SideBarMenu from './SidebarMenu/SidebarMenu';
+import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+//import { setMenuType } from '../../store/ui-slice';
 
 const Sidebar = () => {
-  const authCtx = useContext(AuthContext);
-  const history = useHistory();
-  const [menuCollapse, setMenuCollapse] = useState(false);
+  // const vw = Math.max(
+  //   document.documentElement.clientWidth || 0,
+  //   window.innerWidth || 0
+  // );
+  // console.log(vw);
 
-  const menuToggleHandler = () => {
-    setMenuCollapse((prevState) => !prevState);
-  };
+  const { width: vw } = useWindowDimensions();
+  console.log(vw);
 
-  const logoutHandler = () => {
-    authCtx.logout();
-    history.replace('/bug-tracker/login');
-  };
+  //state.mobileMenu = vw <= 767 ? true : false;
 
-  const sidebarClass = menuCollapse ? '' : classes.active;
+  // const vw = Math.max(
+  //   document.documentElement.clientWidth || 0,
+  //   window.innerWidth || 0
+  // );
+  // const vh = Math.max(
+  //   document.documentElement.clientHeight || 0,
+  //   window.innerHeight || 0
+  // );
+
+  // useEffect(() => {
+  //   dispatch(setMenuType());
+  // }, [document.documentElement.clientWidth, window.innerWidth]);
+
+  //const dispatch = useDispatch();
+  //const { mobileMenu } = useSelector((state) => state.ui);
+  //const [menuCollapse, setMenuCollapse] = useState(vw > 1365 ? false : true);
+  //const [mobileMenu, setMobileMenu] = useState(vw > 767 ? false : true);
+
+  // const menuToggleHandler = () => {
+  //   //setMenuCollapse((prevState) => !prevState);
+  //   dispatch(toggleMenu());
+  // };
 
   return (
-    <nav className={`${classes.sidebar} ${sidebarClass}`}>
-      <div className={classes.closemenu} onClick={menuToggleHandler}>
-        {menuCollapse ? (
-          <FiArrowRightCircle size='30px' />
-        ) : (
-          <FiArrowLeftCircle size='30px' />
-        )}
-      </div>
-      <ul>
-        <NavLink className={classes.navlink} to='/bug-tracker/bugs-list' exact>
-          <li className={classes.navItem}>
-            <FaListAlt size='30px' color='white' />
-            {!menuCollapse && <p>All Bugs</p>}
-          </li>
-        </NavLink>
-
-        <NavLink className={classes.navlink} to='/bug-tracker/submit-bug'>
-          <li className={classes.navItem}>
-            <IoCreate size='30px' color='white' />
-            {!menuCollapse && <p>Add New Bug</p>}
-          </li>
-        </NavLink>
-
-        <li className={classes.navItem} onClick={logoutHandler}>
-          <BiLogOut size='30px' color='white' />
-          {!menuCollapse && <p>Logout</p>}
-        </li>
-      </ul>
-    </nav>
+    <React.Fragment>
+      {vw <= 767 && <HamburgerMenu />}
+      {vw > 767 && <SideBarMenu />}
+    </React.Fragment>
   );
 };
 

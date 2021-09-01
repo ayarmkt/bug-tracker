@@ -1,11 +1,14 @@
 import classes from './BugForm.module.css';
 import React from 'react';
-import Button from '../../../UI/Button';
+import Button from '../../../UI/Button/Button';
+import H1 from '../../../UI/H1/H1';
+import Card from '../../../UI/Card/Card';
 
 const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
   return (
-    <div className={classes.container}>
-      <h1>{title}</h1>
+    // <div className={classes.container}>
+    <Card>
+      <H1 title={title} />
       <form className={classes['bug-form']} onSubmit={onSubmit}>
         <div className={classes['add-bug-form']}>
           <div className={classes['add-bug-input']}>
@@ -81,15 +84,18 @@ const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
             />
           </div>
         </div>
-        <Button
-          type='submit'
-          disabled={false}
-          className={classes['submit-btn']}
-          onClick={onClick}
-          text={btnText}
-        />
+        <div className={classes.btn}>
+          <Button
+            type='submit'
+            disabled={false}
+            className={classes['submit-btn']}
+            onClick={onClick}
+            text={btnText}
+          />
+        </div>
       </form>
-    </div>
+      {/* </div> */}
+    </Card>
   );
 };
 

@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import classes from './BugItemDetail.module.css';
-import Button from '../../../UI/Button';
+import Button from '../../../UI/Button/Button';
 import { openModal } from '../../../store/ui-slice';
-import ModalOverlay from '../../../UI/ModalOverlay';
+import ModalOverlay from '../../../UI/Modal/ModalOverlay';
 import { storeSelectedBug } from '../../../store/bug-slice';
+import H1 from '../../../UI/H1/H1';
+import Card from '../../../UI/Card/Card';
 
 const BugItemDetail = () => {
   const params = useParams();
@@ -39,8 +41,10 @@ const BugItemDetail = () => {
 
   return (
     <React.Fragment>
-      <div className={classes.container}>
-        <h1>Bug Detail</h1>
+      {/* <div className={classes.container}> */}
+      <Card>
+        {/* <H1>Bug Detail</H1> */}
+        <H1 title='Bug Detail' />
 
         <div className={classes['bug-detail']}>
           <div className={classes['detail-content']}>
@@ -71,27 +75,35 @@ const BugItemDetail = () => {
             <p className={classes.label}>Creator</p>
             <p className={classes.content}>{selectedBug.creator}</p>
           </div>
-          <Button
-            type='button'
-            disabled={false}
-            className={classes['delete-btn']}
-            onClick={openModalHandler}
-            text='Delete bug'
-          />
-          <Link to={`/bug-tracker/update-bug/${selectedBug.id}`}>
-            <Button
-              type='button'
-              disabled={false}
-              className={classes['update-btn']}
-              text='Update bug'
-            />
-          </Link>
+          <div className={classes.actions}>
+            <div className={classes.btns}>
+              <Button
+                type='button'
+                disabled={false}
+                className={classes['delete-btn']}
+                onClick={openModalHandler}
+                text='Delete bug'
+              />
+              <Link to={`/bug-tracker/update-bug/${selectedBug.id}`}>
+                <Button
+                  type='button'
+                  disabled={false}
+                  className={classes['update-btn']}
+                  text='Update bug'
+                />
+              </Link>
+            </div>
 
-          <Link to='/bug-tracker/bugs-list' className={classes['back-to-list']}>
-            <p>↶Back to List</p>
-          </Link>
+            <Link
+              to='/bug-tracker/bugs-list'
+              className={classes['back-to-list']}
+            >
+              <p>↶Back to List</p>
+            </Link>
+          </div>
         </div>
-      </div>
+        {/* </div> */}
+      </Card>
       {modalOpen && <ModalOverlay />}
     </React.Fragment>
   );

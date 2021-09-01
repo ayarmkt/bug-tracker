@@ -6,16 +6,22 @@ import { useHistory } from 'react-router-dom';
 //import { useCallback } from 'react';
 //import { useEffect } from 'react';
 
-import { closeModal } from '../store/ui-slice';
+import { closeModal } from '../../store/ui-slice';
 //import { deleteBugs } from '../store/bug-slice';
-import Button from './Button';
-import { sendDeletedBugInfoToServer } from '../store/bug-actions';
-import { getBugsFromServer } from '../store/bug-actions';
+import Button from '../Button/Button';
+import { sendDeletedBugInfoToServer } from '../../store/bug-actions';
+import { getBugsFromServer } from '../../store/bug-actions';
 //import { getBugs } from '../store/bug-slice';
-import { deleteBugs } from '../store/bug-slice';
+import { deleteBugs } from '../../store/bug-slice';
 
 const Backdrop = () => {
-  return <div className={classes.backdrop}></div>;
+  const dispatch = useDispatch();
+
+  const closeModalHandler = () => {
+    dispatch(closeModal());
+  };
+
+  return <div className={classes.backdrop} onClick={closeModalHandler}></div>;
 };
 
 const Modal = () => {

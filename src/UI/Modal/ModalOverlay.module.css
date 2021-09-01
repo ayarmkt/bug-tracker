@@ -1,0 +1,135 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  background-color: white;
+  position: fixed;
+  height: 35%;
+  width: 55%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-msg,
+.cancel-btn,
+.confirm-btn {
+  color: black;
+}
+
+.modal-msg {
+  width: calc(30vw + 30vw + 20px);
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.btns {
+  display: flex;
+}
+
+.cancel-btn,
+.confirm-btn {
+  /* width: 15vw; */
+  /* width: 20vw; */
+  width: 30vw;
+  /* height: 6vh; */
+  height: 7vh;
+  margin: 5px;
+}
+
+.confirm-btn {
+  background-color: red;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: var(--darkgray);
+  color: white;
+}
+
+/*  Tablets in landscape mode, older desktop monitors */
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  .modal-msg {
+    width: calc(25vw + 25vw + 20px);
+  }
+
+  .cancel-btn,
+  .confirm-btn {
+    width: 25vw;
+  }
+}
+
+/*  Tablets in portrait mode, large display smartphones landscape mode */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .modal-msg {
+    width: calc(25vw + 25vw + 20px);
+  }
+
+  .cancel-btn,
+  .confirm-btn {
+    width: 25vw;
+  }
+}
+
+/*  Smartphones in landscape mode */
+@media only screen and (max-width: 767px) {
+  .modal-msg {
+    width: calc(25vw + 25vw + 20px);
+  }
+
+  .cancel-btn,
+  .confirm-btn {
+    /* width: 15vw; */
+    width: 25vw;
+    height: 6vh;
+    min-height: 35px;
+  }
+}
+
+/*  Smartphones in landscape mode */
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+  .modal {
+    /* width: 55%; */
+  }
+
+  /* .cancel-btn,
+  .confirm-btn {
+    width: 20vw;
+  } */
+}
+
+/*  Smartphones in portrait mode  */
+@media only screen and (max-width: 420px) {
+  .modal {
+    width: 75%;
+  }
+
+  .modal-msg {
+    width: calc(30vw + 30vw + 20px);
+    font-size: 18px;
+    padding: 0 10px;
+  }
+
+  .cancel-btn,
+  .confirm-btn {
+    /* width: 15vw; */
+    /* width: 30vw; */
+    height: 6vh;
+    min-height: 35px;
+  }
+}
