@@ -1,25 +1,28 @@
 import React from 'react';
 
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+//import { useEffect } from 'react';
+//import { useDispatch } from 'react-redux';
+//import { useSelector } from 'react-redux';
+//import { useState } from 'react';
 
 //import { toggleMenu } from '../../store/ui-slice';
 
 import SideBarMenu from './SidebarMenu/SidebarMenu';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
-import { setMenuType } from '../../store/ui-slice';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+//import { setMenuType } from '../../store/ui-slice';
 
 const Sidebar = () => {
-  //let vw;
-  // useEffect(() => {
-  //   vw = Math.max(
-  //     document.documentElement.clientWidth || 0,
-  //     window.innerWidth || 0
-  //   );
+  // const vw = Math.max(
+  //   document.documentElement.clientWidth || 0,
+  //   window.innerWidth || 0
+  // );
+  // console.log(vw);
 
-  //   setMobileMenu(vw > 767 ? false : true);
-  // }, [vw]);
+  const { width: vw } = useWindowDimensions();
+  console.log(vw);
+
+  //state.mobileMenu = vw <= 767 ? true : false;
 
   // const vw = Math.max(
   //   document.documentElement.clientWidth || 0,
@@ -30,14 +33,12 @@ const Sidebar = () => {
   //   window.innerHeight || 0
   // );
 
-  //console.log(vw);
+  // useEffect(() => {
+  //   dispatch(setMenuType());
+  // }, [document.documentElement.clientWidth, window.innerWidth]);
 
-  useEffect(() => {
-    dispatch(setMenuType());
-  }, [document.documentElement.clientWidth, window.innerWidth]);
-
-  const dispatch = useDispatch();
-  const { mobileMenu } = useSelector((state) => state.ui);
+  //const dispatch = useDispatch();
+  //const { mobileMenu } = useSelector((state) => state.ui);
   //const [menuCollapse, setMenuCollapse] = useState(vw > 1365 ? false : true);
   //const [mobileMenu, setMobileMenu] = useState(vw > 767 ? false : true);
 
@@ -48,8 +49,8 @@ const Sidebar = () => {
 
   return (
     <React.Fragment>
-      {mobileMenu && <HamburgerMenu />}
-      {!mobileMenu && <SideBarMenu />}
+      {vw <= 767 && <HamburgerMenu />}
+      {vw > 767 && <SideBarMenu />}
     </React.Fragment>
   );
 };

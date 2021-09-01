@@ -8,12 +8,13 @@ import { getBugsFromServer } from '../../../store/bug-actions';
 import { getBugs } from '../../../store/bug-slice';
 import H1 from '../../../UI/H1/H1';
 import Card from '../../../UI/Card/Card';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
 const BugsList = () => {
   const { bugs } = useSelector((state) => state.bugs);
   console.log(bugs);
   const { menuOpen } = useSelector((state) => state.ui);
-  const { mobileMenu } = useSelector((state) => state.ui);
+  //const { mobileMenu } = useSelector((state) => state.ui);
   const { modalOpen } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
@@ -58,6 +59,10 @@ const BugsList = () => {
 
   //   let topPx = vh * console.log(topPercentage, leftPercentage);
   // };
+  const { width: vw } = useWindowDimensions();
+  console.log(vw);
+
+  let mobileMenu = vw <= 767 ? true : false;
 
   const containerMenu = mobileMenu && menuOpen ? classes.mobileMenuOpen : '';
 
@@ -89,7 +94,7 @@ const BugsList = () => {
               />
             ))}
           {(!sortedArray || sortedArray.length === 0) && (
-            <p className={classes.error}>No bugs found.</p>
+            <p className={classes.empty}>No bugs found.</p>
           )}
         </ul>
         {/* </div> */}

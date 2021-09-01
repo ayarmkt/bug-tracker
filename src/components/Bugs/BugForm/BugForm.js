@@ -84,13 +84,15 @@ const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
             />
           </div>
         </div>
-        <Button
-          type='submit'
-          disabled={false}
-          className={classes['submit-btn']}
-          onClick={onClick}
-          text={btnText}
-        />
+        <div className={classes.btn}>
+          <Button
+            type='submit'
+            disabled={false}
+            className={classes['submit-btn']}
+            onClick={onClick}
+            text={btnText}
+          />
+        </div>
       </form>
       {/* </div> */}
     </Card>

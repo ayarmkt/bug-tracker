@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 
 import AuthContext from '../../../store/auth-context';
 import { toggleMenu } from '../../../store/ui-slice';
+//import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import { FaListAlt } from 'react-icons/fa';
 import { IoCreate } from 'react-icons/io5';
@@ -19,14 +20,19 @@ const SideBarMenu = ({ onClick }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const logoutHandler = () => {
-    authCtx.logout();
-    history.replace('/bug-tracker/login');
-  };
+  // const { width: vw } = useWindowDimensions();
+  // console.log(vw);
+  // (min-width: 1366)
 
   const menuToggleHandler = () => {
     //setMenuCollapse((prevState) => !prevState);
     dispatch(toggleMenu());
+  };
+
+  const logoutHandler = () => {
+    if (menuOpen) menuToggleHandler();
+    authCtx.logout();
+    history.replace('/bug-tracker/login');
   };
 
   const sidebarClass = menuOpen ? classes.active : '';
@@ -41,14 +47,23 @@ const SideBarMenu = ({ onClick }) => {
         )}
       </div>
       <ul>
-        <NavLink className={classes.navlink} to='/bug-tracker/bugs-list' exact>
+        <NavLink
+          className={classes.navlink}
+          to='/bug-tracker/bugs-list'
+          exact
+          onClick={menuOpen && menuToggleHandler}
+        >
           <li className={classes.navItem}>
             <FaListAlt size='30px' color='white' />
             {menuOpen && <p>All Bugs</p>}
           </li>
         </NavLink>
 
-        <NavLink className={classes.navlink} to='/bug-tracker/submit-bug'>
+        <NavLink
+          className={classes.navlink}
+          to='/bug-tracker/submit-bug'
+          onClick={menuOpen && menuToggleHandler}
+        >
           <li className={classes.navItem}>
             <IoCreate size='30px' color='white' />
             {menuOpen && <p>Add New Bug</p>}

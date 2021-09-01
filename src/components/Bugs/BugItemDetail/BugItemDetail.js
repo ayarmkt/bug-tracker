@@ -75,25 +75,32 @@ const BugItemDetail = () => {
             <p className={classes.label}>Creator</p>
             <p className={classes.content}>{selectedBug.creator}</p>
           </div>
-          <Button
-            type='button'
-            disabled={false}
-            className={classes['delete-btn']}
-            onClick={openModalHandler}
-            text='Delete bug'
-          />
-          <Link to={`/bug-tracker/update-bug/${selectedBug.id}`}>
-            <Button
-              type='button'
-              disabled={false}
-              className={classes['update-btn']}
-              text='Update bug'
-            />
-          </Link>
+          <div className={classes.actions}>
+            <div className={classes.btns}>
+              <Button
+                type='button'
+                disabled={false}
+                className={classes['delete-btn']}
+                onClick={openModalHandler}
+                text='Delete bug'
+              />
+              <Link to={`/bug-tracker/update-bug/${selectedBug.id}`}>
+                <Button
+                  type='button'
+                  disabled={false}
+                  className={classes['update-btn']}
+                  text='Update bug'
+                />
+              </Link>
+            </div>
 
-          <Link to='/bug-tracker/bugs-list' className={classes['back-to-list']}>
-            <p>↶Back to List</p>
-          </Link>
+            <Link
+              to='/bug-tracker/bugs-list'
+              className={classes['back-to-list']}
+            >
+              <p>↶Back to List</p>
+            </Link>
+          </div>
         </div>
         {/* </div> */}
       </Card>

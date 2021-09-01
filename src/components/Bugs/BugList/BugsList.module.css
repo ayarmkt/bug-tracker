@@ -1,3 +1,7 @@
+* {
+  outline: 1px solid red;
+}
+
 /* CONTAINER */
 /* .container {
   margin: 22px 5%;
@@ -32,6 +36,7 @@
   height: 40px;
   line-height: 40px;
   font-size: 18px;
+  padding: 0 2px;
 }
 
 .actions {
@@ -129,7 +134,7 @@
     text-align: start;*/
     height: 30px;
     line-height: 30px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .mobileMenuOpen {
@@ -137,7 +142,7 @@
     /* overflow: hidden; */
   }
 
-  .error {
+  .empty {
     font-size: 12px;
   }
 }

@@ -15,7 +15,13 @@ import { getBugsFromServer } from '../../store/bug-actions';
 import { deleteBugs } from '../../store/bug-slice';
 
 const Backdrop = () => {
-  return <div className={classes.backdrop}></div>;
+  const dispatch = useDispatch();
+
+  const closeModalHandler = () => {
+    dispatch(closeModal());
+  };
+
+  return <div className={classes.backdrop} onClick={closeModalHandler}></div>;
 };
 
 const Modal = () => {

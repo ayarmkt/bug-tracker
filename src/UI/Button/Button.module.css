@@ -13,3 +13,13 @@
 .btn:hover:enabled {
   cursor: pointer;
 }
+
+/*  Smartphones in portrait mode  */
+@media only screen and (max-width: 420px) {
+  .btn {
+    font-size: 16px;
+    width: 35vw;
+    /* height: 5vh; */
+    min-height: 20px;
+  }
+}

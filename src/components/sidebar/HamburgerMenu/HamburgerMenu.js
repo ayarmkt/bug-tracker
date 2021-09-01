@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import AuthContext from '../../../store/auth-context';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { toggleMenu } from '../../../store/ui-slice';
+//import useWindowDimensions from '../../../hooks/useWindowDimensions';
 //import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import { FaListAlt } from 'react-icons/fa';
 import { IoCreate } from 'react-icons/io5';
@@ -17,33 +18,34 @@ import { GrClose } from 'react-icons/gr';
 
 const HamburgerMenu = ({ onClick }) => {
   const { menuOpen } = useSelector((state) => state.ui);
-  const { mobileMenu } = useSelector((state) => state.ui);
+  //const { mobileMenu } = useSelector((state) => state.ui);
   const authCtx = useContext(AuthContext);
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const logoutHandler = () => {
-    authCtx.logout();
-    history.replace('/bug-tracker/login');
-  };
 
   const menuToggleHandler = () => {
     //setMenuCollapse((prevState) => !prevState);
     dispatch(toggleMenu());
   };
 
+  const logoutHandler = () => {
+    if (menuOpen) menuToggleHandler();
+    authCtx.logout();
+    history.replace('/bug-tracker/login');
+  };
+
   const sidebarClass = menuOpen ? classes.active : '';
 
   return (
     <React.Fragment>
-      {mobileMenu && !menuOpen && (
+      {!menuOpen && (
         <GiHamburgerMenu
           size='30px'
           className={classes.hamburgerOpen}
           onClick={menuToggleHandler}
         />
       )}
-      {mobileMenu && menuOpen && (
+      {menuOpen && (
         <React.Fragment>
           <GrClose
             size='30px'
@@ -56,7 +58,7 @@ const HamburgerMenu = ({ onClick }) => {
                 className={classes.navlink}
                 to='/bug-tracker/bugs-list'
                 exact
-                onClick={menuToggleHandler}
+                onClick={menuOpen && menuToggleHandler}
               >
                 <li className={classes.navItem}>
                   <FaListAlt size='30px' color='white' />
@@ -67,7 +69,7 @@ const HamburgerMenu = ({ onClick }) => {
               <NavLink
                 className={classes.navlink}
                 to='/bug-tracker/submit-bug'
-                onClick={menuToggleHandler}
+                onClick={menuOpen && menuToggleHandler}
               >
                 <li className={classes.navItem}>
                   <IoCreate size='30px' color='white' />

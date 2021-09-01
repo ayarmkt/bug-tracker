@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { openModal } from '../../../store/ui-slice';
 import { storeSelectedBug } from '../../../store/bug-slice';
-
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { BiEdit } from 'react-icons/bi';
 import { BsTrashFill } from 'react-icons/bs';
 
@@ -20,7 +20,7 @@ const adjustLength = (word) => {
 
 const BugItem = (props) => {
   const dispatch = useDispatch();
-  const { mobileMenu } = useSelector((state) => state.ui);
+  //const { mobileMenu } = useSelector((state) => state.ui);
 
   const { bugs } = useSelector((state) => state.bugs);
   const selectedBug = bugs.find((bug) => bug.id === props.bug.id);
@@ -29,6 +29,11 @@ const BugItem = (props) => {
     dispatch(storeSelectedBug(selectedBug));
     dispatch(openModal());
   };
+
+  const { width: vw } = useWindowDimensions();
+  console.log(vw);
+
+  let mobileMenu = vw <= 767 ? true : false;
 
   let bugPriority;
   switch (props.bug.priority) {

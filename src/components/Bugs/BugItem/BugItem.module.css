@@ -37,6 +37,7 @@
   height: 50px;
   line-height: 50px;
   font-size: 18px;
+  padding: 0 2px;
   /* background-color: rgba(var(--third-color), 1); */
   /* border: 1px solid red; */
 }
@@ -46,7 +47,8 @@
   grid-template-columns: repeat(2, 1fr);
   /* justify-content: center; */
   justify-items: center;
-  align-content: center;
+  align-items: center;
+  /* align-content: center; */
   /* border: 1px solid blue; */
 }
 
@@ -59,6 +61,7 @@
   /* height: 100%;
   width: 100%; */
 }
+
 /*  Smartphones in landscape mode */
 @media only screen and (min-width: 421px) and (max-width: 767px) {
   .bug-item {
@@ -76,6 +79,9 @@
   .bug-detail p {
     height: 40px;
     line-height: 40px;
+
+    /* font-size: 18px; */
+    color: yellow;
   }
 }
 
@@ -96,6 +102,7 @@
   .bug-detail p {
     height: 30px;
     line-height: 30px;
-    font-size: 16px;
+    font-size: 14px;
+    color: purple;
   }
 }

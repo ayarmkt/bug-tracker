@@ -12,7 +12,6 @@ import {
   getBugsFromServer,
 } from '../../store/bug-actions';
 
-
 const EditBug = () => {
   const params = useParams();
   const history = useHistory();
@@ -79,7 +78,7 @@ const EditBug = () => {
       onChange={handleInputChange}
       formData={formData}
       onClick={submitUpdatedBugHandler}
-      btnText='Save updated bug'
+      btnText='Save'
     />
   );
 };
