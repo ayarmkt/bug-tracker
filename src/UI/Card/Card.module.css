@@ -31,7 +31,7 @@
 /*  Smartphones in portrait mode  */
 @media only screen and (max-width: 420px) {
   .container {
-    color: purple;
+    /* color: purple; */
     width: calc(100vw - 10%);
   }
 }

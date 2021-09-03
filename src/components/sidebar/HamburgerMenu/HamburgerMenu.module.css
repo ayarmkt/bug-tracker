@@ -76,7 +76,7 @@
 /*  Smartphones in portrait mode  */
 @media only screen and (max-width: 420px) {
   nav {
-    color: purple;
+    /* color: purple; */
   }
 
   .hamburgerOpen {
