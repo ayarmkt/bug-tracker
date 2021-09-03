@@ -1,38 +1,114 @@
+//import { useDispatch } from 'react-redux';
+import { showNotification } from './ui-slice';
+
 const databaseURL = process.env.REACT_APP_DATABASE_URL;
 
 export const sendNewBugsToServer = (newBug) => {
-  const storeData = async (newBug) => {
-    //console.log('running sendBugsToServer');
+  return async (dispatch) => {
+    dispatch(
+      showNotification({
+        status: 'pending',
+        title: 'Sending...',
+        message: 'Sending data...',
+      })
+    );
 
-    const response = await fetch(`${databaseURL}/bugs.json`, {
-      method: 'POST',
-      body: JSON.stringify({
-        id: `${new Date().getTime()}${newBug.title}`.split(' ').join(''),
-        title: newBug.title,
-        details: newBug.details,
-        steps: newBug.steps,
-        version: newBug.version,
-        priority: newBug.priority,
-        assigned: newBug.assigned,
-        creator: newBug.creator,
-        time: new Date().getTime(),
-      }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const storeData = async () => {
+      //console.log('running sendBugsToServer');
 
-    if (!response.ok) {
-      throw new Error('cannot store new bug');
+      const response = await fetch(`${databaseURL}/bugs.json`, {
+        method: 'POST',
+        body: JSON.stringify({
+          id: `${new Date().getTime()}${newBug.title}`.split(' ').join(''),
+          title: newBug.title,
+          details: newBug.details,
+          steps: newBug.steps,
+          version: newBug.version,
+          priority: newBug.priority,
+          assigned: newBug.assigned,
+          creator: newBug.creator,
+          time: new Date().getTime(),
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (!response.ok) {
+        throw new Error('cannot store new bug');
+      }
+    };
+
+    try {
+      storeData();
+      dispatch(
+        showNotification({
+          status: 'success',
+          title: 'Success',
+          message: 'Sent data successfully!',
+        })
+      );
+    } catch (error) {
+      console.error(error.message);
+      dispatch(
+        showNotification({
+          status: 'error',
+          title: 'Error',
+          message: 'Cannot store new data',
+        })
+      );
     }
   };
 
-  try {
-    storeData(newBug);
-  } catch (error) {
-    console.error(error.message);
-  }
+  //const dispatch = useDispatch();
+
+  // const storeData = async (newBug) => {
+  //   //console.log('running sendBugsToServer');
+
+  //   const response = await fetch(`${databaseURL}/bugs.json`, {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       id: `${new Date().getTime()}${newBug.title}`.split(' ').join(''),
+  //       title: newBug.title,
+  //       details: newBug.details,
+  //       steps: newBug.steps,
+  //       version: newBug.version,
+  //       priority: newBug.priority,
+  //       assigned: newBug.assigned,
+  //       creator: newBug.creator,
+  //       time: new Date().getTime(),
+  //     }),
+  //     headers: { 'Content-Type': 'application/json' },
+  //   });
+
+  //   if (!response.ok) {
+  //     throw new Error('cannot store new bug');
+  //   }
+
+  //   dispatch(
+  //     showNotification({
+  //       status: 'Success',
+  //       title: 'Success',
+  //       message: 'Sent data successfully!',
+  //     })
+  //   );
+  // };
+
+  // try {
+  //   storeData(newBug);
+  // } catch (error) {
+  //   console.error(error.message);
+  //   dispatch(
+  //     showNotification({
+  //       status: 'Error',
+  //       title: 'Error',
+  //       message: 'Cannot store new data',
+  //     })
+  //   );
+  // }
 };
 
 export const sendUpdatedBugToServer = (newBug, key) => {
+  // const dispatch = useDispatch();
+
   const storeData = async (newBug) => {
     //console.log('running sendUpdatedBugsToServer');
     //console.log(newBug);
@@ -46,16 +122,33 @@ export const sendUpdatedBugToServer = (newBug, key) => {
     if (!response.ok) {
       throw new Error('cannot store new bug');
     }
+
+    // dispatch(
+    //   showNotification({
+    //     status: 'Success',
+    //     title: 'Success',
+    //     message: 'Sent data successfully!',
+    //   })
+    // );
   };
 
   try {
     storeData(newBug);
   } catch (error) {
     console.error(error.message);
+    // dispatch(
+    //   showNotification({
+    //     status: 'Error',
+    //     title: 'Error',
+    //     message: 'Cannot store updated data',
+    //   })
+    // );
   }
 };
 
 export const sendDeletedBugInfoToServer = (selectedBug, key) => {
+  //const dispatch = useDispatch();
+
   const storeData = async (selectedBug) => {
     //console.log('running sendDeletedBugInfoToServer');
     //console.log(selectedBug);
@@ -69,16 +162,33 @@ export const sendDeletedBugInfoToServer = (selectedBug, key) => {
     if (!response.ok) {
       throw new Error('cannot store new bug');
     }
+
+    // dispatch(
+    //   showNotification({
+    //     status: 'Success',
+    //     title: 'Success',
+    //     message: 'Sent data successfully!',
+    //   })
+    // );
   };
 
   try {
     storeData(selectedBug);
   } catch (error) {
     console.error(error.message);
+    // dispatch(
+    //   showNotification({
+    //     status: 'Error',
+    //     title: 'Error',
+    //     message: 'Cannot store updated data',
+    //   })
+    // );
   }
 };
 
 export const getBugsFromServer = async () => {
+  //const dispatch = useDispatch();
+
   const fetchData = async () => {
     //console.log('running getBugsFromServer');
 
@@ -87,6 +197,14 @@ export const getBugsFromServer = async () => {
     if (!response.ok) {
       throw new Error('cannot get bugs list');
     }
+
+    // dispatch(
+    //   showNotification({
+    //     status: 'Success',
+    //     title: 'Success',
+    //     message: 'Fetched data successfully!',
+    //   })
+    // );
 
     const data = await response.json();
     //console.log(data);
@@ -127,5 +245,12 @@ export const getBugsFromServer = async () => {
     return bugsList;
   } catch (error) {
     console.error(error.message);
+    // dispatch(
+    //   showNotification({
+    //     status: 'Error',
+    //     title: 'Error',
+    //     message: 'Cannot fetch stored data',
+    //   })
+    // );
   }
 };

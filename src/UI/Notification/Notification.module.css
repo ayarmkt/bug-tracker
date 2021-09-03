@@ -1,0 +1,27 @@
+.notification {
+  /* background-color: black; */
+  height: 20px;
+  margin: 10px 0;
+  text-align: center;
+  transition: opacity 0.8s;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.notification p {
+  color: white;
+}
+
+.pending {
+  background-color: orange;
+}
+
+.success {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+}
