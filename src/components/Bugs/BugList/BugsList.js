@@ -9,6 +9,7 @@ import { getBugs } from '../../../store/bug-slice';
 import H1 from '../../../UI/H1/H1';
 import Card from '../../../UI/Card/Card';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import Notification from '../../../UI/Notification/Notification';
 
 const BugsList = () => {
   const { bugs } = useSelector((state) => state.bugs);
@@ -17,6 +18,9 @@ const BugsList = () => {
   //const { mobileMenu } = useSelector((state) => state.ui);
   const { modalOpen } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
+
+  const { notification } = useSelector((state) => state.ui);
+  console.log(notification);
 
   // //eventually move to bug-slice
   let sortedArray = [...bugs];
@@ -68,9 +72,14 @@ const BugsList = () => {
 
   return (
     <React.Fragment>
-      <Card className={containerMenu}>
+      <Card className={classes.containerMenu}>
         {/* <div className={`${classes.container} ${containerMenu}`}> */}
         <H1 title='All Bugs' />
+        <Notification
+          className={classes.notification}
+          //title={notification.title}
+          message={notification.message}
+        />
         <ul className={classes['list-container']}>
           <li className={classes.labels}>
             <p key='title'>Title</p>

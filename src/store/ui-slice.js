@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialUIState = {
   modalOpen: false,
   menuOpen: false,
+  notification: { status: 'initial', title: 'initial', message: 'initial' },
   //mobileMenu: false
 };
 
@@ -26,6 +27,13 @@ const uiSlice = createSlice({
     toggleMenu(state) {
       state.menuOpen = !state.menuOpen;
     },
+    showNotification(state, action) {
+      state.notification = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
+    },
   },
 });
 
@@ -35,4 +43,5 @@ export const {
   closeModal,
   //setMenuType,
   toggleMenu,
+  showNotification,
 } = uiSlice.actions;

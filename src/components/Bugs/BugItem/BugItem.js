@@ -10,7 +10,7 @@ import { BiEdit } from 'react-icons/bi';
 import { BsTrashFill } from 'react-icons/bs';
 
 const adjustLength = (word) => {
-  if (word.length > 17) {
+  if (word && word.length > 17) {
     const adjustedWord = word.slice(0, 15) + '...';
     return adjustedWord;
   } else {
