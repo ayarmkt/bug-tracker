@@ -1,5 +1,6 @@
 //import { useDispatch } from 'react-redux';
 import { showNotification } from './ui-slice';
+import { getBugs } from './bug-slice';
 
 const databaseURL = process.env.REACT_APP_DATABASE_URL;
 
@@ -186,71 +187,85 @@ export const sendDeletedBugInfoToServer = (selectedBug, key) => {
   }
 };
 
-export const getBugsFromServer = async () => {
-  //const dispatch = useDispatch();
+export const getBugsFromServer = () => {
+  return async (dispatch) => {
+    dispatch(
+      showNotification({
+        status: 'pending',
+        title: 'Fetching...',
+        message: 'Fetching data...',
+      })
+    );
 
-  const fetchData = async () => {
-    //console.log('running getBugsFromServer');
+    const fetchData = async () => {
+      const response = await fetch(`${databaseURL}/bugs.json`);
 
-    const response = await fetch(`${databaseURL}/bugs.json`);
+      if (!response.ok) {
+        throw new Error('cannot get bugs list');
+      }
 
-    if (!response.ok) {
-      throw new Error('cannot get bugs list');
+      const data = await response.json();
+
+      let bugsList = [];
+      //Firebase has a key for each item
+      for (const key in data) {
+        const newData = { ...data[key], key };
+        bugsList.push(newData);
+      }
+
+      return bugsList;
+    };
+
+    try {
+      const bugsList = await fetchData();
+      //return bugsList;
+      console.log('fetching data!!!');
+      dispatch(getBugs(bugsList));
+      dispatch(
+        showNotification({
+          status: 'success',
+          title: 'Success',
+          message: 'Fetched data successfully!',
+        })
+      );
+    } catch (error) {
+      console.error(error.message);
+      dispatch(
+        showNotification({
+          status: 'error',
+          title: 'Error',
+          message: 'Cannot fetch stored data',
+        })
+      );
     }
-
-    // dispatch(
-    //   showNotification({
-    //     status: 'Success',
-    //     title: 'Success',
-    //     message: 'Fetched data successfully!',
-    //   })
-    // );
-
-    const data = await response.json();
-    //console.log(data);
-    // for (const key in data) {
-    //   console.log({ ...data[key], key });
-    // }
-
-    let bugsList = [];
-    //Firebase has a key for each item
-    for (const key in data) {
-      // bugsList.push({
-      //   id: data[key].id,
-      //   title: data[key].title,
-      //   details: data[key].details,
-      //   steps: data[key].steps,
-      //   version: data[key].version,
-      //   priority: data[key].priority,
-      //   assigned: data[key].assigned,
-      //   creator: data[key].creator,
-      //   time: data[key].time,
-      //   //keyId: key,
-      // });
-      const newData = { ...data[key], key };
-      bugsList.push(newData);
-    }
-    //console.log(bugsList);
-    return bugsList;
-
-    // const sortedArray = [...bugsList];
-    // if (sortedArray.length > 1) {
-    //   sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
-    // }
-    // return sortedArray;
   };
-
-  try {
-    const bugsList = await fetchData();
-    return bugsList;
-  } catch (error) {
-    console.error(error.message);
-    // dispatch(
-    //   showNotification({
-    //     status: 'Error',
-    //     title: 'Error',
-    //     message: 'Cannot fetch stored data',
-    //   })
-    // );
-  }
 };
+
+// export const getBugsFromServer = async () => {
+//   const fetchData = async () => {
+
+//     const response = await fetch(`${databaseURL}/bugs.json`);
+
+//     if (!response.ok) {
+//       throw new Error('cannot get bugs list');
+//     }
+
+//     const data = await response.json();
+
+//     let bugsList = [];
+//     //Firebase has a key for each item
+//     for (const key in data) {
+//       const newData = { ...data[key], key };
+//       bugsList.push(newData);
+//     }
+
+//     return bugsList;
+//   };
+
+//   try {
+//     const bugsList = await fetchData();
+//     return bugsList;
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// };

@@ -11,8 +11,10 @@
 .modal {
   background-color: white;
   position: fixed;
-  height: 35%;
-  width: 55%;
+  /* height: 35%;
+  width: 55%; */
+  height: 40%;
+  width: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -40,13 +42,16 @@
 
 .btns {
   display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .cancel-btn,
 .confirm-btn {
   /* width: 15vw; */
   /* width: 20vw; */
-  width: 30vw;
+  /* width: 30vw; */
+  width: 40%;
   /* height: 6vh; */
   height: 7vh;
   margin: 5px;
