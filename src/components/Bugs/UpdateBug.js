@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 
-import { getBugs, updateBugs } from '../../store/bug-slice';
 import useForm from '../../hooks/useForm';
 import BugForm from './BugForm/BugForm';
 import {
@@ -21,6 +20,7 @@ const EditBug = () => {
   console.log(bugs);
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
   const selectedBugKey = selectedBug.key;
+  console.log(selectedBugKey);
 
   const initialFormState = {
     title: selectedBug.title,
@@ -47,23 +47,20 @@ const EditBug = () => {
     resetFormState
   );
 
-  useEffect(() => {
-    dispatch(getBugsFromServer());
-  }, [dispatch]);
-
   const submitUpdatedBugs = async () => {
     const enteredId = selectedBug.id;
     const enteredTime = selectedBug.time;
 
-    const newBug = {
+    const updatedBug = {
       ...formData,
       time: enteredTime,
       id: enteredId,
       key: selectedBugKey,
     };
 
-    dispatch(updateBugs(newBug));
-    await sendUpdatedBugToServer(newBug, selectedBugKey);
+    dispatch(sendUpdatedBugToServer(updatedBug, selectedBugKey));
+    dispatch(getBugsFromServer());
+
     resetForm();
     //const storedBugs = await getBugsFromServer();
     //await dispatch(getBugs(storedBugs));

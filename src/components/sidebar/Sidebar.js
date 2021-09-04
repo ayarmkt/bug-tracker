@@ -20,7 +20,7 @@ const Sidebar = () => {
   // console.log(vw);
 
   const { width: vw } = useWindowDimensions();
-  console.log(vw);
+  //console.log(vw);
 
   //state.mobileMenu = vw <= 767 ? true : false;
 

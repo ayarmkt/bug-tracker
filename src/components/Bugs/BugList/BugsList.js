@@ -1,6 +1,7 @@
 import classes from './BugsList.module.css';
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 import BugItem from '../BugItem/BugItem';
 import ModalOverlay from '../../../UI/Modal/ModalOverlay';
@@ -13,39 +14,39 @@ import Notification from '../../../UI/Notification/Notification';
 
 const BugsList = () => {
   const { bugs } = useSelector((state) => state.bugs);
+  console.log('bugs');
   console.log(bugs);
   const { menuOpen } = useSelector((state) => state.ui);
   //const { mobileMenu } = useSelector((state) => state.ui);
   const { modalOpen } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
-  const { notification } = useSelector((state) => state.ui);
-  console.log(notification);
-
-  // //eventually move to bug-slice
-  let sortedArray = [...bugs];
-  if (sortedArray.length > 1) {
-    sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
-  }
+  const { message } = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
     dispatch(getBugsFromServer());
-  }, [dispatch]);
+    //dispatch(getBugs(bugsList));
+  }, []);
+
+  // //eventually move to bug-slice
+  let sortedArray;
+  if (bugs) {
+    sortedArray = [...bugs];
+    if (sortedArray.length > 1) {
+      sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
+    }
+  }
+
+  // useEffect(() => {
+  //   dispatch(getBugs(bugsList));
+  // }, [dispatch, bugsList]);
+
+  // let sortedArray = [...bugs];
+  // if (sortedArray.length > 1) {
+  //   sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
+  // }
 
   //dispatch(getBugs(bugs));
-
-  // const getData = useCallback(async () => {
-  //   const storedBugs = await getBugsFromServer();
-  //   await dispatch(getBugs(storedBugs));
-  // }, []);
-
-  // //added bugs
-  // useEffect(() => {
-  //   getData();
-  // }, [getData]);
-
-  // const getPosition = (el) => {
-  //   if (!el) return;
 
   //   //in px
   //   const vw = Math.max(
@@ -58,17 +59,8 @@ const BugsList = () => {
   //     window.innerHeight || 0
   //   );
 
-  //   console.log(vh, vw);
-  //   console.log(el.getBoundingClientRect());
-  //   let position = el.getBoundingClientRect();
-
-  //   let topPercentage = (position.top / vh) * 100;
-  //   let leftPercentage = (position.left / vw) * 100;
-
-  //   let topPx = vh * console.log(topPercentage, leftPercentage);
-  // };
   const { width: vw } = useWindowDimensions();
-  console.log(vw);
+  //console.log(vw);
 
   let mobileMenu = vw <= 767 ? true : false;
 
@@ -82,7 +74,7 @@ const BugsList = () => {
         <Notification
           className={classes.notification}
           //title={notification.title}
-          message={notification.message}
+          message={message}
         />
         <ul className={classes['list-container']}>
           <li className={classes.labels}>

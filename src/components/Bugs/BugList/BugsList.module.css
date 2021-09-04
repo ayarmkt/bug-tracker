@@ -28,7 +28,7 @@
 .list-container {
   margin: 0;
   border: 1px solid blue;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .labels {

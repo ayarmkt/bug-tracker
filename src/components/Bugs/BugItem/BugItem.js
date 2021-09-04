@@ -31,7 +31,7 @@ const BugItem = (props) => {
   };
 
   const { width: vw } = useWindowDimensions();
-  console.log(vw);
+  //console.log(vw);
 
   let mobileMenu = vw <= 767 ? true : false;
 
