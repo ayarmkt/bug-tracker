@@ -2,10 +2,10 @@ import classes from './Notification.module.css';
 import { useSelector } from 'react-redux';
 
 const Notification = (props) => {
-  const { notification } = useSelector((state) => state.ui);
+  const { status } = useSelector((state) => state.ui.notification);
 
   let notificationStatus;
-  switch (notification.status) {
+  switch (status) {
     case 'pending':
       notificationStatus = classes.pending;
       break;

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 //import { useCallback } from 'react';
-//import { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { closeModal } from '../../store/ui-slice';
 //import { deleteBugs } from '../store/bug-slice';
@@ -12,7 +12,7 @@ import Button from '../Button/Button';
 import { sendDeletedBugInfoToServer } from '../../store/bug-actions';
 import { getBugsFromServer } from '../../store/bug-actions';
 //import { getBugs } from '../store/bug-slice';
-import { deleteBugs } from '../../store/bug-slice';
+//import { deleteBugs } from '../../store/bug-slice';
 
 const Backdrop = () => {
   const dispatch = useDispatch();
@@ -39,16 +39,11 @@ const Modal = () => {
     dispatch(closeModal());
   };
 
-  const sendBugDelete = async () => {
-    dispatch(deleteBugs(selectedBug));
-    await sendDeletedBugInfoToServer(selectedBug, selectedBugKey);
-    await getBugsFromServer();
-  };
-
   const deleteBugHandler = () => {
-    sendBugDelete();
+    dispatch(sendDeletedBugInfoToServer(selectedBug, selectedBugKey));
+    //dispatch(getBugsFromServer());
     dispatch(closeModal());
-    history.push('/bug-tracker/bugs-list');
+    //history.push('/bug-tracker/bugs-list');
   };
 
   return (
