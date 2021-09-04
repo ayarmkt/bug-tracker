@@ -47,6 +47,10 @@ const EditBug = () => {
     resetFormState
   );
 
+  useEffect(() => {
+    dispatch(getBugsFromServer());
+  }, [dispatch]);
+
   const submitUpdatedBugs = async () => {
     const enteredId = selectedBug.id;
     const enteredTime = selectedBug.time;
@@ -60,10 +64,10 @@ const EditBug = () => {
 
     dispatch(updateBugs(newBug));
     await sendUpdatedBugToServer(newBug, selectedBugKey);
-    await resetForm();
-    const storedBugs = await getBugsFromServer();
-    await dispatch(getBugs(storedBugs));
-    await history.push('/bug-tracker/bugs-list');
+    resetForm();
+    //const storedBugs = await getBugsFromServer();
+    //await dispatch(getBugs(storedBugs));
+    history.push('/bug-tracker/bugs-list');
   };
 
   const submitUpdatedBugHandler = (e) => {

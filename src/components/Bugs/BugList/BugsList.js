@@ -28,17 +28,21 @@ const BugsList = () => {
     sortedArray.sort((a, b) => Number(a.priority) - Number(b.priority));
   }
 
-  dispatch(getBugs(bugs));
-
-  const getData = useCallback(async () => {
-    const storedBugs = await getBugsFromServer();
-    await dispatch(getBugs(storedBugs));
-  }, []);
-
-  //added bugs
   useEffect(() => {
-    getData();
-  }, [getData]);
+    dispatch(getBugsFromServer());
+  }, [dispatch]);
+
+  //dispatch(getBugs(bugs));
+
+  // const getData = useCallback(async () => {
+  //   const storedBugs = await getBugsFromServer();
+  //   await dispatch(getBugs(storedBugs));
+  // }, []);
+
+  // //added bugs
+  // useEffect(() => {
+  //   getData();
+  // }, [getData]);
 
   // const getPosition = (el) => {
   //   if (!el) return;

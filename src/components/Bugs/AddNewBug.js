@@ -51,6 +51,10 @@ const AddNewBug = () => {
     setNewBug(null);
   }, [newBug, dispatch]);
 
+  useEffect(() => {
+    dispatch(getBugsFromServer());
+  }, [dispatch]);
+
   const submitNewBug = async () => {
     // newBug = {
     //   ...formData,
@@ -61,7 +65,7 @@ const AddNewBug = () => {
     console.log(newBug);
 
     //await sendNewBugsToServer(newBug);
-    await getBugsFromServer();
+    //await getBugsFromServer();
     //await
     resetForm();
     //await
