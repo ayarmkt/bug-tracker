@@ -15,9 +15,9 @@ const bugSlice = createSlice({
       state.bugsChanged = false;
       const bugsList = action.payload;
       state.bugs = bugsList;
-      console.log('dispatch getBugs running');
-      console.log('state.bugs');
-      console.log(state.bugs);
+      //console.log('dispatch getBugs running');
+      //console.log('state.bugs');
+      //console.log(state.bugs);
       // state.bugsChanged = false;
       //sort bugs here
     },
@@ -26,7 +26,7 @@ const bugSlice = createSlice({
       state.isUpdatingBug = false;
       state.bugsChanged = true;
       const newBug = action.payload;
-      console.log('dispatching addNewBugs');
+      //console.log('dispatching addNewBugs');
 
       const existingItem = state.bugs.find((bug) => bug.id === newBug.id);
 
@@ -36,7 +36,8 @@ const bugSlice = createSlice({
           title: newBug.title,
           details: newBug.details,
           steps: newBug.steps,
-          version: newBug.version,
+          // version: newBug.version,
+          status: newBug.status,
           priority: newBug.priority,
           assigned: newBug.assigned,
           creator: newBug.creator,
@@ -46,7 +47,7 @@ const bugSlice = createSlice({
     },
 
     updateBugs(state, action) {
-      console.log('dispatch updateBugs running');
+      //console.log('dispatch updateBugs running');
       state.isUpdatingBug = true;
       state.bugsChanged = true;
       state.selectedBug = action.payload;
@@ -60,7 +61,8 @@ const bugSlice = createSlice({
         title: state.selectedBug.title,
         details: state.selectedBug.details,
         steps: state.selectedBug.steps,
-        version: state.selectedBug.version,
+        // version: state.selectedBug.version,
+        status: state.selectedBug.status,
         priority: state.selectedBug.priority,
         assigned: state.selectedBug.assigned,
         creator: state.selectedBug.creator,
@@ -71,7 +73,7 @@ const bugSlice = createSlice({
         state.bugs.splice(existingItemIndex, 1, bugUpdate);
       }
 
-      console.log(state.bugs);
+      //console.log(state.bugs);
       state.isUpdatingBug = false;
       state.selectedBug = null;
     },
@@ -88,7 +90,7 @@ const bugSlice = createSlice({
         state.bugs.splice(existingItemIndex, 1);
       }
 
-      console.log(state.bugs);
+      //console.log(state.bugs);
       state.selectedBug = null;
     },
     storeSelectedBug(state, action) {

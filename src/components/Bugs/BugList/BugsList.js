@@ -14,8 +14,8 @@ import Notification from '../../../UI/Notification/Notification';
 
 const BugsList = () => {
   const { bugs } = useSelector((state) => state.bugs);
-  console.log('bugs');
-  console.log(bugs);
+  //console.log('bugs');
+  //console.log(bugs);
   const { menuOpen } = useSelector((state) => state.ui);
   //const { mobileMenu } = useSelector((state) => state.ui);
   const { modalOpen } = useSelector((state) => state.ui);
@@ -79,8 +79,9 @@ const BugsList = () => {
         <ul className={classes['list-container']}>
           <li className={classes.labels}>
             <p key='title'>Title</p>
-            <p key='version'>Version</p>
+            {/* <p key='version'>Version</p> */}
             <p key='priority'>Priority</p>
+            <p key='status'>Status</p>
             {!mobileMenu && <p key='assigned'>Assigned</p>}
             {!mobileMenu && <p key='creator'>Creator</p>}
             <div className={classes.actions}>

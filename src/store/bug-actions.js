@@ -19,7 +19,7 @@ export const sendNewBugsToServer = (newBug) => {
 
     const storeData = async () => {
       //console.log('running sendBugsToServer');
-      console.log('sending!!!');
+      //console.log('sending!!!');
       const response = await fetch(`${databaseURL}/bugs.json`, {
         method: 'POST',
         body: JSON.stringify({
@@ -27,8 +27,9 @@ export const sendNewBugsToServer = (newBug) => {
           title: newBug.title,
           details: newBug.details,
           steps: newBug.steps,
-          version: newBug.version,
-          priority: newBug.priority,
+          // version: newBug.version,
+          status: newBug.status ? newBug.status : 'New',
+          priority: newBug.priority ? newBug.priority : '1',
           assigned: newBug.assigned,
           creator: newBug.creator,
           time: new Date().getTime(),
@@ -43,7 +44,7 @@ export const sendNewBugsToServer = (newBug) => {
 
     try {
       await storeData();
-      console.log('sending POST request!!!');
+      //console.log('sending POST request!!!');
       dispatch(addNewBugs(newBug));
       dispatch(
         showNotification({
@@ -92,7 +93,7 @@ export const sendUpdatedBugToServer = (newBug, key) => {
     try {
       await storeData();
       //dispatch(updateBugs(newBug));
-      console.log(`updated: ${newBug}`);
+      //console.log(`updated: ${newBug}`);
       dispatch(updateBugs(newBug));
       dispatch(
         showNotification({
@@ -191,7 +192,7 @@ export const getBugsFromServer = () => {
     try {
       const bugsList = await fetchData();
 
-      console.log('fetching data!!!');
+      //console.log('fetching data!!!');
       dispatch(getBugs(bugsList));
       dispatch(
         showNotification({
