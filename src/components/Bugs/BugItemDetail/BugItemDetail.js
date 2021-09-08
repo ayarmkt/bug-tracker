@@ -59,13 +59,18 @@ const BugItemDetail = () => {
             <p className={classes.label}>Steps</p>
             <p className={classes.content}>{selectedBug.steps}</p>
           </div>
-          <div className={classes['detail-content']}>
+          {/* <div className={classes['detail-content']}>
             <p className={classes.label}>Version</p>
             <p className={classes.content}>{selectedBug.version}</p>
-          </div>
+          </div> */}
+
           <div className={classes['detail-content']}>
             <p className={classes.label}>Priority</p>
             <p className={classes.content}>{bugPriority}</p>
+          </div>
+          <div className={classes['detail-content']}>
+            <p className={classes.label}>Status</p>
+            <p className={classes.content}>{selectedBug.status}</p>
           </div>
           <div className={classes['detail-content']}>
             <p className={classes.label}>Assigned</p>

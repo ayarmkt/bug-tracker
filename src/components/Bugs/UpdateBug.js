@@ -17,7 +17,7 @@ const EditBug = () => {
   const dispatch = useDispatch();
 
   const { bugs } = useSelector((state) => state.bugs);
-  console.log(bugs);
+  //console.log(bugs);
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
   const selectedBugKey = selectedBug.key;
   console.log(selectedBugKey);
@@ -26,7 +26,8 @@ const EditBug = () => {
     title: selectedBug.title,
     details: selectedBug.details,
     steps: selectedBug.steps,
-    version: selectedBug.version,
+    // version: selectedBug.version,
+    status: selectedBug.status,
     priority: selectedBug.priority,
     assigned: selectedBug.assigned,
     creator: selectedBug.creator,
@@ -36,7 +37,8 @@ const EditBug = () => {
     title: '',
     details: '',
     steps: '',
-    version: '',
+    // version: '',
+    status: '',
     priority: '',
     assigned: '',
     creator: '',

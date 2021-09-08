@@ -59,8 +59,9 @@ const BugItem = (props) => {
           bug={props.bug}
         >
           <p>{adjustLength(props.bug.title)}</p>
-          <p>{props.bug.version}</p>
+          {/* <p>{props.bug.version}</p> */}
           <p>{bugPriority}</p>
+          <p>{props.bug.status ? props.bug.status : 'New'}</p>
           {!mobileMenu && <p>{props.bug.assigned}</p>}
           {!mobileMenu && <p>{props.bug.creator}</p>}
         </li>

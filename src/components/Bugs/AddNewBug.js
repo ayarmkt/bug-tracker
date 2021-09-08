@@ -17,7 +17,8 @@ const AddNewBug = () => {
     title: '',
     details: '',
     steps: '',
-    version: '',
+    // version: '',
+    status: '',
     priority: '',
     assigned: '',
     creator: '',
@@ -27,7 +28,8 @@ const AddNewBug = () => {
     title: '',
     details: '',
     steps: '',
-    version: '',
+    // version: '',
+    status: '',
     priority: '',
     assigned: '',
     creator: '',
@@ -40,13 +42,15 @@ const AddNewBug = () => {
 
   const submitNewBugHandler = (e) => {
     e.preventDefault();
+    console.log(formData);
+    console.log(formData.priority);
     const newBug = {
       ...formData,
     };
     // setNewBug({
     //   ...formData,
     // });
-    console.log(newBug);
+    //console.log(newBug);
     dispatch(sendNewBugsToServer(newBug));
     dispatch(getBugsFromServer());
     resetForm();

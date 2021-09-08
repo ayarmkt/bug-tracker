@@ -41,16 +41,7 @@ const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
               value={formData.steps}
             />
           </div>
-          <div className={classes['add-bug-input']}>
-            <label>Version</label>
-            <input
-              type='text'
-              name='version'
-              placeholder='enter version'
-              onChange={onChange}
-              value={formData.version}
-            />
-          </div>
+
           <div className={classes['add-bug-input']}>
             <label>Priority</label>
             <select
@@ -61,6 +52,23 @@ const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
               <option value='1'>High</option>
               <option value='2'>Mid</option>
               <option value='3'>Low</option>
+            </select>
+          </div>
+          <div className={classes['add-bug-input']}>
+            <label>Status</label>
+            {/* <input
+              type='text'
+              name='version'
+              placeholder='enter version'
+              onChange={onChange}
+              value={formData.version}
+            /> */}
+            <select name='status' onChange={onChange} value={formData.status}>
+              <option value='New'>New</option>
+              <option value='Assigned'>Assigned</option>
+              <option value='Fixed'>Fixed</option>
+              <option value="Won't Fix">Won't Fix</option>
+              <option value='Duplicate'>Duplicate</option>
             </select>
           </div>
           <div className={classes['add-bug-input']}>
