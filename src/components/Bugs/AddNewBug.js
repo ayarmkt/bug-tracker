@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
+//import { useContext } from 'react';
 
 import useForm from '../../hooks/useForm';
 import BugForm from './BugForm/BugForm';
@@ -12,6 +13,10 @@ import {
 const AddNewBug = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  //const authCtx = useContext(AuthContext);
+
+  //if (!authCtx.token) history.replace('/bug-tracker/login');
 
   const initialFormState = {
     title: '',
