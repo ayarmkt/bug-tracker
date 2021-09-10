@@ -31,7 +31,7 @@ const HamburgerMenu = ({ onClick }) => {
   const logoutHandler = () => {
     if (menuOpen) menuToggleHandler();
     authCtx.logout();
-    history.replace('/bug-tracker/login');
+    //history.replace('/bug-tracker/login');
   };
 
   const sidebarClass = menuOpen ? classes.active : '';

@@ -3,7 +3,8 @@
   height: 20px;
   margin: 10px 0;
   text-align: center;
-  transition: opacity 0.8s;
+  /* transition: opacity 0.8s; */
+  /* animation: fadeout 1s linear 1s forwards; */
 }
 
 .hidden {
@@ -16,12 +17,21 @@
 
 .pending {
   background-color: orange;
+  /* animation: none; */
 }
 
 .success {
   background-color: green;
+  animation: fadeout 1s linear 1s forwards;
 }
 
 .error {
   background-color: red;
+  /* animation: none; */
+}
+
+@keyframes fadeout {
+  to {
+    opacity: 0;
+  }
 }

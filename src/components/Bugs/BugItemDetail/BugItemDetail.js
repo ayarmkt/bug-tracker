@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+//import { useHistory } from 'react-router';
+//import { useContext } from 'react';
 
 import classes from './BugItemDetail.module.css';
 import Button from '../../../UI/Button/Button';
@@ -15,6 +17,11 @@ const BugItemDetail = () => {
   const params = useParams();
   const dispatch = useDispatch();
 
+  //const history = useHistory();
+  //const authCtx = useContext(AuthContext);
+
+  //if (!authCtx.token) history.replace('/bug-tracker/login');
+
   const { modalOpen } = useSelector((state) => state.ui);
   const { bugs } = useSelector((state) => state.bugs);
   const selectedBug = bugs.find((bug) => bug.id === params.bugId);
@@ -25,6 +32,7 @@ const BugItemDetail = () => {
   };
 
   let bugPriority;
+
   switch (selectedBug.priority) {
     case '1':
       bugPriority = 'High';

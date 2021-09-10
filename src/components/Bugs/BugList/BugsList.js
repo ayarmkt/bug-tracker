@@ -2,6 +2,8 @@ import classes from './BugsList.module.css';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useHistory } from 'react-router';
+import { useContext } from 'react';
 
 import BugItem from '../BugItem/BugItem';
 import ModalOverlay from '../../../UI/Modal/ModalOverlay';
@@ -11,8 +13,14 @@ import H1 from '../../../UI/H1/H1';
 import Card from '../../../UI/Card/Card';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import Notification from '../../../UI/Notification/Notification';
+import AuthContext from '../../../store/auth-context';
 
 const BugsList = () => {
+  //const history = useHistory();
+  //const authCtx = useContext(AuthContext);
+
+  // if (!authCtx.token) history.replace('/bug-tracker/login');
+
   const { bugs } = useSelector((state) => state.bugs);
   //console.log('bugs');
   //console.log(bugs);
@@ -21,7 +29,7 @@ const BugsList = () => {
   const { modalOpen } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
-  const { message } = useSelector((state) => state.ui.notification);
+  const { status, message } = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
     dispatch(getBugsFromServer());
@@ -99,9 +107,10 @@ const BugsList = () => {
                 bug={bug}
               />
             ))}
-          {(!sortedArray || sortedArray.length === 0) && (
-            <p className={classes.empty}>No bugs found.</p>
-          )}
+          {status === 'success' &&
+            (!sortedArray || sortedArray.length === 0) && (
+              <p className={classes.empty}>No bugs found.</p>
+            )}
         </ul>
         {/* </div> */}
       </Card>

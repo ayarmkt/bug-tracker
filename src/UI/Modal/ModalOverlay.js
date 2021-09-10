@@ -43,7 +43,7 @@ const Modal = () => {
     dispatch(sendDeletedBugInfoToServer(selectedBug, selectedBugKey));
     //dispatch(getBugsFromServer());
     dispatch(closeModal());
-    //history.push('/bug-tracker/bugs-list');
+    history.push('/bug-tracker/bugs-list');
   };
 
   return (

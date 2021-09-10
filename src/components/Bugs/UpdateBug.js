@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
+import { useContext } from 'react';
 
 import useForm from '../../hooks/useForm';
 import BugForm from './BugForm/BugForm';
@@ -15,6 +16,10 @@ const EditBug = () => {
   const params = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
+
+  //const authCtx = useContext(AuthContext);
+
+  //if (!authCtx.token) history.replace('/bug-tracker/login');
 
   const { bugs } = useSelector((state) => state.bugs);
   //console.log(bugs);
