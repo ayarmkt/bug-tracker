@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div>
-      <Route path='/bug-tracker' exact>
+      <Route path='/' exact>
         {!authCtx.loggedIn && (
           <Redirect to='/bug-tracker/login' exact>
             <Login />
