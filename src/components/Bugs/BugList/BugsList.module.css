@@ -63,7 +63,7 @@
   } */
 
   .labels {
-    grid-template-columns: 2.5fr 1fr 1.5fr 70px;
+    grid-template-columns: 3fr 1fr 70px;
   }
 
   .labels p {
