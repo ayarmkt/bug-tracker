@@ -35,7 +35,7 @@ const BugItemDetail = () => {
   //console.log(selectedBug)
 
 
-  let storedBug;
+  //let storedBug;
   useEffect(()=>{
     if(currentBug){
       localStorage.setItem('currentBug', JSON.stringify(currentBug))
@@ -44,7 +44,7 @@ const BugItemDetail = () => {
       //console.log('set item running');
     } else{
       //setLoading(true)
-      storedBug = JSON.parse(localStorage.getItem('currentBug'));
+      let storedBug = JSON.parse(localStorage.getItem('currentBug'));
       dispatch(storeSelectedBug(storedBug));
       console.log(`storedBug is ${JSON.stringify(storedBug)}`);
       //console.log('get item running');
@@ -92,38 +92,40 @@ const BugItemDetail = () => {
         <H1 title='Bug Detail' />
         {/* {loading && <p>Loading...</p>} */}
         {selectedBug && (<div className={classes['bug-detail']}>
-          <div className={classes['detail-content']}>
-            <p className={classes.label}>Title</p>
-            <p className={classes.content}>{selectedBug.title}</p>
-          </div>
-          <div className={classes['detail-content-long-text']}>
-            <p className={classes.label}>Details</p>
-            <p className={classes.content}>{selectedBug.details}</p>
-          </div>
-          <div className={classes['detail-content-long-text']}>
-            <p className={classes.label}>Steps</p>
-            <p className={classes.content}>{selectedBug.steps}</p>
-          </div>
-          {/* <div className={classes['detail-content']}>
-            <p className={classes.label}>Version</p>
-            <p className={classes.content}>{selectedBug.version}</p>
-          </div> */}
+          <div className={classes['bug-detail-table']}>
+            <div className={classes['detail-content']}>
+              <p className={classes.label}>Title</p>
+              <p className={classes.content}>{selectedBug.title}</p>
+            </div>
+            <div className={classes['detail-content-long-text']}>
+              <p className={classes.label}>Details</p>
+              <p className={classes.content}>{selectedBug.details}</p>
+            </div>
+            <div className={classes['detail-content-long-text']}>
+              <p className={classes.label}>Steps</p>
+              <p className={classes.content}>{selectedBug.steps}</p>
+            </div>
+            {/* <div className={classes['detail-content']}>
+              <p className={classes.label}>Version</p>
+              <p className={classes.content}>{selectedBug.version}</p>
+            </div> */}
 
-          <div className={classes['detail-content']}>
-            <p className={classes.label}>Priority</p>
-            <p className={classes.content}>{bugPriority}</p>
-          </div>
-          <div className={classes['detail-content']}>
-            <p className={classes.label}>Status</p>
-            <p className={classes.content}>{selectedBug.status}</p>
-          </div>
-          <div className={classes['detail-content']}>
-            <p className={classes.label}>Assigned</p>
-            <p className={classes.content}>{selectedBug.assigned}</p>
-          </div>
-          <div className={classes['detail-content']}>
-            <p className={classes.label}>Creator</p>
-            <p className={classes.content}>{selectedBug.creator}</p>
+            <div className={classes['detail-content']}>
+              <p className={classes.label}>Priority</p>
+              <p className={classes.content}>{bugPriority}</p>
+            </div>
+            <div className={classes['detail-content']}>
+              <p className={classes.label}>Status</p>
+              <p className={classes.content}>{selectedBug.status}</p>
+            </div>
+            <div className={classes['detail-content']}>
+              <p className={classes.label}>Assigned</p>
+              <p className={classes.content}>{selectedBug.assigned}</p>
+            </div>
+            <div className={classes['detail-content']}>
+              <p className={classes.label}>Creator</p>
+              <p className={classes.content}>{selectedBug.creator}</p>
+            </div>
           </div>
           <div className={classes.actions}>
             <div className={classes.btns}>
@@ -134,7 +136,7 @@ const BugItemDetail = () => {
                 onClick={openModalHandler}
                 text='Delete bug'
               />
-              <Link to={`/bug-tracker/update-bug/${selectedBug.id}`}>
+              <Link to={`/update-bug/${selectedBug.id}`}>
                 <Button
                   type='button'
                   disabled={false}
@@ -145,7 +147,7 @@ const BugItemDetail = () => {
             </div>
 
             <Link
-              to='/bug-tracker/bugs-list'
+              to='/bugs-list'
               className={classes['back-to-list']}
             >
               <p>↶Back to List</p>

@@ -13,7 +13,7 @@ import H1 from '../../../UI/H1/H1';
 import Card from '../../../UI/Card/Card';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import Notification from '../../../UI/Notification/Notification';
-import AuthContext from '../../../store/auth-context';
+import AuthContext from '../../../context/auth-context';
 
 const BugsList = () => {
   //const history = useHistory();

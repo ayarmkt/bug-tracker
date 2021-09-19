@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
 import useAuthInputValidation from '../../hooks/useAuthInputValidation';
-import AuthContext from '../../store/auth-context';
+import AuthContext from '../../context/auth-context';
 import Button from '../../UI/Button/Button';
 import Notification from '../../UI/Notification/Notification';
 import { showNotification } from '../../store/ui-slice';
@@ -114,7 +114,7 @@ const Login = () => {
         })
       );
       console.log(message)
-      history.replace('/bug-tracker/bugs-list');
+      history.replace('/bugs-list');
     } catch(error) {
       //console.log(error.message);
       dispatch(

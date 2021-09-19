@@ -59,7 +59,7 @@ const BugItem = (props) => {
 
   return (
     <div className={classes['bug-item']}>
-      <Link className={classes.link} to={`/bug-tracker/bugs-list/${props.id}`} >
+      <Link className={classes.link} to={`/bugs-list/${props.id}`} >
         <li
           className={classes['bug-detail']}
           key={props.bug.id}
@@ -75,7 +75,7 @@ const BugItem = (props) => {
         </li>
       </Link>
       <div className={classes.actions}>
-        <Link to={`/bug-tracker/update-bug/${props.id}`}>
+        <Link to={`/update-bug/${props.id}`}>
           <BiEdit className={classes.icon} size='25px' color='green' />
         </Link>
         <BsTrashFill
