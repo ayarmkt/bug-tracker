@@ -23,6 +23,10 @@ const BugItem = (props) => {
   const { bugs } = useSelector((state) => state.bugs);
   const selectedBug = bugs.find((bug) => bug.id === props.bug.id);
 
+  const storeBugHandler=()=>{
+    dispatch(storeSelectedBug(selectedBug));
+  }
+
   const openModalHandler = () => {
     dispatch(storeSelectedBug(selectedBug));
     dispatch(openModal());
@@ -64,7 +68,7 @@ const BugItem = (props) => {
       </Link>
       <div className={classes.actions}>
         <Link to={`/update-bug/${props.id}`}>
-          <BiEdit className={classes.icon} size='25px' color='green' />
+          <BiEdit className={classes.icon} size='25px' color='green' onClick={storeBugHandler} />
         </Link>
         <BsTrashFill
           className={classes.icon}
