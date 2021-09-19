@@ -161,4 +161,10 @@
     height: 100vh;
     border-radius: none;
   }
+
+  .notification{
+   position: absolute;
+   top: 10vh;
+   z-index: 100;
+  }
 }
