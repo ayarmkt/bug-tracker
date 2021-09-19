@@ -21,9 +21,14 @@ const EditBug = () => {
 
   //if (!authCtx.token) history.replace('/bug-tracker/login');
 
-  const { bugs } = useSelector((state) => state.bugs);
+  //const { bugs } = useSelector((state) => state.bugs);
   //console.log(bugs);
-  const selectedBug = bugs.find((bug) => bug.id === params.bugId);
+  // const selectedBug = bugs.find((bug) => bug.id === params.bugId);
+  // console.log(selectedBug);
+  // const selectedBugKey = selectedBug.key;
+  // console.log(selectedBugKey);
+
+  const { selectedBug } = useSelector((state) => state.bugs);
   const selectedBugKey = selectedBug.key;
   console.log(selectedBugKey);
 

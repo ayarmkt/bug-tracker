@@ -27,35 +27,37 @@ const BugItemDetail = () => {
   //const [selectedBug, setSelectedBug] = useState(null);
 
   const { bugs } = useSelector((state) => state.bugs);
-  console.log(`bugs are ${JSON.stringify(bugs)}`);
+  //console.log(`bugs are ${JSON.stringify(bugs)}`);
   const  currentBug = bugs.find((bug) => bug.id === params.bugId);
-  console.log(`currentBug is ${JSON.stringify(currentBug)}`);
+  //console.log(`currentBug is ${JSON.stringify(currentBug)}`);
 
   const { selectedBug } = useSelector((state) => state.bugs);
-  console.log(selectedBug)
+  //console.log(selectedBug)
 
 
   let storedBug;
   useEffect(()=>{
     if(currentBug){
       localStorage.setItem('currentBug', JSON.stringify(currentBug))
+      dispatch(storeSelectedBug(currentBug));
       console.log(`currentBug storing is ${JSON.stringify(currentBug)}`);
-      console.log('set item running');
+      //console.log('set item running');
     } else{
       //setLoading(true)
       storedBug = JSON.parse(localStorage.getItem('currentBug'));
+      dispatch(storeSelectedBug(storedBug));
       console.log(`storedBug is ${JSON.stringify(storedBug)}`);
-      console.log('get item running');
+      //console.log('get item running');
       //setLoading(false)
     }
   },[])
 
   
-  useEffect(()=>{
-    //setSelectedBug(currentBug ? currentBug : storedBug)
-    dispatch(storeSelectedBug(currentBug ? currentBug : storedBug));
-    console.log(`selected bug is ${JSON.stringify(selectedBug)}`)
-  }, [currentBug, storedBug])
+  // useEffect(()=>{
+  //   //setSelectedBug(currentBug ? currentBug : storedBug)
+  //   dispatch(storeSelectedBug(currentBug ? currentBug : storedBug));
+  //   //console.log(`selected bug is ${JSON.stringify(selectedBug)}`)
+  // }, [currentBug, storedBug])
 
  
 
