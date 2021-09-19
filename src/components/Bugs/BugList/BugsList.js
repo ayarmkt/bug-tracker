@@ -48,7 +48,7 @@ const BugsList = () => {
           <li className={classes.labels}>
             <p key='title'>Title</p>
             <p key='priority'>Priority</p>
-            <p key='status'>Status</p>
+            {!mobileMenu && <p key='status'>Status</p>}
             {!mobileMenu && <p key='assigned'>Assigned</p>}
             {!mobileMenu && <p key='creator'>Creator</p>}
             <div className={classes.actions}>

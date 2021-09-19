@@ -61,7 +61,7 @@ const BugItem = (props) => {
         >
           <p className={classes.titleText}>{props.bug.title}</p>
           <p>{bugPriority}</p>
-          <p>{props.bug.status ? props.bug.status : 'New'}</p>
+          {!mobileMenu && <p>{props.bug.status ? props.bug.status : 'New'}</p>}
           {!mobileMenu && <p>{props.bug.assigned}</p>}
           {!mobileMenu && <p>{props.bug.creator}</p>}
         </li>
