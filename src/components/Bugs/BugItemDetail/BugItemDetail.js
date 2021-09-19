@@ -54,7 +54,7 @@ const BugItemDetail = () => {
   return (
     <React.Fragment>
       <Card>
-        <H1 title='Bug Detail' />
+        <H1 title='Bug Detail'  />
         {selectedBug && (<div className={classes['bug-detail']}>
           <div className={classes['bug-detail-table']}>
             <div className={classes['detail-content']}>

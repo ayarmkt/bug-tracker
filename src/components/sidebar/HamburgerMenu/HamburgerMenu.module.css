@@ -1,7 +1,6 @@
 /*  Smartphones in landscape mode */
 @media only screen and (max-width: 767px) {
   nav {
-    color: yellow;
     z-index: 100;
     position: fixed;
     width: 200px;

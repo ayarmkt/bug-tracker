@@ -39,7 +39,7 @@ const BugsList = () => {
     <React.Fragment>
       <Card className={classes.containerMenu}>
         {/* <div className={`${classes.container} ${containerMenu}`}> */}
-        <H1 title='All Bugs' />
+        <H1 title='All Bugs'  />
         <Notification
           classname={classes.notification}
           message={message}

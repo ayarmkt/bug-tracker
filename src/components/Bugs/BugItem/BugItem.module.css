@@ -70,12 +70,12 @@
   .bug-detail {
     width: 100%;
     display: grid;
-    grid-template-columns: 2.5fr repeat(2, 1fr);
+    grid-template-columns: 2.5fr 1fr 1.5fr;
   }
 
   .bug-detail p {
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     font-size: 14px;
   }
 }
