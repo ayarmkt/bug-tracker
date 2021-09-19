@@ -12,7 +12,7 @@ import { IoCreate } from 'react-icons/io5';
 import { BiLogOut } from 'react-icons/bi';
 import { GrClose } from 'react-icons/gr';
 
-const HamburgerMenu = ({ onClick }) => {
+const HamburgerMenu = () => {
   const authCtx = useContext(AuthContext);
   const dispatch = useDispatch();
   const { menuOpen } = useSelector((state) => state.ui);

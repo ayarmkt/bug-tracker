@@ -8,9 +8,8 @@ import AuthContext from '../../context/auth-context';
 import Button from '../../UI/Button/Button';
 import Notification from '../../UI/Notification/Notification';
 import { showNotification } from '../../store/ui-slice';
-// import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-const webAPI = process.env.REACT_APP_FIREBASE_API_KEY_DEV;
+const webAPI = process.env.REACT_APP_FIREBASE_API_KEY;
 const guestEmail = process.env.REACT_APP_GUEST_EMAIL;
 const guestPassword = process.env.REACT_APP_GUEST_PASSWORD;
 
@@ -21,17 +20,6 @@ const Login = () => {
 
   const [isLogin, setIsLogin] = useState(true);
   const { status, message } = useSelector((state) => state.ui.notification);
-
-  // const { width: vw } = useWindowDimensions();
-  // const [mobile, setMobile] = useState(false);
-
-  // useEffect(() => {
-  //   if(vw <= 767){
-  //     setMobile(true);
-  //   }else{
-  //     setMobile(false);
-  //   }
-  // }, [])
 
   const {
     value: enteredEmail,

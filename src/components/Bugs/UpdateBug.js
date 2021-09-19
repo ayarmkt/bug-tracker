@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 
 import useForm from '../../hooks/useForm';

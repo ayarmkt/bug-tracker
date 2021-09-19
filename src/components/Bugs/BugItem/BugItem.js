@@ -9,15 +9,6 @@ import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { BiEdit } from 'react-icons/bi';
 import { BsTrashFill } from 'react-icons/bs';
 
-// const adjustLength = (word) => {
-//   if (word && word.length > 17) {
-//     const adjustedWord = word.slice(0, 15) + '...';
-//     return adjustedWord;
-//   } else {
-//     return word;
-//   }
-// };
-
 const BugItem = (props) => {
   const dispatch = useDispatch();
   const { bugs } = useSelector((state) => state.bugs);

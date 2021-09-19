@@ -93,7 +93,6 @@
 
   .cancel-btn,
   .confirm-btn {
-    /* width: 15vw; */
     width: 25vw;
     height: 6vh;
     min-height: 35px;

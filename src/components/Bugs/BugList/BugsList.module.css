@@ -55,13 +55,6 @@
 
 /*  Smartphones in portrait mode  */
 @media only screen and (max-width: 420px) {
-
-  /* .h1{
-    position: absolute;
-    top: 20px;
-    left: 80px;
-  } */
-
   .labels {
     grid-template-columns: 3fr 1fr 70px;
   }

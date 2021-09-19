@@ -19,10 +19,8 @@
 /*  Smartphones in landscape mode */
 @media only screen and (max-width: 767px) {
   .container {
-    /* display: grid; */
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
-    /* overflow: hidden; */
   }
 
   .sidebar {

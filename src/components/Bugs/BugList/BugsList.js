@@ -13,7 +13,6 @@ import Notification from '../../../UI/Notification/Notification';
 const BugsList = () => {
   const dispatch = useDispatch();
   const { bugs } = useSelector((state) => state.bugs);
-  const { menuOpen } = useSelector((state) => state.ui);
   const { modalOpen } = useSelector((state) => state.ui);
   const { status, message } = useSelector((state) => state.ui.notification);
 
@@ -33,12 +32,9 @@ const BugsList = () => {
 
   let mobileMenu = vw <= 767 ? true : false;
 
-  // const containerMenu = mobileMenu && menuOpen ? classes.mobileMenuOpen : '';
-
   return (
     <React.Fragment>
       <Card className={classes.containerMenu}>
-        {/* <div className={`${classes.container} ${containerMenu}`}> */}
         <H1 title='All Bugs'  />
         <Notification
           classname={classes.notification}

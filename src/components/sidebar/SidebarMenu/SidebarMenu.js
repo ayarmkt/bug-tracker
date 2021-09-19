@@ -11,7 +11,7 @@ import { FaListAlt } from 'react-icons/fa';
 import { IoCreate } from 'react-icons/io5';
 import { BiLogOut } from 'react-icons/bi';
 
-const SideBarMenu = ({ onClick }) => {
+const SideBarMenu = () => {
   const authCtx = useContext(AuthContext);
   const history = useHistory();
   const dispatch = useDispatch();
