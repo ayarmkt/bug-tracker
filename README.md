@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# React Bug Tracker App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This Bug Tracker App can be used to manage and keep track of the bugs in a project you are working on. It had an authentication functions (login, signup, logout) as well as bug data management functions (read, add, edit, delete).
 
-In the project directory, you can run:
+## Tech Stack
+Tech Stack: React (including React Context) | Redux | CSS | Firebase<br>
+Platform: Firebase
 
-### `npm start`
+## Final Product
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Live Site:** bug-tracker-app-75bd0.firebaseapp.com
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Authentication**<br>
+- Utilized Firebase Authentication to either Login or Sign Up.
+- Basic form validation using custom hook. The form cannot be submitted while the form is invalid. 
+- Notification displayed on form submition (pending, error). If the submition succeeded, the page is redirected to the dashboard page.
+- Authentication is managed by React Context. Upon login, the token and its expiration date are stored in localStorage and a logout timer is set. When it expires, the user is automatically logged out.
+- 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Notification Messages**<br>
+A loading message is shown when the app is fetching data. An error message is shown when results cannot be found.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Further Information About the Code
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Rendered different conditions using a custom hook and a switch statement
+2. Used React Context to manage state for the weather and UI
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork and then clone this repository
+2. Install npm with `npm install`
+3. Create a .env file based on .env.example. Your API key can be obtained on [OpenWeatherMap](https://openweathermap.org/)
+4. Run `npm start` to start the server in development
