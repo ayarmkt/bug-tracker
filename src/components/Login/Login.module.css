@@ -4,8 +4,16 @@
   height: 100vh;
   background-color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.notification{
+  width: 80vw;
+  max-width: 600px;
+  height: 300px;
+  border: 1px solid blue;
 }
 
 /* login panel */

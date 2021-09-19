@@ -80,7 +80,7 @@ const BugsList = () => {
         {/* <div className={`${classes.container} ${containerMenu}`}> */}
         <H1 title='All Bugs' />
         <Notification
-          className={classes.notification}
+          classname={classes.notification}
           //title={notification.title}
           message={message}
         />
