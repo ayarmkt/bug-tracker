@@ -7,9 +7,9 @@
   /* animation: fadeout 1s linear 1s forwards; */
 }
 
-.hidden {
+/* .hidden {
   opacity: 0;
-}
+} */
 
 .notification p {
   color: white;
