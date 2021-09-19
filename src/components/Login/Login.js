@@ -6,7 +6,7 @@ import useAuthInputValidation from '../../hooks/useAuthInputValidation';
 import AuthContext from '../../store/auth-context';
 import Button from '../../UI/Button/Button';
 
-const webAPI = process.env.REACT_APP_FIREBASE_API_KEY;
+const webAPI = process.env.REACT_APP_FIREBASE_API_KEY_DEV;
 const guestEmail = process.env.REACT_APP_GUEST_EMAIL;
 const guestPassword = process.env.REACT_APP_GUEST_PASSWORD;
 

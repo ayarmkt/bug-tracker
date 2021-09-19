@@ -23,7 +23,14 @@ const BugItem = (props) => {
   //const { mobileMenu } = useSelector((state) => state.ui);
 
   const { bugs } = useSelector((state) => state.bugs);
+  console.log(bugs)
   const selectedBug = bugs.find((bug) => bug.id === props.bug.id);
+  console.log(selectedBug)
+
+  // const storeSelectedBugHandler = ()=>{
+  //   console.log(selectedBug)
+  //   dispatch(storeSelectedBug(selectedBug));
+  // }
 
   const openModalHandler = () => {
     dispatch(storeSelectedBug(selectedBug));
@@ -52,13 +59,14 @@ const BugItem = (props) => {
 
   return (
     <div className={classes['bug-item']}>
-      <Link className={classes.link} to={`/bug-tracker/bugs-list/${props.id}`}>
+      <Link className={classes.link} to={`/bug-tracker/bugs-list/${props.id}`} >
         <li
           className={classes['bug-detail']}
           key={props.bug.id}
           bug={props.bug}
         >
-          <p>{adjustLength(props.bug.title)}</p>
+          {/* <p>{adjustLength(props.bug.title)}</p> */}
+          <p className={classes.titleText}>{props.bug.title}</p>
           {/* <p>{props.bug.version}</p> */}
           <p>{bugPriority}</p>
           <p>{props.bug.status ? props.bug.status : 'New'}</p>
