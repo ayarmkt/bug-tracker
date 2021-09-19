@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import { AuthContextProvider } from './store/auth-context';
+import { AuthContextProvider } from './context/auth-context';
 import store from './store/index';
 
 ReactDOM.render(

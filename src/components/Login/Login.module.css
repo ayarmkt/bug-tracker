@@ -12,8 +12,8 @@
 .notification{
   width: 80vw;
   max-width: 600px;
-  height: 300px;
-  border: 1px solid blue;
+  /* height: 300px;
+  border: 1px solid blue; */
 }
 
 /* login panel */

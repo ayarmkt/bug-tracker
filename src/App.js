@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 //import { useHistory } from 'react-router';
 
-import AuthContext from './store/auth-context';
+import AuthContext from './context/auth-context';
 import Login from './components/Login/Login';
 import BugsList from './components/Bugs/BugList/BugsList';
 import BugItemDetail from './components/Bugs/BugItemDetail/BugItemDetail';
@@ -22,19 +22,19 @@ function App() {
     <div>
       <Route path='/' exact>
         {!authCtx.loggedIn && (
-          <Redirect to='/bug-tracker/login' exact>
+          <Redirect to='/login' exact>
             <Login />
           </Redirect>
         )}
         {authCtx.loggedIn && (
-          <Redirect to='/bug-tracker/bugs-list' exact>
+          <Redirect to='/bugs-list' exact>
             <Sidebar className={classes.sidebar} />
             <BugsList className={classes.bugslist} />
           </Redirect>
         )}
       </Route>
       {!authCtx.loggedIn && (
-        <Route path='/bug-tracker/login' exact>
+        <Route path='/login' exact>
           <Login />
         </Route>
       )}
@@ -42,23 +42,23 @@ function App() {
         <div className={classes.container}>
           <Sidebar className={classes.sidebar} />
           <Switch>
-            <Route path='/bug-tracker/bugs-list' exact>
+            <Route path='/bugs-list' exact>
               <BugsList className={classes.bugslist} />
             </Route>
-            <Route path='/bug-tracker/bugs-list/:bugId'>
+            <Route path='/bugs-list/:bugId'>
               <BugItemDetail className={classes['bug-detail']} />
             </Route>
-            <Route path='/bug-tracker/submit-bug'>
+            <Route path='/submit-bug'>
               <AddNewBug className={classes['submit-bug']} />
             </Route>
-            <Route path='/bug-tracker/update-bug/:bugId'>
+            <Route path='/update-bug/:bugId'>
               <UpdateBug className={classes['update-bug']} />
             </Route>
           </Switch>
         </div>
       )}
       {!authCtx.token && (
-        <Redirect to='/bug-tracker/login' exact>
+        <Redirect to='/login' exact>
           <Login />
         </Redirect>
       )}

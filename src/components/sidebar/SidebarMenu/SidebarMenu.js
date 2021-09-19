@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 
-import AuthContext from '../../../store/auth-context';
+import AuthContext from '../../../context/auth-context';
 import { toggleMenu } from '../../../store/ui-slice';
 //import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
@@ -32,7 +32,7 @@ const SideBarMenu = ({ onClick }) => {
   const logoutHandler = () => {
     if (menuOpen) menuToggleHandler();
     authCtx.logout();
-    history.replace('/bug-tracker/login');
+    history.replace('/login');
   };
 
   const sidebarClass = menuOpen ? classes.active : '';
@@ -49,7 +49,7 @@ const SideBarMenu = ({ onClick }) => {
       <ul>
         <NavLink
           className={classes.navlink}
-          to='/bug-tracker/bugs-list'
+          to='/bugs-list'
           exact
           onClick={menuOpen && menuToggleHandler}
         >
@@ -61,7 +61,7 @@ const SideBarMenu = ({ onClick }) => {
 
         <NavLink
           className={classes.navlink}
-          to='/bug-tracker/submit-bug'
+          to='/submit-bug'
           onClick={menuOpen && menuToggleHandler}
         >
           <li className={classes.navItem}>

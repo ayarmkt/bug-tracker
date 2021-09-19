@@ -59,7 +59,7 @@ const AddNewBug = () => {
     dispatch(sendNewBugsToServer(newBug));
     dispatch(getBugsFromServer());
     resetForm();
-    history.push('/bug-tracker/bugs-list');
+    history.push('/bugs-list');
     //setNewBug(null);
     //submitNewBug();
   };

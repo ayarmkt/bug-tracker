@@ -23,7 +23,7 @@
   /* grid-column: 1; */
   /* background-color: violet; */
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 2fr repeat(4, 1fr);
 }
 
 /* .bug-detail:hover {

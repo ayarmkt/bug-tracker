@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { useContext } from 'react';
+import { useEffect } from 'react';
 
 import useForm from '../../hooks/useForm';
 import BugForm from './BugForm/BugForm';
@@ -11,6 +12,7 @@ import {
   sendUpdatedBugToServer,
   getBugsFromServer,
 } from '../../store/bug-actions';
+import { storeSelectedBug } from '../../store/bug-slice';
 
 const EditBug = () => {
   const params = useParams();
@@ -31,6 +33,25 @@ const EditBug = () => {
   const { selectedBug } = useSelector((state) => state.bugs);
   const selectedBugKey = selectedBug.key;
   console.log(selectedBugKey);
+
+
+  //let storedBug;
+  // useEffect(()=>{
+  //   if(selectedBug){
+  //     localStorage.setItem('selectedBug', JSON.stringify(selectedBug))
+  //     dispatch(storeSelectedBug(selectedBug));
+  //     console.log(`seectedBug storing is ${JSON.stringify(selectedBug)}`);
+  //     //console.log('set item running');
+  //   } else{
+  //     //setLoading(true)
+  //     let storedBug = JSON.parse(localStorage.getItem('selectedBug'));
+  //     dispatch(storeSelectedBug(storedBug));
+  //     console.log(`storedBug is ${JSON.stringify(storedBug)}`);
+  //     //console.log('get item running');
+  //     //setLoading(false)
+  //   }
+  // },[])
+
 
   const initialFormState = {
     title: selectedBug.title,
@@ -76,7 +97,7 @@ const EditBug = () => {
     resetForm();
     //const storedBugs = await getBugsFromServer();
     //await dispatch(getBugs(storedBugs));
-    history.push('/bug-tracker/bugs-list');
+    history.push('/bugs-list');
   };
 
   const submitUpdatedBugHandler = (e) => {
