@@ -1,6 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //import { useHistory } from 'react-router';
 //import { useContext } from 'react';
@@ -15,16 +18,46 @@ import Card from '../../../UI/Card/Card';
 
 const BugItemDetail = () => {
   const params = useParams();
+  console.log(params.bugId)
   const dispatch = useDispatch();
 
-  //const history = useHistory();
-  //const authCtx = useContext(AuthContext);
-
-  //if (!authCtx.token) history.replace('/bug-tracker/login');
-
   const { modalOpen } = useSelector((state) => state.ui);
+
+  //const [loading, setLoading]=useState(false);
+  //const [selectedBug, setSelectedBug] = useState(null);
+
   const { bugs } = useSelector((state) => state.bugs);
-  const selectedBug = bugs.find((bug) => bug.id === params.bugId);
+  console.log(`bugs are ${JSON.stringify(bugs)}`);
+  const  currentBug = bugs.find((bug) => bug.id === params.bugId);
+  console.log(`currentBug is ${JSON.stringify(currentBug)}`);
+
+  const { selectedBug } = useSelector((state) => state.bugs);
+  console.log(selectedBug)
+
+
+  let storedBug;
+  useEffect(()=>{
+    if(currentBug){
+      localStorage.setItem('currentBug', JSON.stringify(currentBug))
+      console.log(`currentBug storing is ${JSON.stringify(currentBug)}`);
+      console.log('set item running');
+    } else{
+      //setLoading(true)
+      storedBug = JSON.parse(localStorage.getItem('currentBug'));
+      console.log(`storedBug is ${JSON.stringify(storedBug)}`);
+      console.log('get item running');
+      //setLoading(false)
+    }
+  },[])
+
+  
+  useEffect(()=>{
+    //setSelectedBug(currentBug ? currentBug : storedBug)
+    dispatch(storeSelectedBug(currentBug ? currentBug : storedBug));
+    console.log(`selected bug is ${JSON.stringify(selectedBug)}`)
+  }, [currentBug, storedBug])
+
+ 
 
   const openModalHandler = () => {
     dispatch(storeSelectedBug(selectedBug));
@@ -32,20 +65,22 @@ const BugItemDetail = () => {
   };
 
   let bugPriority;
-
-  switch (selectedBug.priority) {
-    case '1':
-      bugPriority = 'High';
-      break;
-    case '2':
-      bugPriority = 'Mid';
-      break;
-    case '3':
-      bugPriority = 'Low';
-      break;
-    default:
-      bugPriority = 'High';
+  if(selectedBug){
+    switch (selectedBug.priority) {
+      case '1':
+        bugPriority = 'High';
+        break;
+      case '2':
+        bugPriority = 'Mid';
+        break;
+      case '3':
+        bugPriority = 'Low';
+        break;
+      default:
+        bugPriority = 'High';
+    }
   }
+
 
   return (
     <React.Fragment>
@@ -53,8 +88,8 @@ const BugItemDetail = () => {
       <Card>
         {/* <H1>Bug Detail</H1> */}
         <H1 title='Bug Detail' />
-
-        <div className={classes['bug-detail']}>
+        {/* {loading && <p>Loading...</p>} */}
+        {selectedBug && (<div className={classes['bug-detail']}>
           <div className={classes['detail-content']}>
             <p className={classes.label}>Title</p>
             <p className={classes.content}>{selectedBug.title}</p>
@@ -114,8 +149,7 @@ const BugItemDetail = () => {
               <p>↶Back to List</p>
             </Link>
           </div>
-        </div>
-        {/* </div> */}
+        </div>)}
       </Card>
       {modalOpen && <ModalOverlay />}
     </React.Fragment>

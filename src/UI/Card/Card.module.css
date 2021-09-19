@@ -12,7 +12,7 @@
 /*  Tablets in portrait mode, large display smartphones landscape mode */
 @media only screen and (min-width: 768px) and (max-width: 1365px) {
   .container {
-    color: aqua;
+    /* color: aqua; */
     position: fixed;
     left: 80px;
     width: calc(100vw - 80px - 10%);

@@ -55,7 +55,7 @@ ul {
 /*  Tablets in portrait mode, large display smartphones landscape mode */
 @media only screen and (min-width: 768px) and (max-width: 1365px) {
   nav {
-    color: aqua;
+    /* color: aqua; */
     z-index: 100;
     position: fixed;
     height: 100vh;

@@ -23,7 +23,7 @@ const BugsList = () => {
 
   const { bugs } = useSelector((state) => state.bugs);
   //console.log('bugs');
-  //console.log(bugs);
+  console.log(bugs);
   const { menuOpen } = useSelector((state) => state.ui);
   //const { mobileMenu } = useSelector((state) => state.ui);
   const { modalOpen } = useSelector((state) => state.ui);

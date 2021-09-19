@@ -13,9 +13,9 @@
   background-color: aquamarine;
 } */
 
-.containerMenu {
+/* .containerMenu {
   border: 5px solid red;
-}
+} */
 
 /* NOTIFICATION */
 .notification {
@@ -27,7 +27,7 @@
 /* BUGS LIST TABLE */
 .list-container {
   margin: 0;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   /* background-color: yellow; */
 }
 

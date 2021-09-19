@@ -93,6 +93,7 @@ const bugSlice = createSlice({
       //console.log(state.bugs);
       state.selectedBug = null;
     },
+    
     storeSelectedBug(state, action) {
       state.selectedBug = action.payload;
     },
