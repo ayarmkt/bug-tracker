@@ -22,7 +22,6 @@ const Notification = (props) => {
 
   return (
     <section className={`${classes.notification} ${notificationStatus} ${props.classname}`}>
-      {/* <h2>{props.title}</h2> */}
       <p>{props.message}</p>
     </section>
   );

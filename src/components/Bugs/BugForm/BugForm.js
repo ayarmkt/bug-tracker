@@ -1,12 +1,12 @@
 import classes from './BugForm.module.css';
 import React from 'react';
+
 import Button from '../../../UI/Button/Button';
 import H1 from '../../../UI/H1/H1';
 import Card from '../../../UI/Card/Card';
 
 const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
   return (
-    // <div className={classes.container}>
     <Card>
       <H1 title={title} />
       <form className={classes['bug-form']} onSubmit={onSubmit}>
@@ -56,13 +56,6 @@ const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
           </div>
           <div className={classes['add-bug-input']}>
             <label>Status</label>
-            {/* <input
-              type='text'
-              name='version'
-              placeholder='enter version'
-              onChange={onChange}
-              value={formData.version}
-            /> */}
             <select name='status' onChange={onChange} value={formData.status}>
               <option value='New'>New</option>
               <option value='Assigned'>Assigned</option>
@@ -102,7 +95,6 @@ const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
           />
         </div>
       </form>
-      {/* </div> */}
     </Card>
   );
 };

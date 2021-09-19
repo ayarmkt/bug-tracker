@@ -1,24 +1,5 @@
-/* CONTAINER */
-/* .container {
-  margin: 22px 5%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: flex-start;
-  background-color: yellow;
-} */
-
-/* TITLE */
-/* .container h1 {
-    font-size: 40px;
-    font-weight: 900;
-  }
-   */
-
 /* FORM */
 .bug-form {
-  /* width: 90%;
-  margin: 30px 5%; */
   width: 100%;
   margin: 30px 0;
 }
@@ -28,27 +9,15 @@
 .add-bug-textarea {
   display: grid;
   grid-template-columns: 100px 1fr;
-  /* padding: 5px 0; */
 }
 
 .add-bug-input {
   height: 70px;
-
-  /* line-height: 50px; */
 }
-
-/* .add-bug-input label {
-  line-height: 70px;
-} */
 
 .add-bug-textarea {
   height: 120px;
-  /* line-height: 100px; */
 }
-
-/* .add-bug-textarea label{
-  line-height: 120px;
-} */
 
 .add-bug-input label,
 .add-bug-textarea label {
@@ -73,7 +42,6 @@
   outline: none;
   border-left: 2px solid var(--darkgray);
   border-bottom: 1px solid var(--lightgray); 
-  /* padding: 5px 0 5px 5px; */
   padding: 2px 5px;
   font-size: 18px;
 }
@@ -114,21 +82,11 @@
 
   .add-bug-input {
     height: 50px;
-    /* line-height: 35px; */
   }
-/* 
-  .add-bug-input label{
-    line-height: 50px;
-  } */
 
   .add-bug-textarea {
     height: 80px;
-    /* line-height: 70px; */
   }
-
-  /* .add-bug-textarea label{
-    line-height: 80px;
-  } */
 
   .add-bug-input label,
   .add-bug-textarea label {

@@ -51,11 +51,10 @@ ul {
   text-decoration: none;
 }
 
-/*  Tablets in landscape mode, older desktop monitors */
+
 /*  Tablets in portrait mode, large display smartphones landscape mode */
 @media only screen and (min-width: 768px) and (max-width: 1365px) {
   nav {
-    /* color: aqua; */
     z-index: 100;
     position: fixed;
     height: 100vh;

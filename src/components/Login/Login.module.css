@@ -12,8 +12,6 @@
 .notification{
   width: 80vw;
   max-width: 600px;
-  /* height: 300px;
-  border: 1px solid blue; */
 }
 
 /* login panel */
@@ -75,10 +73,6 @@
 
 .errorMsg {
   color: red;
-}
-
-.login-item input.inputInvalid {
-  /* border: 5px solid red; */
 }
 
 /* Login Button */
@@ -158,16 +152,6 @@
   .option-text {
     padding: 10px 0;
   }
-}
-
-/*  Tablets in portrait mode, large display smartphones landscape mode */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  /* no need for change */
-}
-
-/*  Smartphones in landscape mode */
-@media only screen and (min-width: 421px) and (max-width: 767px) {
-  /* no need for change */
 }
 
 /*  Smartphones in portrait mode  */

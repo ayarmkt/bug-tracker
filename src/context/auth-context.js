@@ -1,8 +1,5 @@
 import React from 'react';
 import { useState, useCallback, useEffect } from 'react';
-//import { useHistory } from 'react-router';
-//import { Redirect } from 'react-router-dom';
-//import Login from '../components/Login/Login';
 
 //SETTING
 let logoutTimer;
@@ -39,8 +36,6 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
-  //const history = useHistory();
-
   let initialToken;
   const tokenData = getStoredTokenAndExpirationTime();
   if (tokenData) {
@@ -49,8 +44,6 @@ export const AuthContextProvider = (props) => {
 
   const [token, setToken] = useState(initialToken);
   const userIsLoggedIn = !!token;
-
-  //if (!token) history.replace('/bug-tracker/login');
 
   const loginHandler = (token, expirationTime) => {
     setToken(token);
@@ -61,12 +54,10 @@ export const AuthContextProvider = (props) => {
   };
 
   const logoutHandler = useCallback(() => {
-    //const history = useHistory();
     setToken(null);
 
     localStorage.removeItem('token');
     localStorage.removeItem('expirationTime');
-    //history.replace('/bug-tracker/login');
 
     if (logoutTimer) clearTimeout(logoutTimer);
   }, []);
@@ -75,9 +66,6 @@ export const AuthContextProvider = (props) => {
     if (tokenData) {
       logoutTimer = setTimeout(logoutHandler, tokenData.duration);
     }
-    // else {
-    //   history.replace('/bug-tracker/login');
-    // }
   }, [logoutHandler, tokenData]);
 
   const contextValue = {

@@ -11,8 +11,6 @@
 .modal {
   background-color: white;
   position: fixed;
-  /* height: 35%;
-  width: 55%; */
   height: 40%;
   width: 50%;
   top: 50%;
@@ -48,11 +46,7 @@
 
 .cancel-btn,
 .confirm-btn {
-  /* width: 15vw; */
-  /* width: 20vw; */
-  /* width: 30vw; */
   width: 40%;
-  /* height: 6vh; */
   height: 7vh;
   margin: 5px;
 }
@@ -106,18 +100,6 @@
   }
 }
 
-/*  Smartphones in landscape mode */
-@media only screen and (min-width: 421px) and (max-width: 767px) {
-  .modal {
-    /* width: 55%; */
-  }
-
-  /* .cancel-btn,
-  .confirm-btn {
-    width: 20vw;
-  } */
-}
-
 /*  Smartphones in portrait mode  */
 @media only screen and (max-width: 420px) {
   .modal {
@@ -132,8 +114,6 @@
 
   .cancel-btn,
   .confirm-btn {
-    /* width: 15vw; */
-    /* width: 30vw; */
     height: 6vh;
     min-height: 35px;
   }

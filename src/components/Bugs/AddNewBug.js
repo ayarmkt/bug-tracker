@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-//import { useContext } from 'react';
 
 import useForm from '../../hooks/useForm';
 import BugForm from './BugForm/BugForm';
@@ -14,15 +13,10 @@ const AddNewBug = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  //const authCtx = useContext(AuthContext);
-
-  //if (!authCtx.token) history.replace('/bug-tracker/login');
-
   const initialFormState = {
     title: '',
     details: '',
     steps: '',
-    // version: '',
     status: '',
     priority: '',
     assigned: '',
@@ -33,7 +27,6 @@ const AddNewBug = () => {
     title: '',
     details: '',
     steps: '',
-    // version: '',
     status: '',
     priority: '',
     assigned: '',
@@ -47,21 +40,13 @@ const AddNewBug = () => {
 
   const submitNewBugHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log(formData.priority);
     const newBug = {
       ...formData,
     };
-    // setNewBug({
-    //   ...formData,
-    // });
-    //console.log(newBug);
     dispatch(sendNewBugsToServer(newBug));
     dispatch(getBugsFromServer());
     resetForm();
     history.push('/bugs-list');
-    //setNewBug(null);
-    //submitNewBug();
   };
 
   return (

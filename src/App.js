@@ -2,7 +2,6 @@ import classes from './App.module.css';
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
-//import { useHistory } from 'react-router';
 
 import AuthContext from './context/auth-context';
 import Login from './components/Login/Login';
@@ -14,9 +13,6 @@ import UpdateBug from './components/Bugs/UpdateBug';
 
 function App() {
   const authCtx = useContext(AuthContext);
-  //const history = useHistory(AuthContext);
-
-  //if (!authCtx.token) history.replace('/bug-tracker/login');
 
   return (
     <div>

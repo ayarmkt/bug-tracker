@@ -1,9 +1,5 @@
-//import { useDispatch } from 'react-redux';
 import { showNotification } from './ui-slice';
-import { getBugs } from './bug-slice';
-import { updateBugs } from './bug-slice';
-import { addNewBugs } from './bug-slice';
-import { deleteBugs } from './bug-slice';
+import { getBugs, updateBugs,  addNewBugs, deleteBugs } from './bug-slice';
 
 const databaseURL = process.env.REACT_APP_DATABASE_URL;
 
@@ -18,8 +14,6 @@ export const sendNewBugsToServer = (newBug) => {
     );
 
     const storeData = async () => {
-      //console.log('running sendBugsToServer');
-      //console.log('sending!!!');
       const response = await fetch(`${databaseURL}/bugs.json`, {
         method: 'POST',
         body: JSON.stringify({
@@ -27,7 +21,6 @@ export const sendNewBugsToServer = (newBug) => {
           title: newBug.title,
           details: newBug.details,
           steps: newBug.steps,
-          // version: newBug.version,
           status: newBug.status ? newBug.status : 'New',
           priority: newBug.priority ? newBug.priority : '1',
           assigned: newBug.assigned,
@@ -44,7 +37,6 @@ export const sendNewBugsToServer = (newBug) => {
 
     try {
       await storeData();
-      //console.log('sending POST request!!!');
       dispatch(addNewBugs(newBug));
       dispatch(
         showNotification({
@@ -54,7 +46,6 @@ export const sendNewBugsToServer = (newBug) => {
         })
       );
     } catch (error) {
-      console.error(error.message);
       dispatch(
         showNotification({
           status: 'error',
@@ -86,14 +77,10 @@ export const sendUpdatedBugToServer = (newBug, key) => {
       if (!response.ok) {
         throw new Error('cannot send updated bug');
       }
-
-      //dispatch(updateBugs(newBug));
     };
 
     try {
       await storeData();
-      //dispatch(updateBugs(newBug));
-      //console.log(`updated: ${newBug}`);
       dispatch(updateBugs(newBug));
       dispatch(
         showNotification({
@@ -103,7 +90,6 @@ export const sendUpdatedBugToServer = (newBug, key) => {
         })
       );
     } catch (error) {
-      console.error(error.message);
       dispatch(
         showNotification({
           status: 'error',
@@ -148,7 +134,6 @@ export const sendDeletedBugInfoToServer = (selectedBug, key) => {
         })
       );
     } catch (error) {
-      console.error(error.message);
       dispatch(
         showNotification({
           status: 'error',
@@ -180,7 +165,7 @@ export const getBugsFromServer = () => {
       const data = await response.json();
 
       let bugsList = [];
-      //Firebase has a key for each item
+
       for (const key in data) {
         const newData = { ...data[key], key };
         bugsList.push(newData);
@@ -191,8 +176,6 @@ export const getBugsFromServer = () => {
 
     try {
       const bugsList = await fetchData();
-
-      //console.log('fetching data!!!');
       dispatch(getBugs(bugsList));
       dispatch(
         showNotification({
@@ -201,10 +184,7 @@ export const getBugsFromServer = () => {
           message: 'Fetched data successfully!',
         })
       );
-      //return await fetchData();
-      //return bugsList;
     } catch (error) {
-      console.error(error.message);
       dispatch(
         showNotification({
           status: 'error',

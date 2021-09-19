@@ -9,28 +9,19 @@ import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { BiEdit } from 'react-icons/bi';
 import { BsTrashFill } from 'react-icons/bs';
 
-const adjustLength = (word) => {
-  if (word && word.length > 17) {
-    const adjustedWord = word.slice(0, 15) + '...';
-    return adjustedWord;
-  } else {
-    return word;
-  }
-};
+// const adjustLength = (word) => {
+//   if (word && word.length > 17) {
+//     const adjustedWord = word.slice(0, 15) + '...';
+//     return adjustedWord;
+//   } else {
+//     return word;
+//   }
+// };
 
 const BugItem = (props) => {
   const dispatch = useDispatch();
-  //const { mobileMenu } = useSelector((state) => state.ui);
-
   const { bugs } = useSelector((state) => state.bugs);
-  console.log(bugs)
   const selectedBug = bugs.find((bug) => bug.id === props.bug.id);
-  console.log(selectedBug)
-
-  // const storeSelectedBugHandler = ()=>{
-  //   console.log(selectedBug)
-  //   dispatch(storeSelectedBug(selectedBug));
-  // }
 
   const openModalHandler = () => {
     dispatch(storeSelectedBug(selectedBug));
@@ -38,7 +29,6 @@ const BugItem = (props) => {
   };
 
   const { width: vw } = useWindowDimensions();
-  //console.log(vw);
 
   let mobileMenu = vw <= 767 ? true : false;
 
@@ -65,9 +55,7 @@ const BugItem = (props) => {
           key={props.bug.id}
           bug={props.bug}
         >
-          {/* <p>{adjustLength(props.bug.title)}</p> */}
           <p className={classes.titleText}>{props.bug.title}</p>
-          {/* <p>{props.bug.version}</p> */}
           <p>{bugPriority}</p>
           <p>{props.bug.status ? props.bug.status : 'New'}</p>
           {!mobileMenu && <p>{props.bug.assigned}</p>}

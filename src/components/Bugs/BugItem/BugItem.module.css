@@ -1,6 +1,5 @@
 .bug-item {
   width: 100%;
-  /* background-color: violet; */
   display: grid;
   grid-template-columns: 1fr 110px;
   border-bottom: 1px solid var(--lightgray);
@@ -14,32 +13,19 @@
   text-decoration: none;
 }
 
-.link:hover {
-  /* background-color: rgba(var(--third-color), 1); */
-}
-
 .bug-detail {
   width: 100%;
-  /* grid-column: 1; */
-  /* background-color: violet; */
   display: grid;
   grid-template-columns: 2fr repeat(4, 1fr);
 }
 
-/* .bug-detail:hover {
-  background-color: var(--graytransparent);
-} */
-
 .bug-detail p {
-  /* border: 1px solid red; */
   text-align: start;
   color: black;
   height: 50px;
   line-height: 50px;
   font-size: 18px;
   padding: 0 2px;
-  /* background-color: rgba(var(--third-color), 1); */
-  /* border: 1px solid red; */
 }
 
 .titleText{
@@ -49,21 +35,12 @@
 .actions {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* justify-content: center; */
   justify-items: center;
   align-items: center;
-  /* align-content: center; */
-  /* border: 1px solid blue; */
 }
 
 .icon:hover {
   cursor: pointer;
-  /* border: 1px solid red; */
-
-  /* display: flex;
-  justify-content: center; */
-  /* height: 100%;
-  width: 100%; */
 }
 
 /*  Smartphones in landscape mode */
@@ -74,8 +51,6 @@
 
   .bug-detail {
     width: 100%;
-    /* grid-column: 1; */
-    /* background-color: violet; */
     display: grid;
     grid-template-columns: 2.5fr repeat(2, 1fr);
   }
@@ -83,9 +58,6 @@
   .bug-detail p {
     height: 40px;
     line-height: 40px;
-
-    /* font-size: 18px; */
-    /* color: yellow; */
   }
 }
 
@@ -97,8 +69,6 @@
 
   .bug-detail {
     width: 100%;
-    /* grid-column: 1; */
-    /* background-color: violet; */
     display: grid;
     grid-template-columns: 2.5fr repeat(2, 1fr);
   }
@@ -107,6 +77,5 @@
     height: 30px;
     line-height: 30px;
     font-size: 14px;
-    /* color: purple; */
   }
 }

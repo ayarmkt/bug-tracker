@@ -4,15 +4,11 @@
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
-  /* border: 1px solid blue; */
-  /* background-color: yellow; */
 }
 
-/*  Tablets in landscape mode, older desktop monitors */
 /*  Tablets in portrait mode, large display smartphones landscape mode */
 @media only screen and (min-width: 768px) and (max-width: 1365px) {
   .container {
-    /* color: aqua; */
     position: fixed;
     left: 80px;
     width: calc(100vw - 80px - 10%);
@@ -23,7 +19,6 @@
 /*  Smartphones in landscape mode */
 @media only screen and (min-width: 421px) and (max-width: 767px) {
   .container {
-    color: yellow;
     margin: 10px 5%;
   }
 }
@@ -31,7 +26,6 @@
 /*  Smartphones in portrait mode  */
 @media only screen and (max-width: 420px) {
   .container {
-    /* color: purple; */
     width: calc(100vw - 10%);
   }
 }

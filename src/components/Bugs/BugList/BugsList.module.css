@@ -1,34 +1,6 @@
-/* * {
-  outline: 1px solid red;
-} */
-
-/* CONTAINER */
-/* .container {
-  margin: 22px 5%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: flex-start;
-  border: 1px solid blue;
-  background-color: aquamarine;
-} */
-
-/* .containerMenu {
-  border: 5px solid red;
-} */
-
-/* NOTIFICATION */
-/* .notification {
-  /* margin: 10px 0; */
-  /* height: 15px;
-  font-size: 2px; 
-} */
-
 /* BUGS LIST TABLE */
 .list-container {
   margin: 0;
-  /* border: 1px solid blue; */
-  /* background-color: yellow; */
 }
 
 .labels {
@@ -63,49 +35,14 @@
   font-size: 18px;
 }
 
-/*  Tablets in landscape mode, older desktop monitors */
-@media only screen and (min-width: 1024px) and (max-width: 1365px) {
-  /* .container {
-    color: aqua;
-    position: fixed;
-    left: 80px;
-    width: calc(100vw - 80px - 10%);
-    height: calc(100vh - 22px - 22px);
-  } */
-}
-
-/*  Tablets in portrait mode, large display smartphones landscape mode */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  /* .container {
-    color: pink;
-    position: fixed;
-    left: 80px;
-    width: calc(100vw - 80px - 10%);
-    height: calc(100vh - 22px - 22px);
-  } */
-}
-
+/* MEDIA QUERIES */
 /*  Smartphones in landscape mode */
 @media only screen and (min-width: 421px) and (max-width: 767px) {
-  /* .container {
-    color: yellow;
-  }
-
-  .container {
-    margin: 10px 5%;
-  } 
-
-  .mobileMenuOpen {
-    transform: translateX(250px);
-  }*/
-
   .labels {
     grid-template-columns: 2.5fr repeat(2, 1fr) 70px;
   }
 
   .labels p {
-    /* border-bottom: 2px solid var(--darkgray);
-    text-align: start;*/
     height: 30px;
     line-height: 30px;
     font-size: 18px;
@@ -113,32 +50,16 @@
 
   .mobileMenuOpen {
     transform: translateX(200px);
-    /* overflow: hidden; */
   }
-
-  /* .error {
-    font-size: 12px;
-  } */
 }
 
 /*  Smartphones in portrait mode  */
 @media only screen and (max-width: 420px) {
-  /* .container {
-    color: purple;
-    width: calc(100vw - 10%);
-  } */
-
-  /* .container h1 {
-    font-size: 25px;
-  } */
-
   .labels {
     grid-template-columns: 2.5fr repeat(2, 1fr) 70px;
   }
 
   .labels p {
-    /* border-bottom: 2px solid var(--darkgray);
-    text-align: start;*/
     height: 30px;
     line-height: 30px;
     font-size: 14px;
@@ -146,7 +67,6 @@
 
   .mobileMenuOpen {
     transform: translateX(200px);
-    /* overflow: hidden; */
   }
 
   .empty {

@@ -1,31 +1,23 @@
 import classes from './SidebarMenu.module.css';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
 
 import AuthContext from '../../../context/auth-context';
 import { toggleMenu } from '../../../store/ui-slice';
-//import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import { FaListAlt } from 'react-icons/fa';
 import { IoCreate } from 'react-icons/io5';
 import { BiLogOut } from 'react-icons/bi';
 
 const SideBarMenu = ({ onClick }) => {
-  const { menuOpen } = useSelector((state) => state.ui);
   const authCtx = useContext(AuthContext);
   const history = useHistory();
   const dispatch = useDispatch();
-
-  // const { width: vw } = useWindowDimensions();
-  // console.log(vw);
-  // (min-width: 1366)
+  const { menuOpen } = useSelector((state) => state.ui);
 
   const menuToggleHandler = () => {
-    //setMenuCollapse((prevState) => !prevState);
     dispatch(toggleMenu());
   };
 

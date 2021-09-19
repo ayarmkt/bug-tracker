@@ -1,8 +1,7 @@
 import classes from './Login.module.css';
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 
 import useAuthInputValidation from '../../hooks/useAuthInputValidation';
 import AuthContext from '../../context/auth-context';
@@ -16,11 +15,10 @@ const guestPassword = process.env.REACT_APP_GUEST_PASSWORD;
 
 const Login = () => {
   const history = useHistory();
-  const [isLogin, setIsLogin] = useState(true);
-  //const [isLoading, setIsLoading] = useState(false);
-
-  const authCtx = useContext(AuthContext);
   const dispatch = useDispatch();
+  const authCtx = useContext(AuthContext);
+
+  const [isLogin, setIsLogin] = useState(true);
   const { status, message } = useSelector((state) => state.ui.notification);
 
   const {
@@ -60,7 +58,6 @@ const Login = () => {
 
   const storeLoginDataHandler = async () => {
     const storeLoginData= async ()=>{
-      //setIsLoading(true);
       dispatch(
         showNotification({
           status: 'pending',
@@ -98,8 +95,6 @@ const Login = () => {
         new Date().getTime() + +data.expiresIn * 1000
       );
       authCtx.login(data.idToken, tokenExpireTime.toISOString());
-      //history.replace('/bug-tracker/bugs-list');
-      //setIsLoading(false);
     }
 
     try{
@@ -113,10 +108,8 @@ const Login = () => {
           message: isLogin ? 'Logged in successfully!' : 'Signed up successfully!',
         })
       );
-      console.log(message)
       history.replace('/bugs-list');
     } catch(error) {
-      //console.log(error.message);
       dispatch(
         showNotification({
           status: 'error',
@@ -124,7 +117,6 @@ const Login = () => {
           message: isLogin ? 'Cannot login' : 'Cannot sign up',
         })
       );
-      console.log(message)
     }
   };
 
@@ -133,49 +125,6 @@ const Login = () => {
     if (!formIsValid) return;
 
     storeLoginDataHandler()
-
-    // const storeLoginData = async () => {
-    //   setIsLoading(true);
-    //   let url;
-
-    //   if (isLogin) {
-    //     url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${webAPI}`;
-    //   } else {
-    //     url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${webAPI}`;
-    //   }
-
-    //   //Both sign up and log in
-    //   const response = await fetch(url, {
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //       email: enteredEmail,
-    //       password: enteredPassword,
-    //       returnSecureToken: true,
-    //     }),
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   });
-
-    //   if (!response.ok) {
-    //     let errorMessage = 'Authentication failed';
-    //     throw new Error(errorMessage);
-    //   }
-
-    //   const data = await response.json();
-    //   const tokenExpireTime = new Date(
-    //     new Date().getTime() + +data.expiresIn * 1000
-    //   );
-    //   authCtx.login(data.idToken, tokenExpireTime.toISOString());
-    //   history.replace('/bug-tracker/bugs-list');
-    // };
-
-    // storeLoginData().catch((error) => {
-    //   console.log(error.message);
-    // });
-    // setIsLoading(false);
-    // resetEmail();
-    // resetPassword();
   };
 
   const optionText = isLogin
@@ -187,8 +136,6 @@ const Login = () => {
       {status !== 'success'&& <Notification classname={classes.notification} message={message} />}
       <form className={classes['login-form']} onSubmit={submitLoginHandler}>
         <h1>Bug Tracker App</h1>
-        {/* {isLogin && <h1>Log In</h1>}
-        {!isLogin && <h1>Sign Up</h1>} */}
         <div className={classes['login-items']}>
           <div className={classes['login-item']}>
             <label>Email</label>
@@ -222,7 +169,6 @@ const Login = () => {
             )}
           </div>
         </div>
-
         <Button
           type='submit'
           disabled={!formIsValid}
@@ -230,8 +176,6 @@ const Login = () => {
           onClick={submitLoginHandler}
           text={isLogin ? 'Log In' : 'Sign Up'}
         />
-        
-        {/* {isLoading && <p>Loading...</p>} */}
         <div className={classes.options}>
           <p className={classes['option-text']} onClick={switchFormHandler}>
             {optionText}

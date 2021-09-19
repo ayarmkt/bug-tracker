@@ -1,9 +1,7 @@
 /*  Smartphones in landscape mode */
 @media only screen and (max-width: 767px) {
-  /* SIDEBAR */
   nav {
     color: yellow;
-    /* width: 80px; */
     z-index: 100;
     position: fixed;
     width: 200px;
@@ -16,7 +14,6 @@
     padding: 30px 0;
     visibility: hidden;
     transform: translateX(-200px);
-    /* transform: translateX(-250px); */
   }
 
   .sidebar.active {
@@ -75,10 +72,6 @@
 
 /*  Smartphones in portrait mode  */
 @media only screen and (max-width: 420px) {
-  nav {
-    /* color: purple; */
-  }
-
   .hamburgerOpen {
     margin: 20px 5% 0 5%;
   }
