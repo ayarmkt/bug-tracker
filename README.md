@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# React Bug Tracker App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This Bug Tracker App can be used to manage and keep track of the bugs in a project you are working on. It had an authentication functions (login, signup, logout) as well as bug data management functions (read, add, edit, delete).
 
-In the project directory, you can run:
+## Tech Stack
+Tech Stack: React (including React Context) | Redux | CSS | Firebase<br>
+Platform: Firebase
 
-### `npm start`
+## Final Product
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Live Site:** https://bug-tracker-app-75bd0.firebaseapp.com
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Authentication
+- Utilized Firebase Authentication to Login and Sign Up.
+- Basic form validation is done by using a custom hook. The form cannot be submitted while the form is invalid. 
+- Notification displayed on form submition (pending, error). If the submition succeeded, the page is redirected to the dashboard page.
+- Authentication is managed by React Context. Upon login, the token and its expiration date are stored in localStorage and a logout timer is set. When it expires, the user is automatically logged out.
 
-### `npm test`
+<img src="https://user-images.githubusercontent.com/82935527/133928109-5e72ebc4-2ddb-4ad8-97ef-d50cc844cb65.gif" alt="authentication" title="authentication">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Dashboard (Bugs List)
+- All bugs are listed in order of priority.
+- The data is managed using Redux. 
 
-### `npm run build`
+### Bugs Detail Page
+- Clicking on individual bug item will redirect to the detail page of the selected bug.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="https://user-images.githubusercontent.com/82935527/133928424-8270bd7f-bd35-4d94-b52f-caa62a697c3b.gif" alt="bug-detail" title="bug-detail">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Adding New Bugs
+- New bugs can be added to the list from the "Add New Bug" menu.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="https://user-images.githubusercontent.com/82935527/133928578-3b077fcd-5b64-489b-9f19-00cf21cb63a5.gif" alt="add-new-bug" title="add-new-bug">
 
-### `npm run eject`
+### Editing Bugs
+- Bugs can be updated from either the dashboard (bugs list page) or the bug detail page.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="https://user-images.githubusercontent.com/82935527/133929174-c8ea1447-caeb-47a7-891e-057820945dbb.gif" alt="edit-bug" title="edit-bug">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Deleting Bugs
+- Bugs can be deleted from either the dashboard (bugs list page) or the bug detail page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="https://user-images.githubusercontent.com/82935527/133929345-31d53b58-ec34-435e-92e9-8f98db418cd0.gif" alt="delete-bug" title="delete-bug">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Further Information About the Code
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. React Context is used to manage Authentication. Firebase Authentication is used behind the scenes. 
+2. Redux is used to manage the data. bug-slice manages bug-related state and ui-slice manages the UI state (menu, modal, notification). 
+3. Bugs data are stored in Firebase Realtime Database.
+4. 
+5. Custom components (h1 title, buttons, Card) are used for cleaner and easy-to-read code
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Getting Started
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork and then clone this repository
+2. Install npm with `npm install`
+3. Create a .env file based on .env.example. Start a project on Firebase and obtain your API key etc.
+4. Run `npm start` to start the server in development
+5. For deployment, follow the Firebase Hosting instruction.
