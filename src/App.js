@@ -11,6 +11,7 @@ import Sidebar from './components/sidebar/Sidebar';
 import AddNewBug from './components/Bugs/AddNewBug';
 import UpdateBug from './components/Bugs/UpdateBug';
 
+
 function App() {
   const authCtx = useContext(AuthContext);
 

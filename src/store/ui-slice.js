@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialUIState = {
   modalOpen: false,
   menuOpen: false,
-  notification: { status: 'initial', title: 'initial', message: 'initial' },
+  notification: { status: '', title: '', message: '' },
   //mobileMenu: false
 };
 

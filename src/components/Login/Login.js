@@ -1,5 +1,5 @@
 import classes from './Login.module.css';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext} from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector  } from 'react-redux';
 
@@ -8,6 +8,7 @@ import AuthContext from '../../context/auth-context';
 import Button from '../../UI/Button/Button';
 import Notification from '../../UI/Notification/Notification';
 import { showNotification } from '../../store/ui-slice';
+// import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 const webAPI = process.env.REACT_APP_FIREBASE_API_KEY_DEV;
 const guestEmail = process.env.REACT_APP_GUEST_EMAIL;
@@ -20,6 +21,17 @@ const Login = () => {
 
   const [isLogin, setIsLogin] = useState(true);
   const { status, message } = useSelector((state) => state.ui.notification);
+
+  // const { width: vw } = useWindowDimensions();
+  // const [mobile, setMobile] = useState(false);
+
+  // useEffect(() => {
+  //   if(vw <= 767){
+  //     setMobile(true);
+  //   }else{
+  //     setMobile(false);
+  //   }
+  // }, [])
 
   const {
     value: enteredEmail,
@@ -123,7 +135,6 @@ const Login = () => {
   const submitLoginHandler = (e) => {
     e.preventDefault();
     if (!formIsValid) return;
-
     storeLoginDataHandler()
   };
 
