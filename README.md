@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Bug Tracker App can be used to manage and keep track of the bugs in a project you are working on. It had an authentication functions (login, signup, logout) as well as bug data management functions (read, add, edit, delete).
+This CRUD Bug Tracker App can be used to manage and keep track of bugs in the project you are working on. It has authentication features (login, sign up, log out) and bug data management features (read bugs data, add new bugs, edit bugs, delete bugs).
 
 ## Tech Stack
 Tech Stack: React (including React Context) | Redux | CSS | Firebase<br>
