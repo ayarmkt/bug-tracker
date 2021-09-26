@@ -20,8 +20,7 @@ Platform: Firebase
 <img src="https://user-images.githubusercontent.com/82935527/133928109-5e72ebc4-2ddb-4ad8-97ef-d50cc844cb65.gif" alt="authentication" title="authentication">
 
 ### Dashboard (Bugs List)
-- All bugs are listed in order of priority.
-- The data is managed by Redux and stored in Firebase Realtime Database. 
+- All bugs are listed in order of priority. 
 
 ### Bugs Detail Page
 - Click on each bug item to go to the detail page of the selected bug.
