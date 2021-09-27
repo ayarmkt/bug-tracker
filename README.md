@@ -13,16 +13,14 @@ Platform: Firebase
 **Live Site:** https://bug-tracker-app-75bd0.firebaseapp.com
 
 ### Authentication
-- Firebase Authentication is used for login and signup.
-- For basic form validation, custom hook is used. While the form is invalid, the form cannot be submitted.
+- Enter the form corretly to login or sign up.
 - A notification is displayed when the form is submitted. If the submission is successful, you will be redirected to the dashboard page.
-- Authentication is managed by React Context. Upon login, the token and its expiration date are stored in localStorage and a logout timer is set. When the expiration time expires, the user is automatically logged out.
+- Click on "Log in as a guest" and click "Log In" to use this app as a guest without signing up.
 
 <img src="https://user-images.githubusercontent.com/82935527/133928109-5e72ebc4-2ddb-4ad8-97ef-d50cc844cb65.gif" alt="authentication" title="authentication">
 
 ### Dashboard (Bugs List)
-- All bugs are listed in order of priority.
-- The data is managed by Redux and stored in Firebase Realtime Database. 
+- All bugs are listed in order of priority. 
 
 ### Bugs Detail Page
 - Click on each bug item to go to the detail page of the selected bug.
@@ -48,10 +46,11 @@ Platform: Firebase
 
 ## Further Information About the Code
 
-1. React Context and Firebase Authentication are used to manage the authentication.
-2. Redux and Firebase Realtime Database are used to manage and store the data.
-3. Redux also manages the UI state (menus, modals, notifications). 
-4. Custom components (h1 titles, buttons, cards) for cleaner, more readable code.
+1. React Context and Firebase Authentication are used to manage the authentication. Upon login, the token and its expiration date are stored in localStorage and a logout timer is set. When the expiration time expires, the user is automatically logged out.
+2. For basic form validation for Authentication, custom hook is used. While the form is invalid, the form cannot be submitted.
+4. Redux and Firebase Realtime Database are used to manage and store the data.
+5. Redux also manages the UI state (menus, modals, notifications). 
+6. Custom components (h1 titles, buttons, cards) for cleaner, more readable code.
 
 ## Getting Started
 
