@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import BugItem from '../BugItem/BugItem';
 import ModalOverlay from '../../../UI/Modal/ModalOverlay';
 import { getBugsFromServer } from '../../../store/bug-actions';
-import H1 from '../../../UI/H1/H1';
+import Title from '../../../UI/Title/Title';
 import Card from '../../../UI/Card/Card';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import Notification from '../../../UI/Notification/Notification';
@@ -35,11 +35,8 @@ const BugsList = () => {
   return (
     <React.Fragment>
       <Card className={classes.containerMenu}>
-        <H1 title='All Bugs'  />
-        <Notification
-          classname={classes.notification}
-          message={message}
-        />
+        <Title title='All Bugs' />
+        <Notification classname={classes.notification} message={message} />
         <ul className={classes['list-container']}>
           <li className={classes.labels}>
             <p key='title'>Title</p>

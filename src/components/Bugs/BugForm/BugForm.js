@@ -2,13 +2,13 @@ import classes from './BugForm.module.css';
 import React from 'react';
 
 import Button from '../../../UI/Button/Button';
-import H1 from '../../../UI/H1/H1';
+import Title from '../../../UI/Title/Title';
 import Card from '../../../UI/Card/Card';
 
 const BugForm = ({ title, onSubmit, onChange, formData, onClick, btnText }) => {
   return (
     <Card>
-      <H1 title={title} />
+      <Title title={title} />
       <form className={classes['bug-form']} onSubmit={onSubmit}>
         <div className={classes['add-bug-form']}>
           <div className={classes['add-bug-input']}>
