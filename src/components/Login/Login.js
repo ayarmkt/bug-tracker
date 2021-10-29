@@ -1,7 +1,7 @@
 import classes from './Login.module.css';
-import React, { useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router';
-import { useDispatch, useSelector  } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import useAuthInputValidation from '../../hooks/useAuthInputValidation';
 import AuthContext from '../../context/auth-context';
@@ -9,7 +9,7 @@ import Button from '../../UI/Button/Button';
 import Notification from '../../UI/Notification/Notification';
 import { showNotification } from '../../store/ui-slice';
 
-const webAPI = process.env.REACT_APP_FIREBASE_API_KEY;
+const webAPI = process.env.REACT_APP_FIREBASE_API_KEY_DEV;
 const guestEmail = process.env.REACT_APP_GUEST_EMAIL;
 const guestPassword = process.env.REACT_APP_GUEST_PASSWORD;
 
@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   const storeLoginDataHandler = async () => {
-    const storeLoginData= async ()=>{
+    const storeLoginData = async () => {
       dispatch(
         showNotification({
           status: 'pending',
@@ -95,9 +95,9 @@ const Login = () => {
         new Date().getTime() + +data.expiresIn * 1000
       );
       authCtx.login(data.idToken, tokenExpireTime.toISOString());
-    }
+    };
 
-    try{
+    try {
       await storeLoginData();
       resetEmail();
       resetPassword();
@@ -105,11 +105,13 @@ const Login = () => {
         showNotification({
           status: 'success',
           title: 'Success',
-          message: isLogin ? 'Logged in successfully!' : 'Signed up successfully!',
+          message: isLogin
+            ? 'Logged in successfully!'
+            : 'Signed up successfully!',
         })
       );
       history.replace('/bugs-list');
-    } catch(error) {
+    } catch (error) {
       dispatch(
         showNotification({
           status: 'error',
@@ -123,7 +125,7 @@ const Login = () => {
   const submitLoginHandler = (e) => {
     e.preventDefault();
     if (!formIsValid) return;
-    storeLoginDataHandler()
+    storeLoginDataHandler();
   };
 
   const optionText = isLogin
@@ -132,7 +134,9 @@ const Login = () => {
 
   return (
     <div className={classes['login-bg']}>
-      {status !== 'success'&& <Notification classname={classes.notification} message={message} />}
+      {status !== 'success' && (
+        <Notification classname={classes.notification} message={message} />
+      )}
       <form className={classes['login-form']} onSubmit={submitLoginHandler}>
         <h1>Bug Tracker App</h1>
         <div className={classes['login-items']}>

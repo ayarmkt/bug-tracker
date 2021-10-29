@@ -2,7 +2,6 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 110px;
-  border-bottom: 1px solid var(--lightgray);
 }
 
 .bug-item:hover {
@@ -16,19 +15,19 @@
 .bug-detail {
   width: 100%;
   display: grid;
-  grid-template-columns: 2fr repeat(4, 1fr);
+  grid-template-columns: 5fr 1fr 1.3fr 2fr 2fr;
 }
 
 .bug-detail p {
   text-align: start;
   color: black;
-  height: 50px;
+  height: 60px;
   line-height: 50px;
   font-size: 18px;
-  padding: 0 2px;
+  padding-right: 50px;
 }
 
-.titleText{
+.titleText {
   overflow: hidden;
 }
 
