@@ -9,7 +9,7 @@ import Button from '../../UI/Button/Button';
 import Notification from '../../UI/Notification/Notification';
 import { showNotification } from '../../store/ui-slice';
 
-const webAPI = process.env.REACT_APP_FIREBASE_API_KEY_DEV;
+const webAPI = process.env.REACT_APP_FIREBASE_API_KEY;
 const guestEmail = process.env.REACT_APP_GUEST_EMAIL;
 const guestPassword = process.env.REACT_APP_GUEST_PASSWORD;
 
