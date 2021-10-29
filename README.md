@@ -52,6 +52,10 @@ Platform: Firebase
 5. Redux also manages the UI state (menus, modals, notifications). 
 6. Custom components (h1 titles, buttons, cards) for cleaner, more readable code.
 
+## Future Updates
+
+- Sorting the list by name or priority
+
 ## Getting Started
 
 1. Fork and then clone this repository
