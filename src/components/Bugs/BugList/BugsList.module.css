@@ -6,7 +6,7 @@
 .labels {
   width: 100%;
   display: grid;
-  grid-template-columns: 2fr repeat(4, 1fr) 110px;
+  grid-template-columns: 5fr 1fr 1.3fr 2fr 2fr 110px;
 }
 
 .labels p {
@@ -15,7 +15,7 @@
   height: 40px;
   line-height: 40px;
   font-size: 18px;
-  padding: 0 2px;
+  font-weight: 500;
 }
 
 .actions {
