@@ -2,11 +2,12 @@
 
 ## Overview
 
-This CRUD Bug Tracker App can be used to manage and keep track of bugs in the project you are working on. It has authentication features (login, sign up, log out) and bug data management features (read bugs data, add new bugs, edit bugs, delete bugs).
+A bug tracker to keep track of issues during development. Context API is used for Authentication and Redux for managing bugs data.
 
 ## Tech Stack
-Tech Stack: React (including React Context) | Redux | CSS | Firebase<br>
-Platform: Firebase
+Tech Stack: React (including React Context) | Create React App | Redux | CSS | Firebase | npm <br>
+Platform: Firebase<br>
+Design: Figma
 
 ## Final Product
 
